@@ -1,7 +1,7 @@
 #pragma once
 #include "imodule.h"
-#include "Snake.h"
 #include "Cell.h"
+#include "Snake.h"
 
 class Game :public IModule
 {

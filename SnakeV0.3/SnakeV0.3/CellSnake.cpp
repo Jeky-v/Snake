@@ -8,7 +8,7 @@ CellSnake::CellSnake()
 
 }
 
-void CellSnake::Interaction(Snake &snake)
+void CellSnake::Interaction(Snake &snake,int x,int y)
 {
 
 

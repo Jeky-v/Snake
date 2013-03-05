@@ -1,23 +1,23 @@
 #pragma once
 #include <list>
-
 #include "CellStruct.h"
+#include "Game.h"
 
-using namespace std;
-
+class Game;
 enum dir_type {Up,Down,Left,Right};
 
 class Snake
 {
 private:
+	Game *game_pointer;
 	dir_type direction;
 	SDL_Surface *picture;
 	char name[20];
 	int score;
-	list <CellStruct> snake_list; 
+	std::list <CellStruct> snake_list; 
 public:
 	Snake();
-	Snake(dir_type start_direction,char *text,CellStruct cell1,CellStruct cell2,CellStruct cell3);
+	Snake(Game *new_game_pointer,dir_type start_direction,char *text,CellStruct cell1,CellStruct cell2,CellStruct cell3);
 	~Snake(void);
 
 	void Move();

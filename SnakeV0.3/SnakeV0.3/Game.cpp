@@ -40,7 +40,7 @@ void Game::doInit()
 			map[i][j]->SetPicture(cell_pic[2]);//cell_pic[2]->w*i,12+cell_pic[2]->w*j,cell_pic[2]->w,cell_pic[2]->w);
 		}
 	}
-
+	//testting
 	CellTypeConverter Converter;
 	Converter.CreateConvert <CellSnake> (map[5][5]);
 	Converter.Convert();
@@ -57,7 +57,7 @@ void Game::doInit()
 			map[i][j]->SetDestination(cell_pic[2]->w*i,33+cell_pic[2]->w*j,cell_pic[2]->w,cell_pic[2]->w);
 		}
 	}
-	snake1=new Snake;
+	snake1=new Snake(this,Right,"snake1",CellStruct(7,3),CellStruct(6,3),CellStruct(5,3));
 	snake1->Move();
 }
 

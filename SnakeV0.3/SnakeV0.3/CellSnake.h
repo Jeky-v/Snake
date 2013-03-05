@@ -7,6 +7,6 @@ class CellSnake :public Cell
 
 public:
 	CellSnake();
-	void Interaction(Snake &snake);
+	void Interaction(Snake &snake,int x,int y);
 };
 

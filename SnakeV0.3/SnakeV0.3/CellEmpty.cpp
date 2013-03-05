@@ -8,7 +8,7 @@ CellEmpty::CellEmpty()
 }
 
 
-void CellEmpty::Interaction(Snake &snake)
+void CellEmpty::Interaction(Snake &snake,int x,int y)
 {
 
 }

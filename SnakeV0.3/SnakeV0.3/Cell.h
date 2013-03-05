@@ -1,8 +1,7 @@
 #pragma once
 #include "GlobalVariables.h"
 
-#include "Snake.h"
-
+class Snake;
 class Cell
 {
 private:
@@ -20,6 +19,6 @@ public:
 	void SetPicture(SDL_Surface *new_pic);
 	SDL_Surface *GetPicture();
 	void DrawCell();
-	virtual void Interaction(Snake &knake)=0;
+	virtual void Interaction(Snake &snake,int x,int y)=0;
 };
 
