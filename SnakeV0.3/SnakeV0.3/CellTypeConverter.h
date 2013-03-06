@@ -4,6 +4,8 @@
 using namespace std;
 using std::tr1::function;
 
+class CellEmpty;
+class Cell;
 class CellTypeConverter
 {
 private:
@@ -12,9 +14,9 @@ private:
 public:
 	CellTypeConverter(void);
 	void SetCellPointer(Cell * new_p);
-	template <class new_type> void CreateConvert(Cell *&new_cell_p)
+	template <class new_type> void CreateConvert(int x,int y)
 	{
-		current_cell_pointer=&new_cell_p;
+		current_cell_pointer=&global_map[x][y];
 
 		Convertation=[&]()
 		{

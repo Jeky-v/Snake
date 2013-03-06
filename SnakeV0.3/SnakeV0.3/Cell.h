@@ -1,6 +1,6 @@
 #pragma once
 #include "GlobalVariables.h"
-
+#include "Snake.h"
 class Snake;
 class Cell
 {

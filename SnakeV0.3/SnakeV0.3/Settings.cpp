@@ -21,7 +21,7 @@ void Settings::ChangeScreenMode()
 	else
 	{
 		RESX=910;
-		RESY=516;
+		RESY=523;
 		screen=SDL_SetVideoMode(RESX,RESY,32,SDL_HWSURFACE|SDL_DOUBLEBUF);
 	}
 }

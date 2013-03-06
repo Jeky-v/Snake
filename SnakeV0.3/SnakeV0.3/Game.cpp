@@ -35,30 +35,20 @@ void Game::doInit()
 	{
 		for(int j=0;j<35;j++)
 		{
-			map[i][j]=new CellEmpty;
-			map[i][j]=dynamic_cast<CellEmpty*> (map[i][j]);
-			map[i][j]->SetPicture(cell_pic[2]);//cell_pic[2]->w*i,12+cell_pic[2]->w*j,cell_pic[2]->w,cell_pic[2]->w);
+			global_map[i][j]=new CellEmpty;
+			global_map[i][j]=dynamic_cast<CellEmpty*> (global_map[i][j]);
+			global_map[i][j]->SetPicture(cell_pic[2]);//cell_pic[2]->w*i,12+cell_pic[2]->w*j,cell_pic[2]->w,cell_pic[2]->w);
 		}
 	}
-	//testting
-	CellTypeConverter Converter;
-	Converter.CreateConvert <CellSnake> (map[5][5]);
-	Converter.Convert();
-	//map[5][5]->SetPicture(cell_pic[0]);
-	
-	printf("%s\n",typeid(*map[5][5]).name());
-
-	
 	
 	for (int i=0;i<65;i++)
 	{
 		for(int j=0;j<35;j++)
 		{
-			map[i][j]->SetDestination(cell_pic[2]->w*i,33+cell_pic[2]->w*j,cell_pic[2]->w,cell_pic[2]->w);
+			global_map[i][j]->SetDestination(cell_pic[2]->w*i,33+cell_pic[2]->w*j,cell_pic[2]->w,cell_pic[2]->w);
 		}
 	}
-	snake1=new Snake(this,Right,"snake1",CellStruct(7,3),CellStruct(6,3),CellStruct(5,3));
-	snake1->Move();
+	snake=new Snake(Right,"snake",CellStruct(7,3),CellStruct(6,3),CellStruct(5,3));
 }
 
 bool Game::doRun()
@@ -80,13 +70,32 @@ bool Game::doRun()
 					m_mgr->SetActiveModule(MAINMENU);
 					return true;
 				} 
+				if ( event.key.keysym.sym == SDLK_UP && snake->GetDirection()!=Down) 
+				{
+					snake->SetDirection(Up);
+				} 
+				if ( event.key.keysym.sym == SDLK_DOWN && snake->GetDirection()!=Up) 
+				{
+					snake->SetDirection(Down);
+				} 
+				if ( event.key.keysym.sym == SDLK_LEFT && snake->GetDirection()!=Right) 
+				{
+					snake->SetDirection(Left);
+				} 
+				if ( event.key.keysym.sym == SDLK_RIGHT && snake->GetDirection()!=Left) 
+				{
+					snake->SetDirection(Right);
+				} 
 				break;
 			}
 		}
 
 	}
+	printf("");
+	snake->Move();
+	Converter.Convert();
 	DrawField();
-	SDL_Delay(100);
+	SDL_Delay(150);
 	return true;
 }
 
@@ -96,7 +105,7 @@ void Game::doClose()
 	{
 		for(int j=0;j<35;j++)
 		{
-			delete map[i][j];
+			delete global_map[i][j];
 		}
 	}
 	for(int i=0;i<8;i++)
@@ -119,9 +128,9 @@ void Game::DrawField()
 	{
 		for(int j=0;j<35;j++)
 		{
-			if(map[i][j]!=NULL)
+			if(global_map[i][j]!=NULL)
 			{
-				map[i][j]->DrawCell();
+				global_map[i][j]->DrawCell();
 			}
 		}
 	}

@@ -3,15 +3,14 @@
 #include "Cell.h"
 #include "Snake.h"
 
+class Snake;
 class Game :public IModule
 {
 private:
 	int score;
 	int current_map_number;
-	Cell *map[65][35];
 
-	Snake *snake1;
-	Snake *snake2;
+	Snake *snake;
 public:
 
 	void doInit();
