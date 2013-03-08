@@ -7,8 +7,10 @@
 #include "CellTypeConverter.h"
 #include "CellSnake.h"
 #include "CellEmpty.h"
+#include "CellEat.h"
+#include "CellWallDestructable.h"
 
-#include <typeinfo>
+#include "CellReverse.h"
 
 void Game::doInit()
 {
@@ -17,18 +19,20 @@ void Game::doInit()
 		cell_pic[0]=IMG_Load("Pictures/Game/CellPic/cellsnake.1.21.png");
 		//cell_pic[1]=IMG_Load("Pictures/Game/CellPic/.png");
 		cell_pic[2]=IMG_Load("Pictures/Game/CellPic/cellempty.21.png");
-		//cell_pic[3]=IMG_Load("Pictures/Game/CellPic/.png");
-		//cell_pic[4]=IMG_Load("Pictures/Game/CellPic/.png");
-		//cell_pic[5]=IMG_Load("Pictures/Game/CellPic/.png");
+		cell_pic[3]=IMG_Load("Pictures/Game/CellPic/celleat.21.png");
+		cell_pic[4]=IMG_Load("Pictures/Game/CellPic/cellwalldestructable.21.png");
+		cell_pic[5]=IMG_Load("Pictures/Game/CellPic/cellwallundestructable.21.png");
+		cell_pic[6]=IMG_Load("Pictures/Game/CellPic/cellreverse.21.png");
 	}
 	else
 	{
 		cell_pic[0]=IMG_Load("Pictures/Game/CellPic/cellsnake.1.14.png");
 		//cell_pic[1]=IMG_Load("Pictures/Game/CellPic/.png");
 		cell_pic[2]=IMG_Load("Pictures/Game/CellPic/cellempty.14.png");
-		//cell_pic[3]=IMG_Load("Pictures/Game/CellPic/.png");
-		//cell_pic[4]=IMG_Load("Pictures/Game/CellPic/.png");
-		//cell_pic[5]=IMG_Load("Pictures/Geme/CellPic/.png");
+		cell_pic[3]=IMG_Load("Pictures/Game/CellPic/celleat.14.png");
+		cell_pic[4]=IMG_Load("Pictures/Game/CellPic/cellwalldestructable.14.png");
+		cell_pic[5]=IMG_Load("Pictures/Geme/CellPic/cellwallundestructable.14.png");
+		cell_pic[6]=IMG_Load("Pictures/Game/CellPic/cellreverse.14.png");	
 	}
 		
 	for (int i=0;i<65;i++)
@@ -49,6 +53,66 @@ void Game::doInit()
 		}
 	}
 	snake=new Snake(Right,"snake",CellStruct(7,3),CellStruct(6,3),CellStruct(5,3));
+	Converter.CreateConvert<CellEat>(20,20);
+	Converter.Convert();
+	Converter.CreateConvert<CellEat>(25,25);
+	Converter.Convert();
+	Converter.CreateConvert<CellEat>(26,26);
+	Converter.Convert();
+	Converter.CreateConvert<CellEat>(27,27);
+	Converter.Convert();
+	Converter.CreateConvert<CellEat>(28,28);
+	Converter.Convert();
+
+	Converter.CreateConvert<CellEat>(30,30);
+	Converter.Convert();
+
+	Converter.CreateConvert<CellEat>(10,10);
+	Converter.Convert();
+
+	Converter.CreateConvert<CellEat>(23,23);
+	Converter.Convert();
+
+	Converter.CreateConvert<CellReverse>(27,29);
+	Converter.Convert();
+
+	Converter.CreateConvert<CellReverse>(28,30);
+	Converter.Convert();
+
+	Converter.CreateConvert<CellReverse>(24,29);
+	Converter.Convert();
+
+	Converter.CreateConvert<CellWallDestructable>(50,10);
+	Converter.Convert();
+
+	Converter.CreateConvert<CellWallDestructable>(50,11);
+	Converter.Convert();
+
+	Converter.CreateConvert<CellWallDestructable>(50,12);
+	Converter.Convert();
+
+	Converter.CreateConvert<CellWallDestructable>(50,13);
+	Converter.Convert();
+
+	Converter.CreateConvert<CellWallDestructable>(50,14);
+	Converter.Convert();
+
+	Converter.CreateConvert<CellWallDestructable>(50,15);
+	Converter.Convert();
+
+
+	Converter.CreateConvert<CellWallDestructable>(50,16);
+	Converter.Convert();
+
+
+	Converter.CreateConvert<CellWallDestructable>(50,17);
+	Converter.Convert();
+
+		Converter.CreateConvert<CellWallDestructable>(50,18);
+	Converter.Convert();
+
+
+
 }
 
 bool Game::doRun()
@@ -91,11 +155,10 @@ bool Game::doRun()
 		}
 
 	}
-	printf("");
 	snake->Move();
 	Converter.Convert();
 	DrawField();
-	SDL_Delay(150);
+	SDL_Delay(200);
 	return true;
 }
 

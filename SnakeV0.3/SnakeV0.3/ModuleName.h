@@ -4,3 +4,4 @@
 #define MAINMENU "Menu"
 #define GAME "Game"
 #define SETTINGS "Settings"
+#define GAMEOVER "GameOver"

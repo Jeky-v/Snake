@@ -78,6 +78,15 @@
     <ClInclude Include="Settings.h">
       <Filter>Заголовочные файлы\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="CellEat.h">
+      <Filter>Заголовочные файлы\Cells</Filter>
+    </ClInclude>
+    <ClInclude Include="CellReverse.h">
+      <Filter>Заголовочные файлы\Cells</Filter>
+    </ClInclude>
+    <ClInclude Include="CellWallDestructable.h">
+      <Filter>Заголовочные файлы\Cells</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SnakeV03_main.cpp">
@@ -118,6 +127,15 @@
     </ClCompile>
     <ClCompile Include="Settings.cpp">
       <Filter>Файлы исходного кода\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="CellEat.cpp">
+      <Filter>Файлы исходного кода\Cells</Filter>
+    </ClCompile>
+    <ClCompile Include="CellReverse.cpp">
+      <Filter>Файлы исходного кода\Cells</Filter>
+    </ClCompile>
+    <ClCompile Include="CellWallDestructable.cpp">
+      <Filter>Файлы исходного кода\Cells</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

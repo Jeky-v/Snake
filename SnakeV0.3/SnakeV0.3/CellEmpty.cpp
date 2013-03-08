@@ -1,6 +1,6 @@
 #include "CellEmpty.h"
 #include "CellSnake.h"
-class CellSnake;
+
 CellEmpty::CellEmpty()
 {
 	SetActivity(true);

@@ -139,10 +139,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="CellEat.h" />
     <ClInclude Include="CellEmpty.h" />
+    <ClInclude Include="CellReverse.h" />
     <ClInclude Include="CellSnake.h" />
     <ClInclude Include="CellStruct.h" />
     <ClInclude Include="CellTypeConverter.h" />
+    <ClInclude Include="CellWallDestructable.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GlobalVariables.h" />
     <ClInclude Include="HelloScreen.h" />
@@ -156,9 +159,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="CellEat.cpp" />
     <ClCompile Include="CellEmpty.cpp" />
+    <ClCompile Include="CellReverse.cpp" />
     <ClCompile Include="CellSnake.cpp" />
     <ClCompile Include="CellTypeConverter.cpp" />
+    <ClCompile Include="CellWallDestructable.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="HelloScreen.cpp" />
     <ClCompile Include="IModule.cpp" />

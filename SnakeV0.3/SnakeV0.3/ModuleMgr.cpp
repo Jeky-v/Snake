@@ -1,5 +1,4 @@
 #include "ModuleMgr.h"
-//#include "stdafx.h"
 
 ModuleMgr::ModuleMgr() :m_currmodule(nullptr)
 {

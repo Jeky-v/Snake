@@ -1,0 +1,9 @@
+#pragma once
+#include "cell.h"
+class CellWallDestructable :public Cell
+{
+public:
+	CellWallDestructable(void);
+	void Interaction(Snake &snake, int x, int y);
+};
+

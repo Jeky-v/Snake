@@ -28,9 +28,17 @@ Snake::Snake(dir_type start_direction,char *text,CellStruct cell1,CellStruct cel
 
 Snake::~Snake(void)
 {
-	snake_list.clear();
+	snake_list.~list();
 }
 
+void Snake::SetScore(int new_score)
+{
+	score=new_score;
+}
+int Snake::GetScore()
+{
+	return score;
+}
 void Snake::Move()
 {
 	CellStruct temp;
@@ -96,7 +104,6 @@ void Snake::SetDirection(dir_type new_direction)
 {
 	direction=new_direction;
 }
-
 dir_type Snake::GetDirection()
 {
 	return direction;
