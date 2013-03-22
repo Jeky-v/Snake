@@ -146,7 +146,8 @@
     <ClInclude Include="CellStruct.h" />
     <ClInclude Include="CellTypeConverter.h" />
     <ClInclude Include="CellWallDestructable.h" />
-    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameWithLevels.h" />
+    <ClInclude Include="GameModule.h" />
     <ClInclude Include="GlobalVariables.h" />
     <ClInclude Include="HelloScreen.h" />
     <ClInclude Include="IModule.h" />
@@ -165,7 +166,8 @@
     <ClCompile Include="CellSnake.cpp" />
     <ClCompile Include="CellTypeConverter.cpp" />
     <ClCompile Include="CellWallDestructable.cpp" />
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameWithLevels.cpp" />
+    <ClCompile Include="GameModule.cpp" />
     <ClCompile Include="HelloScreen.cpp" />
     <ClCompile Include="IModule.cpp" />
     <ClCompile Include="MenuButton.cpp" />

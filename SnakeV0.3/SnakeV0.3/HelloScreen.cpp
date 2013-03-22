@@ -10,11 +10,9 @@ void HelloScreen::DrawText(int x,int y,char *inputtext,int size,int R,int G,int 
 	TTF_Font* font = 0;
     font = TTF_OpenFont("Fonts/Komika.ttf",size);
 	SDL_Color text_color = {R,G,B};
-	// SDL_Color bg_color = {0,0,0}; // чёрный цвет фона
-    char* text = inputtext; // наше тестовое сообщение
+    char* text = inputtext; 
 
-    SDL_Surface* blended_m = TTF_RenderUTF8_Blended(font, text, text_color); // рендерим сглаженное сообщение
-    //SDL_Surface* shaded_m = TTF_RenderUTF8_Shaded(font, text, text_color, bg_color);
+    SDL_Surface* blended_m = TTF_RenderUTF8_Blended(font, text, text_color);
 	SDL_Rect dst;
     dst.x = x;
 	dst.y = y;

@@ -2,6 +2,6 @@
 
 #define HELLOSCREEN "Hello"
 #define MAINMENU "Menu"
-#define GAME "Game"
+#define GAMEWITHLEVELS "GameWithLevels"
 #define SETTINGS "Settings"
-#define GAMEOVER "GameOver"
+

@@ -9,7 +9,6 @@ CellSnake::CellSnake()
 
 bool CellSnake::Interaction(Snake &snake,int x,int y)
 {
-
-
+	snake.SetDead(true);
 	return false;
 }

@@ -12,6 +12,7 @@ bool CellWallDestructable::Interaction(Snake &snake, int x, int y)
 {
 	if(snake.snake_list.size()<4)
 	{
+		snake.SetDead(true);
 		return false;
 	}
 	else

@@ -8,7 +8,7 @@
 #include "ModuleName.h"
 #include "StartMenu.h"
 #include "Settings.h"
-#include "Game.h"
+#include "GameWithLevels.h"
 
 #include <fstream>
 #include <iostream>
@@ -61,12 +61,12 @@ int main(int argc, char *argv[])
 	HelloScreen hello;
 	StartMenu menu;
 	Settings settings;
-	Game game;
+	GameWithLevels game_with_levels;
 
 	mgr.AddModule(HELLOSCREEN, &hello);
 	mgr.AddModule(MAINMENU, &menu);
 	mgr.AddModule(SETTINGS,&settings);
-	mgr.AddModule(GAME,&game);
+	mgr.AddModule(GAMEWITHLEVELS,&game_with_levels);
 	mgr.SetActiveModule(HELLOSCREEN);
 
 	while(mgr.Frame());

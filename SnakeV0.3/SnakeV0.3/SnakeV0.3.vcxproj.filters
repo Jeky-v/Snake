@@ -54,9 +54,6 @@
     <ClInclude Include="StartMenu.h">
       <Filter>Заголовочные файлы\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Заголовочные файлы\Modules</Filter>
-    </ClInclude>
     <ClInclude Include="Cell.h">
       <Filter>Заголовочные файлы\Cells</Filter>
     </ClInclude>
@@ -87,6 +84,12 @@
     <ClInclude Include="CellWallDestructable.h">
       <Filter>Заголовочные файлы\Cells</Filter>
     </ClInclude>
+    <ClInclude Include="GameWithLevels.h">
+      <Filter>Заголовочные файлы\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="GameModule.h">
+      <Filter>Заголовочные файлы\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SnakeV03_main.cpp">
@@ -105,9 +108,6 @@
       <Filter>Файлы исходного кода\Modules</Filter>
     </ClCompile>
     <ClCompile Include="MenuButton.cpp">
-      <Filter>Файлы исходного кода\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
       <Filter>Файлы исходного кода\Modules</Filter>
     </ClCompile>
     <ClCompile Include="Cell.cpp">
@@ -136,6 +136,12 @@
     </ClCompile>
     <ClCompile Include="CellWallDestructable.cpp">
       <Filter>Файлы исходного кода\Cells</Filter>
+    </ClCompile>
+    <ClCompile Include="GameWithLevels.cpp">
+      <Filter>Файлы исходного кода\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="GameModule.cpp">
+      <Filter>Файлы исходного кода\Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

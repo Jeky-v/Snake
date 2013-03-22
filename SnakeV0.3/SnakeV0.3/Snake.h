@@ -1,9 +1,9 @@
 #pragma once
 #include <list>
 #include "CellStruct.h"
-#include "Game.h"
+#include "GameWithLevels.h"
 
-class Game;
+class GameWithLevels;
 enum dir_type {Up,Down,Left,Right};
 
 class Snake
@@ -13,6 +13,7 @@ private:
 	SDL_Surface *picture;
 	char name[20];
 	int score;
+	bool dead;
 public:
 		
 	std::list <CellStruct> snake_list; 
@@ -22,6 +23,8 @@ public:
 
 	void SetScore(int new_score);
 	int GetScore();
+	void SetDead(bool new_dead);
+	bool GetDead();
 	bool Move();
 	void SetDirection(dir_type new_direction);
 	dir_type GetDirection();

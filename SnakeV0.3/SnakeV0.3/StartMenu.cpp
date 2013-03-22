@@ -77,7 +77,7 @@ bool StartMenu::doRun()
 			{
 				if(AllButtons[0].GetState())
 				{
-					m_mgr->SetActiveModule(GAME);
+					m_mgr->SetActiveModule(GAMEWITHLEVELS);
 					return true;
 				}
 				if(AllButtons[1].GetState())

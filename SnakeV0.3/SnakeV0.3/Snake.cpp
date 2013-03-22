@@ -5,13 +5,15 @@
 
 Snake::Snake()
 {
-
+	score=0;
+	dead=false;
 }
 
 Snake::Snake(dir_type start_direction,char *text,CellStruct cell1,CellStruct cell2,CellStruct cell3)
 {
 	direction=start_direction;
 	score=0;
+	dead=false;
 	strncpy(name,text,19);
 	snake_list.push_front(cell3);
 	snake_list.push_front(cell2);
@@ -28,7 +30,7 @@ Snake::Snake(dir_type start_direction,char *text,CellStruct cell1,CellStruct cel
 
 Snake::~Snake(void)
 {
-	snake_list.~list();
+	snake_list.clear();
 }
 
 void Snake::SetScore(int new_score)
@@ -38,6 +40,14 @@ void Snake::SetScore(int new_score)
 int Snake::GetScore()
 {
 	return score;
+}
+void Snake::SetDead(bool new_dead)
+{
+	dead=new_dead;
+}
+bool Snake::GetDead()
+{
+	return dead;
 }
 bool Snake::Move()
 {
