@@ -7,9 +7,9 @@ CellSnake::CellSnake()
 	SetPicture(cell_pic[0]);
 }
 
-void CellSnake::Interaction(Snake &snake,int x,int y)
+bool CellSnake::Interaction(Snake &snake,int x,int y)
 {
 
 
-
+	return false;
 }

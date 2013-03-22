@@ -8,7 +8,7 @@ CellReverse::CellReverse(void)
 	SetPicture(cell_pic[6]);
 }
 
-void CellReverse::Interaction(Snake &snake, int x, int y)
+bool CellReverse::Interaction(Snake &snake, int x, int y)
 {
 	snake.snake_list.reverse();
 
@@ -38,4 +38,5 @@ void CellReverse::Interaction(Snake &snake, int x, int y)
 	}
 
 	Converter.CreateConvert <CellEmpty> (x,y);
+	return true;
 }

@@ -35,8 +35,14 @@ void StartMenu::doInit()
 	src.h=background->h;
 	src.w=background->w;
 	des=src;
-
+	
 	SDL_BlitSurface(background,&src,screen,&des);
+	
+	for(int i=0;i<5;i++)
+	{
+		AllButtons[i].DrawButton();
+	}
+	
 	SDL_Flip(screen);
 }
 

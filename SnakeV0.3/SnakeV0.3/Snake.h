@@ -22,7 +22,7 @@ public:
 
 	void SetScore(int new_score);
 	int GetScore();
-	void Move();
+	bool Move();
 	void SetDirection(dir_type new_direction);
 	dir_type GetDirection();
 };

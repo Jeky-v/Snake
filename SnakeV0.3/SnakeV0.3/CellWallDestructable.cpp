@@ -8,12 +8,11 @@ CellWallDestructable::CellWallDestructable(void)
 	SetPicture(cell_pic[4]);
 }
 
-void CellWallDestructable::Interaction(Snake &snake, int x, int y)
+bool CellWallDestructable::Interaction(Snake &snake, int x, int y)
 {
 	if(snake.snake_list.size()<4)
 	{
-		//m_mgr->SetActiveModule
-		exit(123);
+		return false;
 	}
 	else
 	{
@@ -25,6 +24,7 @@ void CellWallDestructable::Interaction(Snake &snake, int x, int y)
 		Converter.Convert();
 		snake.snake_list.pop_back();
 		Converter.CreateConvert <CellSnake> (x,y);
+		return true;
 	}
 }
 

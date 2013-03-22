@@ -39,7 +39,7 @@ int Snake::GetScore()
 {
 	return score;
 }
-void Snake::Move()
+bool Snake::Move()
 {
 	CellStruct temp;
 	switch(direction)
@@ -98,7 +98,7 @@ void Snake::Move()
 		}
 
 	}
-	global_map[temp.CellX][temp.CellY]->Interaction(*this,temp.CellX,temp.CellY);
+	return global_map[temp.CellX][temp.CellY]->Interaction(*this,temp.CellX,temp.CellY);
 }
 void Snake::SetDirection(dir_type new_direction)
 {

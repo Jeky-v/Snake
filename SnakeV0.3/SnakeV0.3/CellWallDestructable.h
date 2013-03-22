@@ -4,6 +4,6 @@ class CellWallDestructable :public Cell
 {
 public:
 	CellWallDestructable(void);
-	void Interaction(Snake &snake, int x, int y);
+	bool Interaction(Snake &snake, int x, int y);
 };
 

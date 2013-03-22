@@ -155,10 +155,16 @@ bool Game::doRun()
 		}
 
 	}
-	snake->Move();
-	Converter.Convert();
-	DrawField();
-	SDL_Delay(200);
+	if(snake->Move())
+	{
+		Converter.Convert();
+		DrawField();
+		SDL_Delay(200);
+	}
+	else
+	{
+		m_mgr->SetActiveModule(MAINMENU);
+	}
 	return true;
 }
 

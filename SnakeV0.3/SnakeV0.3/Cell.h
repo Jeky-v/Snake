@@ -19,6 +19,6 @@ public:
 	void SetPicture(SDL_Surface *new_pic);
 	SDL_Surface *GetPicture();
 	void DrawCell();
-	virtual void Interaction(Snake &snake,int x,int y)=0;
+	virtual bool Interaction(Snake &snake,int x,int y)=0;
 };
 

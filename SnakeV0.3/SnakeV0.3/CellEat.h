@@ -2,8 +2,10 @@
 #include "cell.h"
 class CellEat :public Cell
 {
+private:
+	static int cell_eat_counter;
 public:
-	CellEat(void);
-	void Interaction(Snake &snake, int x, int y);
+	CellEat();
+	bool Interaction(Snake &snake, int x, int y);
 };
 
