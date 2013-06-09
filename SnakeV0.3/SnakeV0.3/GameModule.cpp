@@ -4,7 +4,6 @@
 void GameModule::Pause()
 {
 }
-
 void GameModule::DrawField()
 {
 	for (int i=0;i<65;i++)
@@ -19,7 +18,6 @@ void GameModule::DrawField()
 	}
 	SDL_Flip(screen);
 }
-
 void GameModule::DrawText(int x, int y, char *inputtext, int size, int R, int G, int B)
 {
 	TTF_Font* font = 0;

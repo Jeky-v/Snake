@@ -65,7 +65,7 @@ bool StartMenu::doRun()
 		}
 		case SDL_MOUSEMOTION:
 		{
-			for(int i=0;i<6;i++)
+			for(int i=0;i<5;i++)
 			{
 				AllButtons[i].CheckActivity(event.motion.x,event.motion.y);
 			}
@@ -77,7 +77,7 @@ bool StartMenu::doRun()
 			{
 				if(AllButtons[0].GetState())
 				{
-					m_mgr->SetActiveModule(GAMEWITHLEVELS);
+					m_mgr->SetActiveModule(SELECTGAMEMODE);
 					return true;
 				}
 				if(AllButtons[1].GetState())
@@ -86,11 +86,17 @@ bool StartMenu::doRun()
 					return true;
 				}
 				if(AllButtons[2].GetState())
-				{}
+				{
+				
+				}
 				if(AllButtons[3].GetState())
-				{}
+				{
+				
+				}
 				if(AllButtons[4].GetState())
-				{return false;}
+				{
+					return false;
+				}
 			}
 			break;
 		}

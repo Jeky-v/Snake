@@ -8,7 +8,12 @@
 #include "ModuleName.h"
 #include "StartMenu.h"
 #include "Settings.h"
+#include "SelectGameMode.h"
+
 #include "GameWithLevels.h"
+#include "GameTwoPlayers.h"
+#include "GameClassic.h"
+#include "GameThroneMode.h"
 
 #include <fstream>
 #include <iostream>
@@ -61,12 +66,21 @@ int main(int argc, char *argv[])
 	HelloScreen hello;
 	StartMenu menu;
 	Settings settings;
+	SelectGameMode select_game_mode;
 	GameWithLevels game_with_levels;
+	GameTwoPlayers game_two_players;
+	GameClassic	   game_classic;
+	GameThroneMode throne_mode;
 
 	mgr.AddModule(HELLOSCREEN, &hello);
 	mgr.AddModule(MAINMENU, &menu);
 	mgr.AddModule(SETTINGS,&settings);
+	mgr.AddModule(SELECTGAMEMODE,&select_game_mode);
 	mgr.AddModule(GAMEWITHLEVELS,&game_with_levels);
+	mgr.AddModule(TWOPLAYERS,&game_two_players);
+	mgr.AddModule(CLASSIC,&game_classic);
+	mgr.AddModule(THRONEMODE,&throne_mode);
+
 	mgr.SetActiveModule(HELLOSCREEN);
 
 	while(mgr.Frame());

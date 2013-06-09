@@ -159,11 +159,8 @@ bool Settings::doRun()
 			break;
 		}
 	}
-	for(int i=0;i<5;i++)
-	{
-		back.DrawButton();
-		tick.DrawButton();
-	}
+	back.DrawButton();
+	tick.DrawButton();	
 	SDL_Delay(10);
 	return true;
 }

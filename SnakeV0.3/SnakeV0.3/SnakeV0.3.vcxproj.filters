@@ -90,6 +90,18 @@
     <ClInclude Include="GameModule.h">
       <Filter>Заголовочные файлы\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="GameClassic.h">
+      <Filter>Заголовочные файлы\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="GameThroneMode.h">
+      <Filter>Заголовочные файлы\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTwoPlayers.h">
+      <Filter>Заголовочные файлы\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectGameMode.h">
+      <Filter>Заголовочные файлы\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SnakeV03_main.cpp">
@@ -141,6 +153,18 @@
       <Filter>Файлы исходного кода\Modules</Filter>
     </ClCompile>
     <ClCompile Include="GameModule.cpp">
+      <Filter>Файлы исходного кода\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClassic.cpp">
+      <Filter>Файлы исходного кода\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="GameThroneMode.cpp">
+      <Filter>Файлы исходного кода\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTwoPlayers.cpp">
+      <Filter>Файлы исходного кода\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectGameMode.cpp">
       <Filter>Файлы исходного кода\Modules</Filter>
     </ClCompile>
   </ItemGroup>

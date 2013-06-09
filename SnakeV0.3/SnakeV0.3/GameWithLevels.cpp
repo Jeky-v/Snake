@@ -57,61 +57,59 @@ void GameWithLevels::doInit()
 	//Initialize some cells
 	Converter.CreateConvert<CellEat>(20,20);
 	Converter.Convert();
+	Converter.CreateConvert<CellEat>(25,20);
+	Converter.Convert();
+	Converter.CreateConvert<CellEat>(30,20);
+	Converter.Convert();
+	Converter.CreateConvert<CellEat>(20,25);
+	Converter.Convert();
 	Converter.CreateConvert<CellEat>(25,25);
 	Converter.Convert();
-	Converter.CreateConvert<CellEat>(26,26);
+
+	Converter.CreateConvert<CellEat>(30,25);
 	Converter.Convert();
-	Converter.CreateConvert<CellEat>(27,27);
+
+	Converter.CreateConvert<CellEat>(20,30);
 	Converter.Convert();
-	Converter.CreateConvert<CellEat>(28,28);
+
+	Converter.CreateConvert<CellEat>(25,30);
 	Converter.Convert();
 
 	Converter.CreateConvert<CellEat>(30,30);
 	Converter.Convert();
 
-	Converter.CreateConvert<CellEat>(10,10);
+	Converter.CreateConvert<CellReverse>(20,10);
 	Converter.Convert();
 
-	Converter.CreateConvert<CellEat>(23,23);
+	Converter.CreateConvert<CellReverse>(25,10);
 	Converter.Convert();
 
-	Converter.CreateConvert<CellReverse>(27,29);
+	Converter.CreateConvert<CellReverse>(30,10);
 	Converter.Convert();
 
-	Converter.CreateConvert<CellReverse>(28,30);
+	Converter.CreateConvert<CellWallDestructable>(20,15);
+	Converter.Convert();
+	Converter.CreateConvert<CellWallDestructable>(21,15);
+	Converter.Convert();
+	Converter.CreateConvert<CellWallDestructable>(22,15);
+	Converter.Convert();
+	Converter.CreateConvert<CellWallDestructable>(23,15);
+	Converter.Convert();
+	Converter.CreateConvert<CellWallDestructable>(24,15);
+	Converter.Convert();
+	Converter.CreateConvert<CellWallDestructable>(25,15);
+	Converter.Convert();
+	Converter.CreateConvert<CellWallDestructable>(26,15);
+	Converter.Convert();
+	Converter.CreateConvert<CellWallDestructable>(27,15);
+	Converter.Convert();
+	Converter.CreateConvert<CellWallDestructable>(28,15);
+	Converter.Convert();
+	Converter.CreateConvert<CellWallDestructable>(29,15);
+	Converter.Convert();
+	Converter.CreateConvert<CellWallDestructable>(30,15);
 	Converter.Convert();
 
-	Converter.CreateConvert<CellReverse>(24,29);
-	Converter.Convert();
-
-	Converter.CreateConvert<CellWallDestructable>(50,10);
-	Converter.Convert();
-
-	Converter.CreateConvert<CellWallDestructable>(50,11);
-	Converter.Convert();
-
-	Converter.CreateConvert<CellWallDestructable>(50,12);
-	Converter.Convert();
-
-	Converter.CreateConvert<CellWallDestructable>(50,13);
-	Converter.Convert();
-
-	Converter.CreateConvert<CellWallDestructable>(50,14);
-	Converter.Convert();
-
-	Converter.CreateConvert<CellWallDestructable>(50,15);
-	Converter.Convert();
-
-
-	Converter.CreateConvert<CellWallDestructable>(50,16);
-	Converter.Convert();
-
-
-	Converter.CreateConvert<CellWallDestructable>(50,17);
-	Converter.Convert();
-
-	Converter.CreateConvert<CellWallDestructable>(50,18);
-	Converter.Convert();
 
 	// end initialize
 
@@ -198,13 +196,14 @@ void GameWithLevels::GameOver()
 {
 	if(snake->GetDead())
 	{
-		DrawText(RESX/2-230,RESY/2-60,"You are LOOOOOOOSER",40,255,0,0);
+		m_mgr->SetActiveModule("Menu");
+		//DrawText(RESX/2-230,RESY/2-60,"You are LOOOOOOOSER",40,255,0,0);
 	}
 	else
 	{
-		DrawText(RESX/2-230,RESY/2-60,"Win",60,255,0,0);
+		//DrawText(RESX/2-230,RESY/2-60,"Win",60,255,0,0);
 		current_map_number++;
 	}
 	delete snake;
-	LoadMap();
+	//LoadMap();
 }

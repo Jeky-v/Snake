@@ -146,6 +146,9 @@
     <ClInclude Include="CellStruct.h" />
     <ClInclude Include="CellTypeConverter.h" />
     <ClInclude Include="CellWallDestructable.h" />
+    <ClInclude Include="GameClassic.h" />
+    <ClInclude Include="GameThroneMode.h" />
+    <ClInclude Include="GameTwoPlayers.h" />
     <ClInclude Include="GameWithLevels.h" />
     <ClInclude Include="GameModule.h" />
     <ClInclude Include="GlobalVariables.h" />
@@ -154,6 +157,7 @@
     <ClInclude Include="MenuButton.h" />
     <ClInclude Include="ModuleMgr.h" />
     <ClInclude Include="ModuleName.h" />
+    <ClInclude Include="SelectGameMode.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="Snake.h" />
     <ClInclude Include="StartMenu.h" />
@@ -166,12 +170,16 @@
     <ClCompile Include="CellSnake.cpp" />
     <ClCompile Include="CellTypeConverter.cpp" />
     <ClCompile Include="CellWallDestructable.cpp" />
+    <ClCompile Include="GameClassic.cpp" />
+    <ClCompile Include="GameThroneMode.cpp" />
+    <ClCompile Include="GameTwoPlayers.cpp" />
     <ClCompile Include="GameWithLevels.cpp" />
     <ClCompile Include="GameModule.cpp" />
     <ClCompile Include="HelloScreen.cpp" />
     <ClCompile Include="IModule.cpp" />
     <ClCompile Include="MenuButton.cpp" />
     <ClCompile Include="ModuleMgr.cpp" />
+    <ClCompile Include="SelectGameMode.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="Snake.cpp" />
     <ClCompile Include="SnakeV03_main.cpp" />
