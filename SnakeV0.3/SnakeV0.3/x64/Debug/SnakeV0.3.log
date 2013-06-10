@@ -1,12 +1,10 @@
-﻿Построение начато 6/9/2013 11:20:47 PM.
+﻿Построение начато 6/10/2013 8:33:05 PM.
      1>Проект "C:\Users\JEKY\Desktop\SnakeV0.3\SnakeV0.3\SnakeV0.3.vcxproj" в узле 2 (целевые объекты build).
      1>InitializeBuildStatus:
          Создание "x64\Debug\SnakeV0.3.unsuccessfulbuild", так как было задано "AlwaysCreate".
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt SelectGameMode.cpp StartMenu.cpp
-         StartMenu.cpp
-         SelectGameMode.cpp
-         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt HelloScreen.cpp
+         HelloScreen.cpp
        ManifestResourceCompile:
          Для всех выходных данных обновления не требуется.
        Link:
@@ -46,4 +44,4 @@
 
 Построение успешно завершено.
 
-Затраченное время: 00:00:02.41
+Затраченное время: 00:00:02.30

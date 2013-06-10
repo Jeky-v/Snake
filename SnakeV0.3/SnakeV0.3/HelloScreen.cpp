@@ -45,7 +45,7 @@ bool HelloScreen::doRun()
 	dest=sour;
 
 	SDL_BlitSurface(Logo,&sour,screen,&dest);
-	DrawText(RESX/2-250,RESY-60,"Press any key to continue",50,166,132,201);
+	DrawText(10,5,"Press any key to continue",50,250,152,5);
 	
 	SDL_Flip(screen);
 	SDL_Event event;

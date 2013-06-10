@@ -27,10 +27,6 @@ MenuButton::MenuButton(int h,int w)
 	destination.h=h;
 	destination.w=w;
 }
-MenuButton::~MenuButton(void)
-{
-
-}
 //===========================================================
 void MenuButton::SetButtonPic(SDL_Surface* new_surface)
 {

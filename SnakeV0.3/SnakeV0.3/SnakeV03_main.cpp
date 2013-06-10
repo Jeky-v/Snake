@@ -22,7 +22,7 @@
 SDL_Surface *screen;
 bool full_screen_mode=false;
 int RESX=910;
-int RESY=516;
+int RESY=523;
 SDL_Surface *cell_pic[8];//0-Snake1//1-Snake2//2-CellEmpty//3-CellWall//
 CellTypeConverter Converter;
 Cell *global_map[65][35];

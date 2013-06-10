@@ -9,7 +9,6 @@ private:
 public:
 	MenuButton();
 	MenuButton(int h,int w);
-	~MenuButton(void);
 
 	void SetButtonPic(SDL_Surface* new_surface);
 	void SetDestination(int x,int y, int h, int w);
