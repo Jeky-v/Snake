@@ -56,57 +56,29 @@ void GameWithLevels::doInit()
 	
 	//Initialize some cells
 	Converter.CreateConvert<CellEat>(20,20);
-	Converter.Convert();
 	Converter.CreateConvert<CellEat>(25,20);
-	Converter.Convert();
 	Converter.CreateConvert<CellEat>(30,20);
-	Converter.Convert();
 	Converter.CreateConvert<CellEat>(20,25);
-	Converter.Convert();
 	Converter.CreateConvert<CellEat>(25,25);
-	Converter.Convert();
-
 	Converter.CreateConvert<CellEat>(30,25);
-	Converter.Convert();
-
 	Converter.CreateConvert<CellEat>(20,30);
-	Converter.Convert();
-
 	Converter.CreateConvert<CellEat>(25,30);
-	Converter.Convert();
-
 	Converter.CreateConvert<CellEat>(30,30);
-	Converter.Convert();
 
 	Converter.CreateConvert<CellReverse>(20,10);
-	Converter.Convert();
-
 	Converter.CreateConvert<CellReverse>(25,10);
-	Converter.Convert();
-
 	Converter.CreateConvert<CellReverse>(30,10);
-	Converter.Convert();
 
 	Converter.CreateConvert<CellWallDestructable>(20,15);
-	Converter.Convert();
 	Converter.CreateConvert<CellWallDestructable>(21,15);
-	Converter.Convert();
 	Converter.CreateConvert<CellWallDestructable>(22,15);
-	Converter.Convert();
 	Converter.CreateConvert<CellWallDestructable>(23,15);
-	Converter.Convert();
 	Converter.CreateConvert<CellWallDestructable>(24,15);
-	Converter.Convert();
 	Converter.CreateConvert<CellWallDestructable>(25,15);
-	Converter.Convert();
 	Converter.CreateConvert<CellWallDestructable>(26,15);
-	Converter.Convert();
 	Converter.CreateConvert<CellWallDestructable>(27,15);
-	Converter.Convert();
 	Converter.CreateConvert<CellWallDestructable>(28,15);
-	Converter.Convert();
 	Converter.CreateConvert<CellWallDestructable>(29,15);
-	Converter.Convert();
 	Converter.CreateConvert<CellWallDestructable>(30,15);
 	Converter.Convert();
 
