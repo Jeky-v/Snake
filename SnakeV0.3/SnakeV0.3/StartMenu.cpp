@@ -91,7 +91,8 @@ bool StartMenu::doRun()
 				}
 				if(AllButtons[3].GetState())
 				{
-				
+					m_mgr->SetActiveModule(HELLOSCREEN);
+					return true;
 				}
 				if(AllButtons[4].GetState())
 				{

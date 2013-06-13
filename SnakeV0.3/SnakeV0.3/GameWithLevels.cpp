@@ -130,7 +130,7 @@ bool GameWithLevels::doRun()
 	{
 		Converter.Convert();
 		DrawField();
-		SDL_Delay(200);
+		SDL_Delay(50);
 	}
 	else
 	{
@@ -174,6 +174,7 @@ void GameWithLevels::GameOver()
 	{
 		//DrawText(RESX/2-230,RESY/2-60,"Win",60,255,0,0);
 		current_map_number++;
+		m_mgr->SetActiveModule(MAINMENU);
 	}
 	delete snake;
 	//LoadMap();
