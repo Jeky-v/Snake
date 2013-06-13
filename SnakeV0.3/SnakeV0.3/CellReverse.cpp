@@ -10,6 +10,8 @@ CellReverse::CellReverse(void)
 
 bool CellReverse::Interaction(Snake &snake, int x, int y)
 {
+	
+	
 	snake.snake_list.reverse();
 
 	CellStruct last;

@@ -5,6 +5,7 @@
 #include <SDL_image.h>
 #include "CellTypeConverter.h"
 #include "Cell.h"
+#include "ModuleMgr.h"
 
 class Cell;
 class CellTypeConverter;
@@ -16,3 +17,4 @@ extern int RESY;
 extern SDL_Surface* cell_pic[8];
 extern CellTypeConverter Converter;
 extern Cell *global_map[65][35];
+extern ModuleMgr mgr;

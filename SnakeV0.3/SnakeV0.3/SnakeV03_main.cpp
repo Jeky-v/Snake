@@ -23,9 +23,10 @@ SDL_Surface *screen;
 bool full_screen_mode=false;
 int RESX=910;
 int RESY=523;
-SDL_Surface *cell_pic[8];//0-Snake1//1-Snake2//2-CellEmpty//3-CellWall//
+SDL_Surface *cell_pic[8];//0-Snake1//1-Snake2//2-CellEmpty//3-CellWall//4-CellWallDestructible//5CellWallUnDestructible//6-CellReverse
 CellTypeConverter Converter;
 Cell *global_map[65][35];
+ModuleMgr mgr;
 //================
 
 
@@ -62,7 +63,7 @@ int main(int argc, char *argv[])
 		RESY=523;
 		screen=SDL_SetVideoMode(RESX,RESY,32,SDL_HWSURFACE|SDL_DOUBLEBUF);
 	}
-	ModuleMgr mgr;
+	
 	HelloScreen hello;
 	StartMenu menu;
 	Settings settings;

@@ -11,7 +11,7 @@ public:
 
   void AddModule(const std::string &name, IModule *module);
   void SetActiveModule(const std::string &name);
-
+  std::string getCurrentModuleName();
   bool Frame();
   void Close();
 

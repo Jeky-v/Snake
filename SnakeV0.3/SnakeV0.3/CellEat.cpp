@@ -1,6 +1,7 @@
 #include "CellEat.h"
 #include "CellSnake.h"
-
+#include "GlobalVariables.h"
+#include "ModuleName.h"
 class CellSnake;
 int CellEat::cell_eat_counter=0;
 CellEat::CellEat()
@@ -11,6 +12,8 @@ CellEat::CellEat()
 }
 bool CellEat::Interaction(Snake &snake, int x, int y)
 {
+	//if (mgr.getCurrentModuleName()==std::string(GAMEWITHLEVELS))   
+	
 	snake.snake_list.push_front(CellStruct(x,y));
 	snake.SetScore(snake.GetScore()+10);
 	Converter.CreateConvert <CellSnake> (x,y);

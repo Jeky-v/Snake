@@ -41,3 +41,13 @@ void ModuleMgr::Close()
   
   m_moduleList.clear();
 }
+
+  std::string ModuleMgr::getCurrentModuleName()
+  {
+	  auto it=m_moduleList.begin();
+	  while (it!=m_moduleList.end())
+	  {
+		 if (it->second==m_currmodule) return it->first;
+		 ++it;
+	  }
+  }

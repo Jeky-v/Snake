@@ -41,7 +41,7 @@ void GameWithLevels::doInit()
 		{
 			global_map[i][j]=new CellEmpty;
 			global_map[i][j]=dynamic_cast<CellEmpty*> (global_map[i][j]);
-			global_map[i][j]->SetPicture(cell_pic[2]);//cell_pic[2]->w*i,12+cell_pic[2]->w*j,cell_pic[2]->w,cell_pic[2]->w);
+			global_map[i][j]->SetPicture(cell_pic[2]);
 		}
 	}
 	
@@ -81,7 +81,6 @@ void GameWithLevels::doInit()
 	Converter.CreateConvert<CellWallDestructable>(29,15);
 	Converter.CreateConvert<CellWallDestructable>(30,15);
 	Converter.Convert();
-
 
 	// end initialize
 
