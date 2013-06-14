@@ -51,3 +51,8 @@ void ModuleMgr::Close()
 		 ++it;
 	  }
   }
+
+IModule* ModuleMgr::getCurrentModulePtr()
+{
+	return m_currmodule;
+}

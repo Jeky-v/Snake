@@ -102,6 +102,9 @@
     <ClInclude Include="SelectGameMode.h">
       <Filter>Заголовочные файлы\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="CellWallUndestructable.h">
+      <Filter>Заголовочные файлы\Cells</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SnakeV03_main.cpp">
@@ -166,6 +169,9 @@
     </ClCompile>
     <ClCompile Include="SelectGameMode.cpp">
       <Filter>Файлы исходного кода\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="CellWallUndestructable.cpp">
+      <Filter>Файлы исходного кода\Cells</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

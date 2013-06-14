@@ -14,6 +14,7 @@ public:
   std::string getCurrentModuleName();
   bool Frame();
   void Close();
+  IModule* getCurrentModulePtr();
 
 private:
   std::map<std::string, IModule*> m_moduleList;

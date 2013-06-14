@@ -9,7 +9,7 @@
 #include "CellEmpty.h"
 #include "CellEat.h"
 #include "CellWallDestructable.h"
-
+#include "CellWallUndestructable.h"
 #include "CellReverse.h"
 
 void GameWithLevels::doInit()
@@ -31,7 +31,7 @@ void GameWithLevels::doInit()
 		cell_pic[2]=IMG_Load("Pictures/Game/CellPic/cellempty.14.png");
 		cell_pic[3]=IMG_Load("Pictures/Game/CellPic/celleat.14.png");
 		cell_pic[4]=IMG_Load("Pictures/Game/CellPic/cellwalldestructable.14.png");
-		cell_pic[5]=IMG_Load("Pictures/Geme/CellPic/cellwallundestructable.14.png");
+		cell_pic[5]=IMG_Load("Pictures/Game/CellPic/cellwallundestructable.14.png");
 		cell_pic[6]=IMG_Load("Pictures/Game/CellPic/cellreverse.14.png");	
 	}
 		
@@ -41,7 +41,6 @@ void GameWithLevels::doInit()
 		{
 			global_map[i][j]=new CellEmpty;
 			global_map[i][j]=dynamic_cast<CellEmpty*> (global_map[i][j]);
-			global_map[i][j]->SetPicture(cell_pic[2]);
 		}
 	}
 	
@@ -135,10 +134,8 @@ bool GameWithLevels::doRun()
 	else
 	{
 		Converter.Convert();
-		DrawField();
-		
+		DrawField();		
 		GameOver();
-		
 	}
 	return true;
 }
@@ -167,7 +164,7 @@ void GameWithLevels::GameOver()
 {
 	if(snake->GetDead())
 	{
-		m_mgr->SetActiveModule("Menu");
+		m_mgr->SetActiveModule(MAINMENU);
 		//DrawText(RESX/2-230,RESY/2-60,"You are LOOOOOOOSER",40,255,0,0);
 	}
 	else

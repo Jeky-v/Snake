@@ -2,6 +2,7 @@
 #include "CellSnake.h"
 #include "GlobalVariables.h"
 #include "ModuleName.h"
+
 class CellSnake;
 int CellEat::cell_eat_counter=0;
 CellEat::CellEat()
@@ -18,12 +19,36 @@ bool CellEat::Interaction(Snake &snake, int x, int y)
 	snake.SetScore(snake.GetScore()+10);
 	Converter.CreateConvert <CellSnake> (x,y);
 	cell_eat_counter--;
-	if(cell_eat_counter==0)
+	if(mgr.getCurrentModuleName()==CLASSIC)
 	{
-		return false;
+		bool temp=true;
+		int randomX=0;
+		int randomY=0;
+		while(temp)
+		{
+			temp=false;
+			randomX=1+rand()%(63);
+			randomY=1+rand()%(33);
+			for(list<CellStruct>::iterator it=snake.snake_list.begin();it!=snake.snake_list.end();++it)
+			{
+				if(randomX==(*it).CellX&&randomY==(*it).CellY)
+				{
+					temp=true;
+				}
+			}
+		}
+		Converter.CreateConvert<CellEat>(randomX,randomY);
+		return true;			
 	}
-	else
+	if(mgr.getCurrentModuleName()==GAMEWITHLEVELS)
 	{
-		return true;
+		if(cell_eat_counter==0)
+		{		
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 }

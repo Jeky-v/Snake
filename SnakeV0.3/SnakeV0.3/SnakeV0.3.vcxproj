@@ -146,6 +146,7 @@
     <ClInclude Include="CellStruct.h" />
     <ClInclude Include="CellTypeConverter.h" />
     <ClInclude Include="CellWallDestructable.h" />
+    <ClInclude Include="CellWallUndestructable.h" />
     <ClInclude Include="GameClassic.h" />
     <ClInclude Include="GameThroneMode.h" />
     <ClInclude Include="GameTwoPlayers.h" />
@@ -170,6 +171,7 @@
     <ClCompile Include="CellSnake.cpp" />
     <ClCompile Include="CellTypeConverter.cpp" />
     <ClCompile Include="CellWallDestructable.cpp" />
+    <ClCompile Include="CellWallUndestructable.cpp" />
     <ClCompile Include="GameClassic.cpp" />
     <ClCompile Include="GameThroneMode.cpp" />
     <ClCompile Include="GameTwoPlayers.cpp" />
