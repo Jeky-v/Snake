@@ -46,9 +46,7 @@ bool CellEat::Interaction(Snake &snake, int x, int y)
 		{		
 			return false;
 		}
-		else
-		{
-			return true;
-		}
+		
 	}
+	return true;
 }

@@ -139,12 +139,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h" />
-    <ClInclude Include="CellConection.h" />
+    <ClInclude Include="CellConnection.h" />
+    <ClInclude Include="CellConnectionTeleport.h" />
     <ClInclude Include="CellEat.h" />
     <ClInclude Include="CellEmpty.h" />
     <ClInclude Include="CellReverse.h" />
     <ClInclude Include="CellSnake.h" />
     <ClInclude Include="CellStruct.h" />
+    <ClInclude Include="CellTeleport.h" />
     <ClInclude Include="CellTypeConverter.h" />
     <ClInclude Include="CellWallDestructable.h" />
     <ClInclude Include="CellWallUndestructable.h" />
@@ -166,11 +168,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
-    <ClCompile Include="CellConection.cpp" />
+    <ClCompile Include="CellConnection.cpp" />
+    <ClCompile Include="CellConnectionTeleport.cpp" />
     <ClCompile Include="CellEat.cpp" />
     <ClCompile Include="CellEmpty.cpp" />
     <ClCompile Include="CellReverse.cpp" />
     <ClCompile Include="CellSnake.cpp" />
+    <ClCompile Include="CellTeleport.cpp" />
     <ClCompile Include="CellTypeConverter.cpp" />
     <ClCompile Include="CellWallDestructable.cpp" />
     <ClCompile Include="CellWallUndestructable.cpp" />

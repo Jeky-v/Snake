@@ -105,8 +105,14 @@
     <ClInclude Include="CellWallUndestructable.h">
       <Filter>Заголовочные файлы\Cells</Filter>
     </ClInclude>
-    <ClInclude Include="CellConection.h">
-      <Filter>Заголовочные файлы</Filter>
+    <ClInclude Include="CellTeleport.h">
+      <Filter>Заголовочные файлы\Cells</Filter>
+    </ClInclude>
+    <ClInclude Include="CellConnection.h">
+      <Filter>Заголовочные файлы\Cells</Filter>
+    </ClInclude>
+    <ClInclude Include="CellConnectionTeleport.h">
+      <Filter>Заголовочные файлы\Cells</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -176,8 +182,14 @@
     <ClCompile Include="CellWallUndestructable.cpp">
       <Filter>Файлы исходного кода\Cells</Filter>
     </ClCompile>
-    <ClCompile Include="CellConection.cpp">
-      <Filter>Файлы исходного кода</Filter>
+    <ClCompile Include="CellTeleport.cpp">
+      <Filter>Файлы исходного кода\Cells</Filter>
+    </ClCompile>
+    <ClCompile Include="CellConnection.cpp">
+      <Filter>Файлы исходного кода\Cells</Filter>
+    </ClCompile>
+    <ClCompile Include="CellConnectionTeleport.cpp">
+      <Filter>Файлы исходного кода\Cells</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

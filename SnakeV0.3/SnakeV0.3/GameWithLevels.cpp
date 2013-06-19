@@ -11,7 +11,8 @@
 #include "CellWallDestructable.h"
 #include "CellWallUndestructable.h"
 #include "CellReverse.h"
-#include "CellConection.h"
+#include "CellConnection.h"
+#include "CellTeleport.h"
 void GameWithLevels::doInit()
 {
 	if(full_screen_mode)
@@ -79,9 +80,14 @@ void GameWithLevels::doInit()
 	Converter.CreateConvert<CellWallDestructable>(28,15);
 	Converter.CreateConvert<CellWallDestructable>(29,15);
 	Converter.CreateConvert<CellWallDestructable>(30,15);
+
+	Converter.CreateConvert<CellTeleport>(31,15);
+	Converter.CreateConvert<CellTeleport>(3,4);
 	Converter.Convert();
-	CellConection *cellConection=new CellConection;
-	global_map[3][4]->setConnection(cellConection);
+	CellConnection *cellConnection=new CellConnection;
+	global_map[31][15]->setConnection(cellConnection,31,15);
+	global_map[3][4]->setConnection(cellConnection,3,4);
+	
 	// end initialize
 
 }
@@ -138,6 +144,7 @@ bool GameWithLevels::doRun()
 		DrawField();		
 		GameOver();
 	}
+	connections.push_back(0);
 	return true;
 }
 
