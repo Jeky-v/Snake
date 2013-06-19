@@ -24,5 +24,6 @@ public:
 	SDL_Surface *GetPicture();
 	void DrawCell();
 	virtual bool Interaction(Snake &snake,int x,int y)=0;
+	~Cell();
 };
 

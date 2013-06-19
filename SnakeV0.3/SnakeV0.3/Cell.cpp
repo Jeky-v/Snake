@@ -70,7 +70,10 @@ SDL_Surface* Cell::GetPicture()
 void Cell::setConnection(CellConnection* someConnection,int x, int y)
 {
 	connection=someConnection;
-	connection->addCell(this,x,y);
+	if (connection)	connection->addCell(this,x,y);
 
 }
-
+Cell::~Cell()
+{
+	
+}

@@ -24,6 +24,7 @@ void GameWithLevels::doInit()
 		cell_pic[4]=IMG_Load("Pictures/Game/CellPic/cellwalldestructable.21.png");
 		cell_pic[5]=IMG_Load("Pictures/Game/CellPic/cellwallundestructable.21.png");
 		cell_pic[6]=IMG_Load("Pictures/Game/CellPic/cellreverse.21.png");
+		cell_pic[7]=IMG_Load("Pictures/Game/CellPic/cellteleport.21.png");
 	}
 	else
 	{
@@ -34,6 +35,7 @@ void GameWithLevels::doInit()
 		cell_pic[4]=IMG_Load("Pictures/Game/CellPic/cellwalldestructable.14.png");
 		cell_pic[5]=IMG_Load("Pictures/Game/CellPic/cellwallundestructable.14.png");
 		cell_pic[6]=IMG_Load("Pictures/Game/CellPic/cellreverse.14.png");	
+		cell_pic[7]=IMG_Load("Pictures/Game/CellPic/cellteleport.14.png");
 	}
 		
 	for (int i=0;i<65;i++)
@@ -144,7 +146,7 @@ bool GameWithLevels::doRun()
 		DrawField();		
 		GameOver();
 	}
-	connections.push_back(0);
+	
 	return true;
 }
 

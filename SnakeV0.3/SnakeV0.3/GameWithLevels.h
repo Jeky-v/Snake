@@ -10,7 +10,7 @@ class GameWithLevels :public GameModule
 private:
 	int score;
 	int current_map_number;
-	std::list<CellConnection*> connections;
+	//std::list<CellConnection*> connections;
 	Snake *snake;
 public:
 
