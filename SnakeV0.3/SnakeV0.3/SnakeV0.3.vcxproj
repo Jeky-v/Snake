@@ -139,6 +139,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="CellConection.h" />
     <ClInclude Include="CellEat.h" />
     <ClInclude Include="CellEmpty.h" />
     <ClInclude Include="CellReverse.h" />
@@ -165,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="CellConection.cpp" />
     <ClCompile Include="CellEat.cpp" />
     <ClCompile Include="CellEmpty.cpp" />
     <ClCompile Include="CellReverse.cpp" />

@@ -105,6 +105,9 @@
     <ClInclude Include="CellWallUndestructable.h">
       <Filter>Заголовочные файлы\Cells</Filter>
     </ClInclude>
+    <ClInclude Include="CellConection.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SnakeV03_main.cpp">
@@ -172,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="CellWallUndestructable.cpp">
       <Filter>Файлы исходного кода\Cells</Filter>
+    </ClCompile>
+    <ClCompile Include="CellConection.cpp">
+      <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

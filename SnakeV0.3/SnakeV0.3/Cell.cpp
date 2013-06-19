@@ -1,5 +1,5 @@
 #include"Cell.h"
-
+#include "CellConection.h"
 void Cell::SetDestination(int x,int y,int h, int w)
 {
 	dest.x=x;
@@ -66,5 +66,11 @@ void Cell::DrawCell()
 SDL_Surface* Cell::GetPicture()
 {
 	return picture;
+}
+void Cell::setConnection(CellConection* someConnection)
+{
+	connection=someConnection;
+	connection->addCell(this);
+
 }
 

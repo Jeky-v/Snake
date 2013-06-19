@@ -11,7 +11,7 @@
 #include "CellWallDestructable.h"
 #include "CellWallUndestructable.h"
 #include "CellReverse.h"
-
+#include "CellConection.h"
 void GameWithLevels::doInit()
 {
 	if(full_screen_mode)
@@ -80,7 +80,8 @@ void GameWithLevels::doInit()
 	Converter.CreateConvert<CellWallDestructable>(29,15);
 	Converter.CreateConvert<CellWallDestructable>(30,15);
 	Converter.Convert();
-
+	CellConection *cellConection=new CellConection;
+	global_map[3][4]->setConnection(cellConection);
 	// end initialize
 
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "GlobalVariables.h"
 #include "Snake.h"
+class CellConection;
 class Snake;
 class Cell
 {
@@ -8,8 +9,10 @@ private:
 	SDL_Rect dest;
 	SDL_Surface *picture;
 	bool activity;
+	CellConection* connection;
 public:
 	void SetDestination(int x,int y,int h, int w);
+	void setConnection(CellConection* someConnection);
 	int GetX();
 	int GetY();
 	int GetH();
