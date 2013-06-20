@@ -11,10 +11,11 @@ CellEmpty::CellEmpty()
 bool CellEmpty::Interaction(Snake &snake,int x,int y)
 {
 	snake.snake_list.push_front(CellStruct(x,y));
-	Converter.CreateConvert <CellEmpty> (snake.snake_list.back().CellX,snake.snake_list.back().CellY);
-	Converter.Convert();
 	Converter.CreateConvert <CellSnake> (x,y);
+
+	Converter.CreateConvert <CellEmpty> (snake.snake_list.back().CellX,snake.snake_list.back().CellY);
 	snake.snake_list.pop_back();
+	Converter.Convert();
 	return true;
 }
 

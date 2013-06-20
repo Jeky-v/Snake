@@ -14,10 +14,11 @@ CellEat::CellEat()
 bool CellEat::Interaction(Snake &snake, int x, int y)
 {
 	//if (mgr.getCurrentModuleName()==std::string(GAMEWITHLEVELS))   
+	snake.SetScore(snake.GetScore()+10);
 	
 	snake.snake_list.push_front(CellStruct(x,y));
-	snake.SetScore(snake.GetScore()+10);
 	Converter.CreateConvert <CellSnake> (x,y);
+
 	cell_eat_counter--;
 	if(mgr.getCurrentModuleName()==CLASSIC)
 	{

@@ -114,6 +114,12 @@
     <ClInclude Include="CellConnectionTeleport.h">
       <Filter>Заголовочные файлы\Cells</Filter>
     </ClInclude>
+    <ClInclude Include="CellConnectionEatGenerator.h">
+      <Filter>Заголовочные файлы\Cells</Filter>
+    </ClInclude>
+    <ClInclude Include="CellEatGenerator.h">
+      <Filter>Заголовочные файлы\Cells</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SnakeV03_main.cpp">
@@ -189,6 +195,12 @@
       <Filter>Файлы исходного кода\Cells</Filter>
     </ClCompile>
     <ClCompile Include="CellConnectionTeleport.cpp">
+      <Filter>Файлы исходного кода\Cells</Filter>
+    </ClCompile>
+    <ClCompile Include="CellEatGenerator.cpp">
+      <Filter>Файлы исходного кода\Cells</Filter>
+    </ClCompile>
+    <ClCompile Include="CellConnectionEatGenerator.cpp">
       <Filter>Файлы исходного кода\Cells</Filter>
     </ClCompile>
   </ItemGroup>

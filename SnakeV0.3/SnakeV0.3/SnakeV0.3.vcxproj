@@ -140,8 +140,10 @@
   <ItemGroup>
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellConnection.h" />
+    <ClInclude Include="CellConnectionEatGenerator.h" />
     <ClInclude Include="CellConnectionTeleport.h" />
     <ClInclude Include="CellEat.h" />
+    <ClInclude Include="CellEatGenerator.h" />
     <ClInclude Include="CellEmpty.h" />
     <ClInclude Include="CellReverse.h" />
     <ClInclude Include="CellSnake.h" />
@@ -169,8 +171,10 @@
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellConnection.cpp" />
+    <ClCompile Include="CellConnectionEatGenerator.cpp" />
     <ClCompile Include="CellConnectionTeleport.cpp" />
     <ClCompile Include="CellEat.cpp" />
+    <ClCompile Include="CellEatGenerator.cpp" />
     <ClCompile Include="CellEmpty.cpp" />
     <ClCompile Include="CellReverse.cpp" />
     <ClCompile Include="CellSnake.cpp" />
