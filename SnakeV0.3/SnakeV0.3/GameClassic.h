@@ -1,6 +1,5 @@
 #pragma once
 #include "gamemodule.h"
-#include "Cell.h"
 #include "Snake.h"
 
 class Snake;

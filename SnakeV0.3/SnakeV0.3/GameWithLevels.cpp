@@ -16,6 +16,7 @@
 #include "CellConnectionEatGenerator.h"
 #include "CellEatGenerator.h"
 #include "CellConnectionTeleport.h"
+
 void GameWithLevels::doInit()
 {
 	if(full_screen_mode)
