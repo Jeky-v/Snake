@@ -14,22 +14,26 @@ void GameClassic::doInit()
 	if(full_screen_mode)
 	{
 		cell_pic[0]=IMG_Load("Pictures/Game/CellPic/cellsnake.1.21.png");
-		//cell_pic[1]=IMG_Load("Pictures/Game/CellPic/.png");
+		cell_pic[1]=IMG_Load("Pictures/Game/CellPic/.png");
 		cell_pic[2]=IMG_Load("Pictures/Game/CellPic/cellempty.21.png");
 		cell_pic[3]=IMG_Load("Pictures/Game/CellPic/celleat.21.png");
-		//cell_pic[4]=IMG_Load("Pictures/Game/CellPic/cellwalldestructable.21.png");
+		cell_pic[4]=IMG_Load("Pictures/Game/CellPic/cellwalldestructable.21.png");
 		cell_pic[5]=IMG_Load("Pictures/Game/CellPic/cellwallundestructable.21.png");
-		//cell_pic[6]=IMG_Load("Pictures/Game/CellPic/cellreverse.21.png");
+		cell_pic[6]=IMG_Load("Pictures/Game/CellPic/cellreverse.21.png");
+		cell_pic[7]=IMG_Load("Pictures/Game/CellPic/cellteleport.21.png");
+		cell_pic[8]=IMG_Load("Pictures/Game/CellPic/celleatgenerator.21.png");
 	}
 	else
 	{
 		cell_pic[0]=IMG_Load("Pictures/Game/CellPic/cellsnake.1.14.png");
-		//cell_pic[1]=IMG_Load("Pictures/Game/CellPic/.png");
+		cell_pic[1]=IMG_Load("Pictures/Game/CellPic/.png");
 		cell_pic[2]=IMG_Load("Pictures/Game/CellPic/cellempty.14.png");
 		cell_pic[3]=IMG_Load("Pictures/Game/CellPic/celleat.14.png");
-		//cell_pic[4]=IMG_Load("Pictures/Game/CellPic/cellwalldestructable.14.png");
+		cell_pic[4]=IMG_Load("Pictures/Game/CellPic/cellwalldestructable.14.png");
 		cell_pic[5]=IMG_Load("Pictures/Game/CellPic/cellwallundestructable.14.png");
-		//cell_pic[6]=IMG_Load("Pictures/Game/CellPic/cellreverse.14.png");	
+		cell_pic[6]=IMG_Load("Pictures/Game/CellPic/cellreverse.14.png");	
+		cell_pic[7]=IMG_Load("Pictures/Game/CellPic/cellteleport.14.png");
+		cell_pic[8]=IMG_Load("Pictures/Game/CellPic/celleatgenerator.14.png");
 	}
 
 	for (int i=0;i<65;i++)
@@ -129,7 +133,7 @@ void GameClassic::doClose()
 			delete global_map[i][j];
 		}
 	}
-	for(int i=0;i<8;i++)
+	for(int i=0;i<9;i++)
 	{
 		SDL_FreeSurface(cell_pic[i]);
 	}

@@ -267,7 +267,7 @@ void GameWithLevels::doClose()
 			delete global_map[i][j];
 		}
 	}
-	for(int i=0;i<8;i++)
+	for(int i=0;i<9;i++)
 	{
 		SDL_FreeSurface(cell_pic[i]);
 	}
