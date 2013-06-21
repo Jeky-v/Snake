@@ -3,6 +3,8 @@
 #include "CellStruct.h"
 #include "GameWithLevels.h"
 
+#include "GlobalVariables.h"
+
 class GameWithLevels;
 enum dir_type {Up,Down,Left,Right};
 
@@ -26,6 +28,8 @@ public:
 	void SetDead(bool new_dead);
 	bool GetDead();
 	bool Move();
+	void SetPicture(SDL_Surface* new_picture);
+	SDL_Surface* GetPicture();
 	void SetDirection(dir_type new_direction);
 	dir_type GetDirection();
 };

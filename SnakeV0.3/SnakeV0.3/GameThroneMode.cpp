@@ -41,7 +41,9 @@ void GameThroneMode::doInit()
 	}
 
 	snake1=new Snake(Left,"Snake1",CellStruct(61,17),CellStruct(62,17),CellStruct(63,17));
+	snake1->SetPicture(cell_pic[0]);
 	snake2=new Snake(Right,"Snake2",CellStruct(3,18),CellStruct(2,18),CellStruct(1,18));
+	snake2->SetPicture(cell_pic[1]);
 }
 
 bool GameThroneMode::doRun()

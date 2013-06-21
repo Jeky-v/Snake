@@ -1,7 +1,9 @@
+#include "GlobalVariables.h"
+
+#include "ModuleName.h"
+
 #include "CellEat.h"
 #include "CellSnake.h"
-#include "GlobalVariables.h"
-#include "ModuleName.h"
 
 class CellSnake;
 int CellEat::cell_eat_counter=0;

@@ -21,9 +21,7 @@ Snake::Snake(dir_type start_direction,char *text,CellStruct cell1,CellStruct cel
 
 	CellTypeConverter Converter;
 	Converter.CreateConvert <CellSnake> (cell1.CellX,cell1.CellY);
-	Converter.Convert();
 	Converter.CreateConvert <CellSnake> (cell2.CellX,cell2.CellY);
-	Converter.Convert();	
 	Converter.CreateConvert <CellSnake> (cell3.CellX,cell3.CellY);
 	Converter.Convert();	
 }
@@ -113,6 +111,14 @@ bool Snake::Move()
 void Snake::SetDirection(dir_type new_direction)
 {
 	direction=new_direction;
+}
+void Snake::SetPicture(SDL_Surface *new_picture)
+{
+	picture=new_picture;
+}
+SDL_Surface* Snake::GetPicture()
+{
+	return picture;
 }
 dir_type Snake::GetDirection()
 {
