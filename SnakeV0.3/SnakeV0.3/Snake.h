@@ -20,7 +20,7 @@ public:
 		
 	std::list <CellStruct> snake_list; 
 	Snake();
-	Snake(dir_type start_direction,char *text,CellStruct cell1,CellStruct cell2,CellStruct cell3);
+	Snake(dir_type start_direction,char *text,CellStruct cell1,CellStruct cell2,CellStruct cell3,int picture_index=0);
 	~Snake(void);
 
 	void SetScore(int new_score);

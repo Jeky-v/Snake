@@ -9,11 +9,12 @@ Snake::Snake()
 	dead=false;
 }
 
-Snake::Snake(dir_type start_direction,char *text,CellStruct cell1,CellStruct cell2,CellStruct cell3)
+Snake::Snake(dir_type start_direction,char *text,CellStruct cell1,CellStruct cell2,CellStruct cell3,int picture_index)
 {
 	direction=start_direction;
 	score=0;
 	dead=false;
+	picture=cell_pic[picture_index];
 	strncpy(name,text,19);
 	snake_list.push_front(cell3);
 	snake_list.push_front(cell2);
@@ -24,6 +25,11 @@ Snake::Snake(dir_type start_direction,char *text,CellStruct cell1,CellStruct cel
 	Converter.CreateConvert <CellSnake> (cell2.CellX,cell2.CellY);
 	Converter.CreateConvert <CellSnake> (cell3.CellX,cell3.CellY);
 	Converter.Convert();	
+
+	global_map[cell1.CellX][cell1.CellY]->SetPicture(picture);
+	global_map[cell2.CellX][cell2.CellY]->SetPicture(picture);
+	global_map[cell3.CellX][cell3.CellY]->SetPicture(picture);
+
 }
 
 Snake::~Snake(void)
