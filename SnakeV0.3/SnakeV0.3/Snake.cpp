@@ -45,6 +45,10 @@ int Snake::GetScore()
 {
 	return score;
 }
+char* Snake::GetName()
+{
+	return name;
+}
 void Snake::SetDead(bool new_dead)
 {
 	dead=new_dead;

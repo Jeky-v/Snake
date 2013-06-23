@@ -25,6 +25,7 @@ public:
 
 	void SetScore(int new_score);
 	int GetScore();
+	char* GetName();
 	void SetDead(bool new_dead);
 	bool GetDead();
 	bool Move();
