@@ -175,7 +175,7 @@ void GameWithLevels::doInit()
 	Converter.CreateConvert<CellWallUndestructable>(6,27);
 	Converter.CreateConvert<CellWallUndestructable>(5,27);
 
-	Converter.CreateConvert<CellWallDestructable>(5,24);
+	Converter.CreateConvert<CellEat>(5,24);
 	Converter.CreateConvert<CellWallDestructable>(5,23);
 	Converter.CreateConvert<CellWallDestructable>(5,22);
 	Converter.CreateConvert<CellWallDestructable>(5,21);
