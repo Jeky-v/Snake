@@ -126,9 +126,11 @@ void GameThroneMode::doClose()
 			delete global_map[i][j];
 		}
 	}
-	SDL_FreeSurface(cell_pic[0]);
-	SDL_FreeSurface(cell_pic[1]);
-	SDL_FreeSurface(cell_pic[2]);
+	for(int i=0;i<9;i++)
+	{
+		SDL_FreeSurface(cell_pic[i]);
+		cell_pic[i]=NULL;
+	}
 }
 
 void GameThroneMode::GameOver()
