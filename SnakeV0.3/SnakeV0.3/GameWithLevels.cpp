@@ -16,7 +16,8 @@
 #include "CellConnectionEatGenerator.h"
 #include "CellEatGenerator.h"
 #include "CellConnectionTeleport.h"
-
+#include <iostream>
+#include <fstream>
 void GameWithLevels::doInit()
 {
 	if(full_screen_mode)
@@ -43,16 +44,37 @@ void GameWithLevels::doInit()
 		cell_pic[7]=IMG_Load("Pictures/Game/CellPic/cellteleport.14.png");
 		cell_pic[8]=IMG_Load("Pictures/Game/CellPic/celleatgenerator.14.png");
 	}
-		
+	
+	ofstream out("Levels\\1.txt",ios::binary|ios::out); //Открываем файл в двоичном режиме для записи
+	int snakeDirection=2;
+	out.write((char*)&snakeDirection,sizeof(snakeDirection));
+	int snakeCellX=45, snakeCellY=15;
+
+	out.write((char*)&snakeCellX,sizeof(snakeCellX));
+	out.write((char*)&snakeCellY,sizeof(snakeCellY));
+	snakeCellX=46;
+	snakeCellY=15;
+	out.write((char*)&snakeCellX,sizeof(snakeCellX));
+	out.write((char*)&snakeCellY,sizeof(snakeCellY));
+	snakeCellX=47;
+	snakeCellY=15;
+	out.write((char*)&snakeCellX,sizeof(snakeCellX));
+	out.write((char*)&snakeCellY,sizeof(snakeCellY));
+
+	int lol=2;
+	int typeOfCell=0;//empty
 	for (int i=0;i<65;i++)
 	{
 		for(int j=0;j<35;j++)
 		{
-			global_map[i][j]=new CellEmpty;
-			global_map[i][j]=dynamic_cast<CellEmpty*> (global_map[i][j]);
+			if (i==64&&j==34) out.write((char*)&lol,sizeof(lol)); 
+			else out.write((char*)&typeOfCell,sizeof(typeOfCell));
 		}
 	}
+	out.close(); //Закрываем файл
 	
+	LoadMap();
+
 	for (int i=0;i<65;i++)
 	{
 		for(int j=0;j<35;j++)
@@ -60,7 +82,6 @@ void GameWithLevels::doInit()
 			global_map[i][j]->SetDestination(cell_pic[2]->w*i,33+cell_pic[2]->w*j,cell_pic[2]->w,cell_pic[2]->w);
 		}
 	}
-	snake=new Snake(Left,"snake",CellStruct(45,15),CellStruct(46,15),CellStruct(47,15));
 	
 	//Initialize some cells
 	/*
@@ -275,10 +296,7 @@ void GameWithLevels::doClose()
 	}
 }
 
-void GameWithLevels::LoadMap()
-{
-	snake=new Snake(Left,"snake",CellStruct(45,15),CellStruct(46,15),CellStruct(47,15));
-}
+
 
 void GameWithLevels::GameOver()
 {
@@ -295,4 +313,39 @@ void GameWithLevels::GameOver()
 	}
 	delete snake;
 	//LoadMap();
+}
+void GameWithLevels::LoadMap()
+{
+	int snakeDirection;
+	ifstream in("Levels\\1.txt",ios::binary|ios::in);
+	in.read((char*)&snakeDirection,sizeof(snakeDirection));
+	int snakeCellX[3];
+	int snakeCellY[3];
+	in.read((char*)&snakeCellX[0],sizeof(int));
+	in.read((char*)&snakeCellY[0],sizeof(int));
+	in.read((char*)&snakeCellX[1],sizeof(int));
+	in.read((char*)&snakeCellY[1],sizeof(int));
+	in.read((char*)&snakeCellX[2],sizeof(int));
+	in.read((char*)&snakeCellY[2],sizeof(int));
+	int typeOfCell;
+
+
+	for (int i=0;i<65;i++)
+	{
+		for(int j=0;j<35;j++)
+		{
+			in.read((char*)&typeOfCell,sizeof(typeOfCell));
+			cout<< typeOfCell;
+			switch (typeOfCell)
+			{
+				case 0:{global_map[i][j]=new CellEmpty; cout<< typeOfCell; break;}
+				case 2:{global_map[i][j]=new CellReverse; cout<< typeOfCell; break;}
+				default: {cout << "Weird type of cell, program has been stoped."; exit(4);}
+			}
+		}
+	}
+
+	in.close();
+
+	snake=new Snake(static_cast<dir_type>(snakeDirection),"snake",CellStruct(snakeCellX[0],snakeCellY[0]),CellStruct(snakeCellX[1],snakeCellY[1]),CellStruct(snakeCellX[2],snakeCellY[2]));
 }
