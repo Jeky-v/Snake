@@ -345,6 +345,22 @@ void GameWithLevels::LoadMap()
 		}
 	}
 
+	int numberOfConnections;
+	int cellsInConnection;
+	in.read((char*)&numberOfConnections,sizeof(numberOfConnections));
+	if (numberOfConnections)
+	{
+		CellConnection* connection=new CellConnection;
+		connections.push_back(connection);
+		in.read((char*)&cellsInConnection,sizeof(cellsInConnection));
+		int cellX,cellY;
+		for (int i=0;i<cellsInConnection;i++) 
+		{
+			in.read((char*)&cellX,sizeof(cellX));
+			in.read((char*)&cellY,sizeof(cellY));
+			global_map[cellX][cellY]->setConnection(connection,cellX,cellY);
+		}
+	}
 	in.close();
 
 	snake=new Snake(static_cast<dir_type>(snakeDirection),"snake",CellStruct(snakeCellX[0],snakeCellY[0]),CellStruct(snakeCellX[1],snakeCellY[1]),CellStruct(snakeCellX[2],snakeCellY[2]));
