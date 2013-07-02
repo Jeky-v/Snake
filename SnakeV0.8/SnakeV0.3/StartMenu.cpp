@@ -69,6 +69,7 @@ bool StartMenu::doRun()
 			{
 				AllButtons[i].CheckActivity(event.motion.x,event.motion.y);
 			}
+			
 			break;
 		}
 		case SDL_MOUSEBUTTONDOWN:

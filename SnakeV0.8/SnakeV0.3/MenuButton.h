@@ -12,6 +12,7 @@ public:
 
 	void SetButtonPic(SDL_Surface* new_surface);
 	void SetDestination(int x,int y, int h, int w);
+	void setState(bool _state){state=_state;}
 	bool GetState();
 	
 	void CheckActivity(int x,int y);
