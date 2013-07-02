@@ -122,13 +122,18 @@ bool Settings::doRun()
 		case SDL_KEYDOWN:
 		{
 			if ( event.key.keysym.sym == SDLK_ESCAPE ) 
-			{return false;} 
+			{
+				m_mgr->SetActiveModule(MAINMENU);	
+				return true;
+			} 
 			break;
 		}
 		case SDL_MOUSEMOTION:
 		{
-			back.CheckActivity(event.motion.x,event.motion.y);
-			tick.CheckActivity(event.motion.x,event.motion.y);
+			if (back.CheckCollision(event.motion.x,event.motion.y)) back.setState(true);
+			else back.setState(false);
+			if (tick.CheckCollision(event.motion.x,event.motion.y)) tick.setState(true);
+			else tick.setState(false);
 			break;
 		}
 		case SDL_MOUSEBUTTONDOWN:

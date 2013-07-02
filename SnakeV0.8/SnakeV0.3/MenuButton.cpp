@@ -46,16 +46,18 @@ bool MenuButton::GetState()
 	return state;
 }
 //=========================================================
-void MenuButton::CheckActivity(int x,int y)
+bool MenuButton::CheckCollision(int x,int y)
 {
+	bool activity;
 	if(x>=destination.x && x<=destination.x+destination.w && y>=destination.y && y<=destination.y+destination.h)
 	{
-		state=true;
+		activity=true;
 	}
 	else
 	{
-		state=false;
+		activity=false;
 	}
+	return activity;
 }
 
 void MenuButton::DrawButton()
@@ -66,4 +68,10 @@ void MenuButton::DrawButton()
 	{source.y=0;}
 	SDL_BlitSurface(button_pic,&source,screen,&destination);
 	SDL_Flip(screen);
+}
+
+bool MenuButton::operator!=(MenuButton object)
+{
+	if (object.destination.y!=this->destination.y) return true;
+	else return false;
 }

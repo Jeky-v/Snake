@@ -3,7 +3,7 @@
 #include "StartMenu.h"
 #include "ModuleName.h"
 #include "ModuleMgr.h"
-
+#include <iostream>
 void StartMenu::doInit()
 {
 	ButtonPic[0]=IMG_Load("Pictures/Menu/Buttons/newgame.png");
@@ -41,42 +41,49 @@ void StartMenu::doInit()
 	for(int i=0;i<5;i++)
 	{
 		AllButtons[i].DrawButton();
-	}
-	
+	}	
 	SDL_Flip(screen);
+
+	for(int i=0;i<5;i++)
+	{
+		AllButtons[i].setState(false);
+	}	
+	currentButtonPointer=&AllButtons[0];
+	currentButtonPointer->setState(true);
 }
 
 bool StartMenu::doRun()
 {
 	SDL_Event event;
 	SDL_WaitEvent(&event);
+	
 	switch(event.type)
 	{
 		case SDL_QUIT:
 		{
 			return false;
 			break;
-		}	
-		case SDL_KEYDOWN:
-		{
-			if ( event.key.keysym.sym == SDLK_ESCAPE ) 
-			{return false;} 
-			break;
-		}
-		case SDL_MOUSEMOTION:
-		{
-			for(int i=0;i<5;i++)
-			{
-				AllButtons[i].CheckActivity(event.motion.x,event.motion.y);
-			}
-			
-			break;
 		}
 		case SDL_MOUSEBUTTONDOWN:
 		{
 			if(event.button.button == SDL_BUTTON_LEFT)
 			{
-				if(AllButtons[0].GetState())
+				for (int i=0;i<5;i++)
+				{
+					if (AllButtons[i].CheckCollision(event.motion.x,event.motion.y))
+					{
+						event.type=SDL_KEYDOWN;
+						event.key.keysym.sym = SDLK_RETURN;
+					}
+				}
+			}
+		case SDL_KEYDOWN:
+		{
+			if ( event.key.keysym.sym == SDLK_ESCAPE ) 
+			{return false;} 
+			if ( event.key.keysym.sym == SDLK_RETURN )  
+			{
+			    if(AllButtons[0].GetState())
 				{
 					m_mgr->SetActiveModule(SELECTGAMEMODE);
 					return true;
@@ -99,7 +106,42 @@ bool StartMenu::doRun()
 				{
 					return false;
 				}
+			} 
+			if ( event.key.keysym.sym == SDLK_DOWN)
+			{ 
+				currentButtonPointer->setState(false);
+				if (currentButtonPointer< AllButtons+4) currentButtonPointer++;
+				else currentButtonPointer=AllButtons;
+				currentButtonPointer->setState(true);
 			}
+			if ( event.key.keysym.sym == SDLK_UP)
+			{ 
+				currentButtonPointer->setState(false);
+				if (currentButtonPointer> AllButtons) currentButtonPointer--;
+				else currentButtonPointer=AllButtons+4;
+				currentButtonPointer->setState(true);
+			}
+			break;
+		}
+		case SDL_MOUSEMOTION:
+		{
+			for(int i=0;i<5;i++)
+			{
+				if (AllButtons[i].CheckCollision(event.motion.x,event.motion.y))
+				{
+					if ((*currentButtonPointer)!=AllButtons[i])
+					{
+						currentButtonPointer->setState(false);
+						currentButtonPointer=AllButtons+i;
+					}
+					AllButtons[i].setState(true);
+				}
+				else AllButtons[i].setState(false);
+			}
+			break;
+		}
+		
+		case 3: std::cout<<"Ololo";
 			break;
 		}
 	}

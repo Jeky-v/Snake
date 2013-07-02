@@ -15,8 +15,8 @@ public:
 	void setState(bool _state){state=_state;}
 	bool GetState();
 	
-	void CheckActivity(int x,int y);
+	bool CheckCollision(int x,int y);
 	void DrawButton();
-	
+	bool operator!=(MenuButton object);
 };
 

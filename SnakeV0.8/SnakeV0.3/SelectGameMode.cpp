@@ -69,7 +69,8 @@ bool SelectGameMode::doRun()
 		{
 			for(int i=0;i<5;i++)
 			{
-				allButtons[i].CheckActivity(event.motion.x,event.motion.y);
+				if (allButtons[i].CheckCollision(event.motion.x,event.motion.y)) allButtons[i].setState(true);
+				else allButtons[i].setState(false);
 			}
 			break;
 		}
