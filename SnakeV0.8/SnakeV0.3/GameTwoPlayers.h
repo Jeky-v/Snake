@@ -17,5 +17,6 @@ public:
 	bool doRun();
 	void doClose();
 	void GameOver();
+	void DrawTop();
 };
 

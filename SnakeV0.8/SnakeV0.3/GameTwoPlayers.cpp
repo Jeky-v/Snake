@@ -17,6 +17,7 @@ void GameTwoPlayers::doInit()
 		cell_pic[1]=IMG_Load("Pictures/Game/CellPic/cellsnake.2.21.png");
 		cell_pic[2]=IMG_Load("Pictures/Game/CellPic/cellempty.21.png");
 		cell_pic[3]=IMG_Load("Pictures/Game/CellPic/celleat.21.png");
+		topPicture=IMG_Load("Pictures/Game/TopPictures/toppicture0.1366.png");
 	}
 	else
 	{
@@ -24,6 +25,7 @@ void GameTwoPlayers::doInit()
 		cell_pic[1]=IMG_Load("Pictures/Game/CellPic/cellsnake.2.14.png");
 		cell_pic[2]=IMG_Load("Pictures/Game/CellPic/cellempty.14.png");
 		cell_pic[3]=IMG_Load("Pictures/Game/CellPic/celleat.14.png");
+		topPicture=IMG_Load("Pictures/Game/TopPictures/toppicture0.900.png");
 	}
 
 	for (int i=0;i<65;i++)
@@ -46,6 +48,8 @@ void GameTwoPlayers::doInit()
 	Converter.Convert();
 	snake1=new Snake(Left,"Snake1",CellStruct(61,17),CellStruct(62,17),CellStruct(63,17));
 	snake2=new Snake(Right,"Snake2",CellStruct(3,18),CellStruct(2,18),CellStruct(1,18),1);	
+	player1Score=0;
+	player2Score=0;
 }
 
 bool GameTwoPlayers::doRun()
@@ -108,12 +112,14 @@ bool GameTwoPlayers::doRun()
 	{
 		Converter.Convert();
 		DrawField();
+		DrawTop();
 		SDL_Delay(50);
 	}
 	else
 	{
 		Converter.Convert();
-		DrawField();		
+		DrawField();	
+		DrawTop();
 		GameOver();
 	}	
 	return true;
@@ -133,11 +139,54 @@ void GameTwoPlayers::doClose()
 		SDL_FreeSurface(cell_pic[i]);
 		cell_pic[i]=NULL;
 	}
+	SDL_FreeSurface(topPicture);
 }
 
 void GameTwoPlayers::GameOver()
 {
 	m_mgr->SetActiveModule(MAINMENU);
+}
+
+void GameTwoPlayers::DrawTop()
+{
+	char player1MainScore[5];
+	char player2MainScore[5];
+	char player1SnakeLength[5];
+	char player2SnakeLength[5];
+
+	int player1SnakeScore=snake1->GetScore();
+	int player2SnakeScore=snake2->GetScore();
+
+	int middle=RESX/2;
+	sprintf(player1MainScore,"%d",player1Score);
+	sprintf(player2MainScore,"%d",player2Score);
+	sprintf(player1SnakeLength,"%d",(int) player1SnakeScore/10+3);
+	sprintf(player2SnakeLength,"%d",(int) player2SnakeScore/10+3);
+
+	player1MainScore[4]='/0';
+	player2MainScore[4]='/0';
+	player1SnakeLength[4]='/0';
+	player2SnakeLength[4]='/0';
+
+	SDL_Rect src,des;
+	src.x=0;
+	src.y=0;
+	src.h=topPicture->h;
+	src.w=topPicture->w;
+	des=src;	
+	SDL_BlitSurface(topPicture,&src,screen,&des);
+	
+	DrawText(10,5,"Player WASD",20,255,66,116);	//Red
+	DrawText(235,5,player2SnakeLength,20,255,66,116);
+	DrawText(middle-60,5,player2MainScore,20,255,66,116);
+
+	DrawText(middle-5,5," - ",20,250,152,5);	//Orange
+	
+	DrawText(middle+50,5,player1MainScore,20,130,232,130);	//Green
+	DrawText(RESX-280,5,player1SnakeLength,20,130,232,130);
+	DrawText(RESX-220,5,"Player ULDR",20,130,232,130);
+	
+	SDL_Flip(screen);
 }
 
 Snake* GameTwoPlayers::GetFirstSnake()

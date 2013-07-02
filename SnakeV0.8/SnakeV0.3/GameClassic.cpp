@@ -22,6 +22,7 @@ void GameClassic::doInit()
 		cell_pic[6]=IMG_Load("Pictures/Game/CellPic/cellreverse.21.png");
 		cell_pic[7]=IMG_Load("Pictures/Game/CellPic/cellteleport.21.png");
 		cell_pic[8]=IMG_Load("Pictures/Game/CellPic/celleatgenerator.21.png");
+		topPicture=IMG_Load("Pictures/Game/TopPictures/toppicture0.1366.png");
 	}
 	else
 	{
@@ -34,6 +35,7 @@ void GameClassic::doInit()
 		cell_pic[6]=IMG_Load("Pictures/Game/CellPic/cellreverse.14.png");	
 		cell_pic[7]=IMG_Load("Pictures/Game/CellPic/cellteleport.14.png");
 		cell_pic[8]=IMG_Load("Pictures/Game/CellPic/celleatgenerator.14.png");
+		topPicture=IMG_Load("Pictures/Game/TopPictures/toppicture0.900.png");
 	}
 
 	for (int i=0;i<65;i++)
@@ -112,12 +114,14 @@ bool GameClassic::doRun()
 	{
 		Converter.Convert();
 		DrawField();
+		DrawTop();
 		SDL_Delay(50);
 	}
 	else
 	{
 		Converter.Convert();
-		DrawField();		
+		DrawField();
+		DrawTop();
 		GameOver();		
 	}
 	return true;
@@ -138,11 +142,32 @@ void GameClassic::doClose()
 		SDL_FreeSurface(cell_pic[i]);
 		cell_pic[i]=NULL;
 	}
+	SDL_FreeSurface(topPicture);
 }
 
 void GameClassic::GameOver()
 {
-	
 	m_mgr->SetActiveModule(MAINMENU);
 	delete snake;
+}
+
+void GameClassic::DrawTop()
+{
+	int score=snake->GetScore();
+	char text[10];
+	sprintf(text, "%d", score);
+	text[9]='/0';
+	
+	SDL_Rect src,des;
+	src.x=0;
+	src.y=0;
+	src.h=topPicture->h;
+	src.w=topPicture->w;
+	des=src;
+	
+	SDL_BlitSurface(topPicture,&src,screen,&des);
+	
+	DrawText(5,5,"Score:",20,250,152,5);
+	DrawText(130,5,text,20,250,152,5);
+	SDL_Flip(screen);
 }

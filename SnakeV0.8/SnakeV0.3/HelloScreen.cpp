@@ -46,7 +46,6 @@ bool HelloScreen::doRun()
 
 	SDL_BlitSurface(Logo,&sour,screen,&dest);
 	DrawText(10,5,"Press any key to continue",50,250,152,5);
-	
 	SDL_Flip(screen);
 	SDL_Event event;
 	SDL_WaitEvent(&event);

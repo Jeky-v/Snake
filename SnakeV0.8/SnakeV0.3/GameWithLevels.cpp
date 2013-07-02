@@ -47,16 +47,6 @@ void GameWithLevels::doInit()
 		cell_pic[8]=IMG_Load("Pictures/Game/CellPic/celleatgenerator.14.png");
 		topPicture=IMG_Load("Pictures/Game/TopPictures/toppicture0.900.png");
 	}
-	
-	SDL_Rect src,des;
-	src.x=0;
-	src.y=0;
-	src.h=topPicture->h;
-	src.w=topPicture->w;
-	des=src;
-	
-	SDL_BlitSurface(topPicture,&src,screen,&des);
-
 
 	ofstream out("Levels\\1.txt",ios::binary|ios::out); //Открываем файл в двоичном режиме для записи
 	int snakeDirection=2;
@@ -281,14 +271,14 @@ bool GameWithLevels::doRun()
 	{
 		Converter.Convert();
 		DrawField();
-		DrawScore();
+		DrawTop();
 		SDL_Delay(50);
 	}
 	else
 	{
 		Converter.Convert();
 		DrawField();
-		DrawScore();
+		DrawTop();
 		GameOver();
 	}
 	
@@ -309,6 +299,7 @@ void GameWithLevels::doClose()
 		SDL_FreeSurface(cell_pic[i]);
 		cell_pic[i]=NULL;
 	}
+	SDL_FreeSurface(topPicture);
 }
 
 void GameWithLevels::GameOver()
@@ -328,7 +319,7 @@ void GameWithLevels::GameOver()
 	//LoadMap();
 }
 
-void GameWithLevels::DrawScore()
+void GameWithLevels::DrawTop()
 {
 	int score=snake->GetScore();
 	char text[10];
@@ -345,7 +336,8 @@ void GameWithLevels::DrawScore()
 	SDL_BlitSurface(topPicture,&src,screen,&des);
 	
 	DrawText(5,5,"Score:",20,250,152,5);
-	DrawText(150,5,text,20,250,152,5);
+	DrawText(130,5,text,20,250,152,5);
+	SDL_Flip(screen);
 }
 
 void GameWithLevels::LoadMap()
