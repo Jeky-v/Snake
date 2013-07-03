@@ -37,5 +37,6 @@ void GameModule::DrawText(int x, int y, char *inputtext, int size, int R, int G,
 	src.w=dst.w;
 	src.h=dst.h;
 	SDL_BlitSurface(blended_m,&src,screen,&dst);
-	//SDL_Flip(screen);
+	TTF_CloseFont(font);
+	SDL_FreeSurface(blended_m);
 }

@@ -26,7 +26,7 @@ public:
 			temp3=(*cell_pointers.back())->GetH();
 			temp4=(*cell_pointers.back())->GetW();
 
-			delete *cell_pointers.back();
+			delete (*cell_pointers.back());
 			*cell_pointers.back()=new new_type;
 			(**cell_pointers.back()).SetDestination(temp1,temp2,temp3,temp4);
 		};
