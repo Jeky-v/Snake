@@ -125,6 +125,8 @@ bool GameThroneMode::doRun()
 
 void GameThroneMode::doClose()
 {
+	delete snake1;
+	delete snake2;
 	for (int i=0;i<65;i++)
 	{
 		for(int j=0;j<35;j++)
@@ -142,7 +144,37 @@ void GameThroneMode::doClose()
 
 void GameThroneMode::GameOver()
 {
-	m_mgr->SetActiveModule(MAINMENU);
+	int middleX=(int) RESX/2;
+	int middleY=(int) RESY/2;
+	if(snake1->GetDead())
+	{
+		player2Score++;
+		DrawText(middleX-250,middleY-10,"Player  WASD  WIN",40,250,152,5);
+	}
+	if(snake2->GetDead())
+	{
+		player1Score++;
+		DrawText(middleX-250,middleY-10,"Player  ULDR  WIN",40,250,152,5);
+	}
+	SDL_Flip(screen);
+	SDL_Delay(1500);
+
+	for(int i=0;i<65;i++)
+	{
+		for(int j=0;j<35;j++)
+		{
+			Converter.CreateConvert<CellEmpty>(i,j);
+		}
+	}
+	Converter.Convert();
+
+	delete snake1;
+	delete snake2;
+
+	snake1=new Snake(Left,"Snake1",CellStruct(61,17),CellStruct(62,17),CellStruct(63,17));
+	snake2=new Snake(Right,"Snake2",CellStruct(3,18),CellStruct(2,18),CellStruct(1,18),1);
+
+	//m_mgr->SetActiveModule(MAINMENU);
 }
 
 void GameThroneMode::DrawTop()
@@ -151,7 +183,7 @@ void GameThroneMode::DrawTop()
 	char player2Text[5];
 	int middle=RESX/2;
 	sprintf(player1Text,"%d",player1Score);
-	sprintf(player2Text,"%d",player1Score);
+	sprintf(player2Text,"%d",player2Score);
 	player1Text[4]='/0';
 	player2Text[4]='/0';
 
