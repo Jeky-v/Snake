@@ -136,7 +136,7 @@ void GameTwoPlayers::doClose()
 			delete global_map[i][j];
 		}
 	}
-	for(int i=0;i<9;i++)
+	for(int i=0;i<4;i++)
 	{
 		SDL_FreeSurface(cell_pic[i]);
 		cell_pic[i]=NULL;
@@ -158,7 +158,9 @@ void GameTwoPlayers::GameOver()
 		player1Score++;
 		DrawText(middleX-250,middleY-10,"Player  ULDR  WIN",40,250,152,5);
 	}
-
+	SDL_Flip(screen);
+	SDL_Delay(1500);
+	
 	for (int i=0;i<65;i++)
 	{
 		for(int j=0;j<35;j++)
@@ -175,7 +177,9 @@ void GameTwoPlayers::GameOver()
 	snake1=new Snake(Left,"Snake1",CellStruct(61,17),CellStruct(62,17),CellStruct(63,17));
 	snake2=new Snake(Right,"Snake2",CellStruct(3,18),CellStruct(2,18),CellStruct(1,18),1);	
 
-	//m_mgr->SetActiveModule(MAINMENU);
+	SDL_PumpEvents();
+	SDL_Event event[30];
+	SDL_PeepEvents(event,30,SDL_GETEVENT,SDL_KEYDOWNMASK);
 }
 
 void GameTwoPlayers::DrawTop()

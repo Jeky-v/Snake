@@ -25,6 +25,7 @@ void HelloScreen::DrawText(int x,int y,char *inputtext,int size,int R,int G,int 
 	src.h=dst.h;
 	SDL_BlitSurface(blended_m,&src,screen,&dst);
 	SDL_Flip(screen);
+	TTF_CloseFont(font);
 }
 
 void HelloScreen::doInit()

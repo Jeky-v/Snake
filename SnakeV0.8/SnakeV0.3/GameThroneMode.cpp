@@ -134,7 +134,7 @@ void GameThroneMode::doClose()
 			delete global_map[i][j];
 		}
 	}
-	for(int i=0;i<9;i++)
+	for(int i=0;i<3;i++)
 	{
 		SDL_FreeSurface(cell_pic[i]);
 		cell_pic[i]=NULL;
@@ -174,7 +174,9 @@ void GameThroneMode::GameOver()
 	snake1=new Snake(Left,"Snake1",CellStruct(61,17),CellStruct(62,17),CellStruct(63,17));
 	snake2=new Snake(Right,"Snake2",CellStruct(3,18),CellStruct(2,18),CellStruct(1,18),1);
 
-	//m_mgr->SetActiveModule(MAINMENU);
+	SDL_PumpEvents();
+	SDL_Event event[30];
+	SDL_PeepEvents(event,30,SDL_GETEVENT,SDL_KEYDOWNMASK);
 }
 
 void GameThroneMode::DrawTop()
