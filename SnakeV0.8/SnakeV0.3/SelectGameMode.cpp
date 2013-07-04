@@ -43,6 +43,13 @@ void SelectGameMode::doInit()
 		allButtons[i].DrawButton();
 	}	
 	SDL_Flip(screen);
+
+	for(int i=0;i<5;i++)
+	{
+		allButtons[i].setState(false);
+	}	
+	currentButtonPointer=&allButtons[0];
+	currentButtonPointer->setState(true);
 }
 
 bool SelectGameMode::doRun()
@@ -56,6 +63,36 @@ bool SelectGameMode::doRun()
 			return false;
 			break;
 		}	
+		case SDL_MOUSEBUTTONDOWN:
+		{
+			if(event.button.button == SDL_BUTTON_LEFT)
+			{
+				for (int i=0;i<5;i++)
+				{
+					if (allButtons[i].CheckCollision(event.motion.x,event.motion.y))
+					{
+						event.type=SDL_KEYDOWN;
+						event.key.keysym.sym = SDLK_RETURN;
+					}
+				}
+			}
+		}
+		case SDL_MOUSEMOTION:
+		{
+			for(int i=0;i<5;i++)
+			{
+				if (allButtons[i].CheckCollision(event.motion.x,event.motion.y))
+				{
+					if ((*currentButtonPointer)!=allButtons[i])
+					{
+						currentButtonPointer->setState(false);
+						currentButtonPointer=allButtons+i;
+					}
+					allButtons[i].setState(true);
+				}
+				else allButtons[i].setState(false);
+			}
+		}
 		case SDL_KEYDOWN:
 		{
 			if ( event.key.keysym.sym == SDLK_ESCAPE ) 
@@ -63,46 +100,50 @@ bool SelectGameMode::doRun()
 				m_mgr->SetActiveModule(MAINMENU);
 				return true;
 			} 
-			break;
-		}
-		case SDL_MOUSEMOTION:
-		{
-			for(int i=0;i<5;i++)
+			if (event.key.keysym.sym == SDLK_RETURN)
 			{
-				if (allButtons[i].CheckCollision(event.motion.x,event.motion.y)) allButtons[i].setState(true);
-				else allButtons[i].setState(false);
+				if(event.button.button == SDL_BUTTON_LEFT)
+				{
+					if(allButtons[0].GetState())
+					{
+						m_mgr->SetActiveModule(GAMEWITHLEVELS);
+						return true;
+					}
+					if(allButtons[1].GetState())
+					{
+						m_mgr->SetActiveModule(TWOPLAYERS);
+						return true;
+					}
+					if(allButtons[2].GetState())
+					{
+						m_mgr->SetActiveModule(CLASSIC);
+						return true;
+					}
+					if(allButtons[3].GetState())
+					{
+						m_mgr->SetActiveModule(THRONEMODE);
+						return true;
+					}
+					if(allButtons[4].GetState())
+					{
+						m_mgr->SetActiveModule(MAINMENU);
+						return true;
+					}
+				}
 			}
-			break;
-		}
-		case SDL_MOUSEBUTTONDOWN:
-		{
-			if(event.button.button == SDL_BUTTON_LEFT)
-			{
-				if(allButtons[0].GetState())
-				{
-					m_mgr->SetActiveModule(GAMEWITHLEVELS);
-					return true;
-				}
-				if(allButtons[1].GetState())
-				{
-					m_mgr->SetActiveModule(TWOPLAYERS);
-					return true;
-				}
-				if(allButtons[2].GetState())
-				{
-					m_mgr->SetActiveModule(CLASSIC);
-					return true;
-				}
-				if(allButtons[3].GetState())
-				{
-					m_mgr->SetActiveModule(THRONEMODE);
-					return true;
-				}
-				if(allButtons[4].GetState())
-				{
-					m_mgr->SetActiveModule(MAINMENU);
-					return true;
-				}
+			if ( event.key.keysym.sym == SDLK_DOWN)
+			{ 
+				currentButtonPointer->setState(false);
+				if (currentButtonPointer< allButtons+4) currentButtonPointer++;
+				else currentButtonPointer=allButtons;
+				currentButtonPointer->setState(true);
+			}
+			if ( event.key.keysym.sym == SDLK_UP)
+			{ 
+				currentButtonPointer->setState(false);
+				if (currentButtonPointer> allButtons) currentButtonPointer--;
+				else currentButtonPointer=allButtons+4;
+				currentButtonPointer->setState(true);
 			}
 			break;
 		}

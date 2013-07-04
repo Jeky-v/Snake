@@ -77,70 +77,70 @@ bool StartMenu::doRun()
 					}
 				}
 			}
-			case SDL_KEYDOWN:
-			{
-				if ( event.key.keysym.sym == SDLK_ESCAPE ) 
-				{return false;} 
-				if ( event.key.keysym.sym == SDLK_RETURN )  
-				{
-					if(AllButtons[0].GetState())
-					{
-						m_mgr->SetActiveModule(SELECTGAMEMODE);
-						return true;
-					}
-					if(AllButtons[1].GetState())
-					{
-						m_mgr->SetActiveModule(SETTINGS);
-						return true;
-					}
-					if(AllButtons[2].GetState())
-					{
-				
-					}
-					if(AllButtons[3].GetState())
-					{
-						m_mgr->SetActiveModule(HELLOSCREEN);
-						return true;
-					}
-					if(AllButtons[4].GetState())
-					{
-						return false;
-					}
-				} 
-				if ( event.key.keysym.sym == SDLK_DOWN)
-				{ 
-					currentButtonPointer->setState(false);
-					if (currentButtonPointer< AllButtons+4) currentButtonPointer++;
-					else currentButtonPointer=AllButtons;
-					currentButtonPointer->setState(true);
-				}
-				if ( event.key.keysym.sym == SDLK_UP)
-				{ 
-					currentButtonPointer->setState(false);
-					if (currentButtonPointer> AllButtons) currentButtonPointer--;
-					else currentButtonPointer=AllButtons+4;
-					currentButtonPointer->setState(true);
-				}
-				break;
-			}
-			case SDL_MOUSEMOTION:
-			{
-				for(int i=0;i<5;i++)
-				{
-					if (AllButtons[i].CheckCollision(event.motion.x,event.motion.y))
-					{
-						if ((*currentButtonPointer)!=AllButtons[i])
-						{
-							currentButtonPointer->setState(false);
-							currentButtonPointer=AllButtons+i;
-						}
-						AllButtons[i].setState(true);
-					}
-					else AllButtons[i].setState(false);
-				}
-				break;
-			}	
 		}
+		case SDL_MOUSEMOTION:
+		{
+			for(int i=0;i<5;i++)
+			{
+				if (AllButtons[i].CheckCollision(event.motion.x,event.motion.y))
+				{
+					if ((*currentButtonPointer)!=AllButtons[i])
+					{
+						currentButtonPointer->setState(false);
+						currentButtonPointer=AllButtons+i;
+					}
+					AllButtons[i].setState(true);
+				}
+				else AllButtons[i].setState(false);
+			}
+			
+		}
+		case SDL_KEYDOWN:
+		{
+			if ( event.key.keysym.sym == SDLK_ESCAPE ) 
+				{return false;} 
+			if ( event.key.keysym.sym == SDLK_RETURN )  
+			{
+				if(AllButtons[0].GetState())
+				{
+					m_mgr->SetActiveModule(SELECTGAMEMODE);
+					return true;
+				}
+				if(AllButtons[1].GetState())
+				{
+					m_mgr->SetActiveModule(SETTINGS);
+					return true;
+				}
+				if(AllButtons[2].GetState())
+				{		
+		    	}
+				if(AllButtons[3].GetState())
+				{
+					m_mgr->SetActiveModule(HELLOSCREEN);
+					return true;
+				}
+				if(AllButtons[4].GetState())
+				{
+					return false;
+				}
+			} 
+			if ( event.key.keysym.sym == SDLK_DOWN)
+			{ 
+				currentButtonPointer->setState(false);
+				if (currentButtonPointer< AllButtons+4) currentButtonPointer++;
+				else currentButtonPointer=AllButtons;
+				currentButtonPointer->setState(true);
+			}
+			if ( event.key.keysym.sym == SDLK_UP)
+			{ 
+				currentButtonPointer->setState(false);
+				if (currentButtonPointer> AllButtons) currentButtonPointer--;
+				else currentButtonPointer=AllButtons+4;
+				currentButtonPointer->setState(true);
+			}
+			break;
+		}
+		
 	}
 	for(int i=0;i<5;i++)
 	{

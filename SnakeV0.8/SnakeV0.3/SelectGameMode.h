@@ -8,6 +8,7 @@ private:
 	MenuButton allButtons[5];
 	SDL_Surface *buttonPic[5];
 	SDL_Surface *background;
+	MenuButton* currentButtonPointer;
 public:
 	void doInit();
 	bool doRun();
