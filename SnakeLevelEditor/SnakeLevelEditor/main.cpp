@@ -8,6 +8,7 @@ const short numberOfPictures=9;
 SDL_Surface* pictures[numberOfPictures];
 int loadPictures();
 int drawMap();
+int drawBottom();
 int main(int argc, char** argv)
 {
 	SDL_Init(SDL_INIT_VIDEO);
@@ -41,6 +42,7 @@ int main(int argc, char** argv)
 				}
 			}
 			drawMap();
+			drawBottom();
 			SDL_Flip(screen);
 		}
 	}
@@ -50,7 +52,7 @@ int main(int argc, char** argv)
 int loadPictures()
 {	
 	pictures[0]=IMG_Load("Pictures/Game/CellPic/cellsnake.1.14.png");
-	pictures[1]=IMG_Load("Pictures/Game/CellPic/.png");
+	pictures[1]=IMG_Load("Pictures/Game/CellPic/cellsnake.2.14.png");
 	pictures[2]=IMG_Load("Pictures/Game/CellPic/cellempty.14.png");
 	pictures[3]=IMG_Load("Pictures/Game/CellPic/celleat.14.png");
 	pictures[4]=IMG_Load("Pictures/Game/CellPic/cellwalldestructable.14.png");
@@ -78,5 +80,28 @@ int drawMap()
 			destination.y=j*pictures[map[i][j]]->h;
 			SDL_BlitSurface(pictures[map[i][j]],&source,screen,&destination);
 		}
+	return 0;
+}
+int drawBottom()
+{
+	int y=M*pictures[0]->h+5;
+	const short spaceBetween=3;
+	const short leftSpace=RESX / 2 - (numberOfPictures / 2)*(pictures[0]->w+spaceBetween) ;
+	for (int i=0;i<numberOfPictures;i++)
+	{
+		SDL_Rect source,destination;
+			source.x=0;
+			source.y=0;
+			source.h=pictures[i]->h;
+			source.w=pictures[i]->w;
+
+			destination.h=pictures[i]->h;
+			destination.w=pictures[i]->w;
+			
+			destination.x=leftSpace+i*(pictures[i]->w+spaceBetween);
+			destination.y=y;
+
+			SDL_BlitSurface(pictures[i],&source,screen,&destination);
+	}
 	return 0;
 }
