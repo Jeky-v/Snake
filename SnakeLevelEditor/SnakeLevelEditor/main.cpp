@@ -1,11 +1,15 @@
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
+
 SDL_Surface* screen;
-const int RESX=910,RESY=523;
+const int RESX=910,RESY=540;
 const short N=65,M=35;
 short map[N][M];
 const short numberOfPictures=9;
 SDL_Surface* pictures[numberOfPictures];
+SDL_Surface* bottomPicture;
+
 int loadPictures();
 int drawMap();
 int drawBottom();
@@ -60,6 +64,7 @@ int loadPictures()
 	pictures[6]=IMG_Load("Pictures/Game/CellPic/cellreverse.14.png");	
 	pictures[7]=IMG_Load("Pictures/Game/CellPic/cellteleport.14.png");
 	pictures[8]=IMG_Load("Pictures/Game/CellPic/celleatgenerator.14.png");
+	bottomPicture=IMG_Load("Pictures/Game/BottomPic/bottompicture.png");
 	return 0;
 }
 int drawMap()
@@ -85,22 +90,28 @@ int drawMap()
 int drawBottom()
 {
 	int y=M*pictures[0]->h+5;
-	const short spaceBetween=3;
+	const short spaceBetween=80;
 	const short leftSpace=RESX / 2 - (numberOfPictures / 2)*(pictures[0]->w+spaceBetween) ;
+	SDL_Rect source,destination;
+	source.x=0;
+	source.y=0;
+	source.h=bottomPicture->h;
+	source.w=bottomPicture->w;
+	destination.x=0;
+	destination.y=RESY-50;
+	destination.h=source.h;
+	destination.w=source.w;
+	SDL_BlitSurface(bottomPicture,&source,screen,&destination);
 	for (int i=0;i<numberOfPictures;i++)
 	{
-		SDL_Rect source,destination;
 			source.x=0;
 			source.y=0;
 			source.h=pictures[i]->h;
 			source.w=pictures[i]->w;
-
 			destination.h=pictures[i]->h;
 			destination.w=pictures[i]->w;
-			
 			destination.x=leftSpace+i*(pictures[i]->w+spaceBetween);
 			destination.y=y;
-
 			SDL_BlitSurface(pictures[i],&source,screen,&destination);
 	}
 	return 0;

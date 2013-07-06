@@ -67,8 +67,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\git\Snake\SnakeLevelEditor\SnakeLevelEditor\SDL\include;D:\git\Snake\SnakeLevelEditor\SnakeLevelEditor\SDL_IMAGE\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\git\Snake\SnakeLevelEditor\SnakeLevelEditor\SDL\lib\x64;D:\git\Snake\SnakeLevelEditor\SnakeLevelEditor\SDL_IMAGE\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\SnakeLevelEditor\SDL_TTF\include;..\SnakeLevelEditor\SDL\include\;..\SnakeLevelEditor\SDL_IMAGE\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>..\SnakeLevelEditor\SDL\lib\x64;..\SnakeLevelEditor\SDL_TTF\lib\x64\;..\SnakeLevelEditor\SDL_IMAGE\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -100,7 +100,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sdl.lib;sdlmain.lib;sdl_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sdl.lib;sdlmain.lib;sdl_image.lib;sdl_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
