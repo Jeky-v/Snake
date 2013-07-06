@@ -9,6 +9,7 @@ short map[N][M];
 const short numberOfPictures=9;
 SDL_Surface* pictures[numberOfPictures];
 SDL_Surface* bottomPicture;
+int currentCellType=5;
 
 int loadPictures();
 int drawMap();
@@ -22,7 +23,7 @@ int main(int argc, char** argv)
 	SDL_Event event;
 	
 	bool exit=false;
-
+	bool isMouseButtonPressed=false;
 	for (int i=0;i<N;i++)
 		for (int j=0;j<M;j++)
 			map[i][j]=4;
@@ -36,12 +37,41 @@ int main(int argc, char** argv)
 				case SDL_QUIT:
 				{
 					exit = true;
+					break;
 				}
+				case SDL_MOUSEBUTTONDOWN:
+				{
+					isMouseButtonPressed=true;
+					int i=event.motion.x/pictures[0]->w;
+					int j=event.motion.y/pictures[0]->h;
+					if (j>=M) break;
+					if (event.button.button==SDL_BUTTON_RIGHT) map[i][j]=0;//cell empty
+					if (event.button.button==SDL_BUTTON_LEFT)  map[i][j]=currentCellType;
+					break;
+				}
+				case SDL_MOUSEBUTTONUP:
+				{
+					isMouseButtonPressed=false;
+					break;
+				}
+				case SDL_MOUSEMOTION:
+				{
+					if (isMouseButtonPressed)
+					{
+						int i=event.motion.x/pictures[0]->w;
+						int j=event.motion.y/pictures[0]->h;
+						if (j>=M) break;
+						if (event.button.button==SDL_BUTTON_RIGHT) map[i][j]=0;//cell empty  don't work.
+						if (event.button.button==SDL_BUTTON_LEFT)  map[i][j]=currentCellType;
+					}
+					break;
+				}	
 				case SDL_KEYDOWN:
 				{
 					if ( event.key.keysym.sym == SDLK_ESCAPE ) 
 					{
 						exit=true;
+						break;
 					}	 
 				}
 			}

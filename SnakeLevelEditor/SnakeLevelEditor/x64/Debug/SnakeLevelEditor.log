@@ -1,21 +1,27 @@
-﻿Построение начато 7/6/2013 8:43:55 PM.
-     1>Проект "C:\Users\JEKY\Desktop\Snake\SnakeLevelEditor\SnakeLevelEditor\SnakeLevelEditor.vcxproj" в узле 2 (целевые объекты build).
+﻿Построение начато 06.07.2013 21:18:45.
+     1>Проект "D:\git\Snake\SnakeLevelEditor\SnakeLevelEditor\SnakeLevelEditor.vcxproj" в узле 2 (целевые объекты build).
      1>InitializeBuildStatus:
          Создание "x64\Debug\SnakeLevelEditor.unsuccessfulbuild", так как было задано "AlwaysCreate".
        ClCompile:
-         Для всех выходных данных обновления не требуется.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt main.cpp
+         main.cpp
        ManifestResourceCompile:
          Для всех выходных данных обновления не требуется.
        Link:
-         Для всех выходных данных обновления не требуется.
-         SnakeLevelEditor.vcxproj -> C:\Users\JEKY\Desktop\Snake\SnakeLevelEditor\x64\Debug\SnakeLevelEditor.exe
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\git\Snake\SnakeLevelEditor\x64\Debug\SnakeLevelEditor.exe" /INCREMENTAL /NOLOGO sdl.lib sdlmain.lib sdl_image.lib sdl_ttf.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"x64\Debug\SnakeLevelEditor.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\git\Snake\SnakeLevelEditor\x64\Debug\SnakeLevelEditor.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\git\Snake\SnakeLevelEditor\x64\Debug\SnakeLevelEditor.lib" /MACHINE:X64 x64\Debug\SnakeLevelEditor.exe.embed.manifest.res
+         x64\Debug\main.obj
+         SnakeLevelEditor.vcxproj -> D:\git\Snake\SnakeLevelEditor\x64\Debug\SnakeLevelEditor.exe
        Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"x64\Debug\SnakeLevelEditor.exe.embed.manifest" /manifest x64\Debug\SnakeLevelEditor.exe.intermediate.manifest
          Для всех выходных данных обновления не требуется.
+       LinkEmbedManifest:
+         Для всех выходных данных обновления не требуется.
+         SnakeLevelEditor.vcxproj -> D:\git\Snake\SnakeLevelEditor\x64\Debug\SnakeLevelEditor.exe
        FinalizeBuildStatus:
          Файл "x64\Debug\SnakeLevelEditor.unsuccessfulbuild" удаляется.
          Обращение к "x64\Debug\SnakeLevelEditor.lastbuildstate".
-     1>Построение проекта "C:\Users\JEKY\Desktop\Snake\SnakeLevelEditor\SnakeLevelEditor\SnakeLevelEditor.vcxproj" завершено (целевые объекты build).
+     1>Построение проекта "D:\git\Snake\SnakeLevelEditor\SnakeLevelEditor\SnakeLevelEditor.vcxproj" завершено (целевые объекты build).
 
 Построение успешно завершено.
 
-Затраченное время: 00:00:00.07
+Затраченное время: 00:00:01.68
