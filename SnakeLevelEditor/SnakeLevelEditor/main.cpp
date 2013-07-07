@@ -23,10 +23,12 @@ int main(int argc, char** argv)
 	SDL_Event event;
 	
 	bool exit=false;
-	bool isMouseButtonPressed=false;
+	bool isRightMBPressed=false;
+	bool isLeftMBPressed=false;
+
 	for (int i=0;i<N;i++)
 		for (int j=0;j<M;j++)
-			map[i][j]=4;
+			map[i][j]=2;
 
 	while(!exit)
 	{
@@ -41,38 +43,62 @@ int main(int argc, char** argv)
 				}
 				case SDL_MOUSEBUTTONDOWN:
 				{
-					isMouseButtonPressed=true;
 					int i=event.motion.x/pictures[0]->w;
 					int j=event.motion.y/pictures[0]->h;
-					if (j>=M) break;
-					if (event.button.button==SDL_BUTTON_RIGHT) map[i][j]=0;//cell empty
-					if (event.button.button==SDL_BUTTON_LEFT)  map[i][j]=currentCellType;
-					break;
-				}
-				case SDL_MOUSEBUTTONUP:
-				{
-					isMouseButtonPressed=false;
+					if (j>=M) break;				
+					if (event.button.button==SDL_BUTTON_LEFT)  
+					{
+						isLeftMBPressed=true;
+						map[i][j]=currentCellType;
+						printf("Pressed LEFT mouse button\n");
+					}
+					if (event.button.button==SDL_BUTTON_RIGHT) 
+					{
+						isRightMBPressed=true;
+						map[i][j]=2;//cell empty
+						printf("Pressed RIGHT mouse button\n");
+					}
 					break;
 				}
 				case SDL_MOUSEMOTION:
 				{
-					if (isMouseButtonPressed)
+					if (isRightMBPressed||isLeftMBPressed)
 					{
 						int i=event.motion.x/pictures[0]->w;
 						int j=event.motion.y/pictures[0]->h;
 						if (j>=M) break;
-						if (event.button.button==SDL_BUTTON_RIGHT) map[i][j]=0;//cell empty  don't work.
-						if (event.button.button==SDL_BUTTON_LEFT)  map[i][j]=currentCellType;
+						if (isLeftMBPressed) 
+						{
+							map[i][j]=currentCellType;
+							printf("Move with LEFT button pressed\n");
+						}
+						if (isRightMBPressed)  
+						{
+							map[i][j]=2;
+							printf("Move with RIGHT button pressed\n");
+						}
 					}
 					break;
 				}	
+				case SDL_MOUSEBUTTONUP:
+				{
+					if(event.button.button==SDL_BUTTON_LEFT)
+					{
+						isLeftMBPressed=false;
+					}
+					if(event.button.button==SDL_BUTTON_RIGHT)
+					{
+						isRightMBPressed=false;
+					}
+					break;
+				}
 				case SDL_KEYDOWN:
 				{
 					if ( event.key.keysym.sym == SDLK_ESCAPE ) 
 					{
 						exit=true;
 						break;
-					}	 
+					}
 				}
 			}
 			drawMap();
