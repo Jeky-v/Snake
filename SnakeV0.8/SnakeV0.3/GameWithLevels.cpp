@@ -343,7 +343,7 @@ void GameWithLevels::DrawTop()
 void GameWithLevels::LoadMap()
 {
 	int snakeDirection;
-	ifstream in("Levels\\1.txt",ios::binary|ios::in);
+	ifstream in("Levels\\level.txt",ios::binary|ios::in);
 	in.read((char*)&snakeDirection,sizeof(snakeDirection));
 	int snakeCellX[3];
 	int snakeCellY[3];
@@ -366,6 +366,7 @@ void GameWithLevels::LoadMap()
 			{
 				case 0:{global_map[i][j]=new CellEmpty; cout<< typeOfCell; break;}
 				case 2:{global_map[i][j]=new CellReverse; cout<< typeOfCell; break;}
+				case 5:{global_map[i][j]=new CellWallUndestructable; cout<< typeOfCell; break;} 
 				default: {cout << "Weird type of cell, program has been stoped."; exit(4);}
 			}
 		}

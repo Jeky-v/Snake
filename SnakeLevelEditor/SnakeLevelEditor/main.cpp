@@ -1,22 +1,25 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
-
+#include <iostream>
+#include <fstream>
+using namespace std;
 SDL_Surface* screen;
 const int RESX=910,RESY=540;
 const short N=65,M=35;
-short map[N][M];
+int map[N][M];
+int currentCellType=5;
 const short numberOfPictures=9;
+
 SDL_Surface* pictures[numberOfPictures];
 SDL_Surface* bottomPicture;
 SDL_Surface* menuPicture;
-
-int currentCellType=5;
 
 int loadResources();
 void freeResources();
 int drawMap();
 int drawBottom();
+int writeToFile();
 void drawText(int x, int y, char* inputText, int size, int R, int G, int B);
 int main(int argc, char** argv)
 {
@@ -107,6 +110,7 @@ int main(int argc, char** argv)
 		}
 	}
 	freeResources();
+	writeToFile();
 	SDL_Quit();
 	return 0;
 }
@@ -208,3 +212,38 @@ void drawText(int x, int y, char* inputText, int size, int R, int G, int B)
 	SDL_FreeSurface(blended_m);
 	TTF_CloseFont(font);
 }
+
+int writeToFile()
+{
+	ofstream out("level.txt",ios::binary|ios::out);
+
+	int snakeDirection=2;
+	out.write((char*)&snakeDirection,sizeof(snakeDirection));
+	int snakeCellX=45, snakeCellY=15;
+	//=============================================
+	out.write((char*)&snakeCellX,sizeof(snakeCellX));
+	out.write((char*)&snakeCellY,sizeof(snakeCellY));
+	snakeCellX=46;
+	snakeCellY=15;
+	out.write((char*)&snakeCellX,sizeof(snakeCellX));
+	out.write((char*)&snakeCellY,sizeof(snakeCellY));
+	snakeCellX=47;
+	snakeCellY=15;
+	out.write((char*)&snakeCellX,sizeof(snakeCellX));
+	out.write((char*)&snakeCellY,sizeof(snakeCellY));
+	//===========================temprorary========
+
+	for (int i=0;i<N;i++)
+	{
+		for(int j=0;j<M;j++)
+		{
+			 out.write((char*)&map[i][j],sizeof(map[i][j]));
+			 cout << map[i][j];
+		}
+	}
+	int zero=0;
+	out.write((char*)&zero,sizeof(zero));
+	cin >> zero;
+	out.close(); 
+	return 0;
+}	
