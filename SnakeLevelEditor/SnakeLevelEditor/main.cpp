@@ -1,6 +1,6 @@
 #include <SDL.h>
-#include <SDL_image.h>
 #include <SDL_ttf.h>
+#include <SDL_image.h>
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -12,18 +12,23 @@ int currentCellType=5;
 const short numberOfPictures=9;
 
 SDL_Surface* pictures[numberOfPictures];
+SDL_Surface* textPictures[numberOfPictures];
 SDL_Surface* bottomPicture;
 SDL_Surface* menuPicture;
+TTF_Font* mainFont;
 
-int loadResources();
+void loadResources();
 void freeResources();
-int drawMap();
-int drawBottom();
-int writeToFile();
-void drawText(int x, int y, char* inputText, int size, int R, int G, int B);
+void drawMap();
+void drawBottom();
+void drawCellsMenu();
+void writeToFile();
+void drawText(int x, int y, char* inputText, int R, int G, int B);
+
 int main(int argc, char** argv)
 {
 	SDL_Init(SDL_INIT_VIDEO);
+	TTF_Init();
 	screen=SDL_SetVideoMode(RESX,RESY,32,SDL_HWSURFACE|SDL_DOUBLEBUF);
 	loadResources();
 
@@ -32,6 +37,7 @@ int main(int argc, char** argv)
 	bool exit=false;
 	bool isRightMBPressed=false;
 	bool isLeftMBPressed=false;
+	bool drawMenu=true;
 
 	for (int i=0;i<N;i++)
 		for (int j=0;j<M;j++)
@@ -106,15 +112,20 @@ int main(int argc, char** argv)
 			}
 			drawMap();
 			drawBottom();
+			if(drawMenu)
+			{
+				drawCellsMenu();
+			}
 			SDL_Flip(screen);
 		}
 	}
 	freeResources();
 	writeToFile();
+	TTF_Quit();
 	SDL_Quit();
 	return 0;
 }
-int loadResources()
+void loadResources()
 {	
 	pictures[0]=IMG_Load("Pictures/CellPic/cellsnake.1.14.png");
 	pictures[1]=IMG_Load("Pictures/CellPic/cellsnake.2.14.png");
@@ -127,18 +138,31 @@ int loadResources()
 	pictures[8]=IMG_Load("Pictures/CellPic/celleatgenerator.14.png");
 	bottomPicture=IMG_Load("Pictures/Interface/bottompicture.png");
 	menuPicture=IMG_Load("Pictures/Interface/menuPicture.png");
-	return 0;
+
+	mainFont=TTF_OpenFont("Fonts/arial.ttf",20);
+	SDL_Color textColor={255,255,255};
+	textPictures[0]=TTF_RenderUTF8_Blended(mainFont,"Snake1",textColor);
+	textPictures[1]=TTF_RenderUTF8_Blended(mainFont,"Snake2",textColor);
+	textPictures[2]=TTF_RenderUTF8_Blended(mainFont,"Empty Cell",textColor);
+	textPictures[3]=TTF_RenderUTF8_Blended(mainFont,"Eat",textColor);
+	textPictures[4]=TTF_RenderUTF8_Blended(mainFont,"Destructable Wall",textColor);
+	textPictures[5]=TTF_RenderUTF8_Blended(mainFont,"Undestructable Wall",textColor);
+	textPictures[6]=TTF_RenderUTF8_Blended(mainFont,"Reverse Cell",textColor);
+	textPictures[7]=TTF_RenderUTF8_Blended(mainFont,"Teleport",textColor);
+	textPictures[8]=TTF_RenderUTF8_Blended(mainFont,"Eat Generator",textColor);
 }
 void freeResources()
 {
 	for(int i=0;i<9;i++)
 	{
 		SDL_FreeSurface(pictures[i]);
+		SDL_FreeSurface(textPictures[i]);
 	}
 	SDL_FreeSurface(bottomPicture);
 	SDL_FreeSurface(menuPicture);
+	TTF_CloseFont(mainFont);
 }
-int drawMap()
+void drawMap()
 {
 	for (int i=0;i<N;i++)
 		for (int j=0;j<M;j++)
@@ -156,13 +180,9 @@ int drawMap()
 			destination.y=j*pictures[map[i][j]]->h;
 			SDL_BlitSurface(pictures[map[i][j]],&source,screen,&destination);
 		}
-	return 0;
 }
-int drawBottom()
+void drawBottom()
 {
-	int y=M*pictures[0]->h+5;
-	const short spaceBetween=80;
-	const short leftSpace=RESX / 2 - (numberOfPictures / 2)*(pictures[0]->w+spaceBetween) ;
 	SDL_Rect source,destination;
 	source.x=0;
 	source.y=0;
@@ -173,31 +193,76 @@ int drawBottom()
 	destination.h=source.h;
 	destination.w=source.w;
 	SDL_BlitSurface(bottomPicture,&source,screen,&destination);
-	for (int i=0;i<numberOfPictures;i++)
-	{
-			source.x=0;
-			source.y=0;
-			source.h=pictures[i]->h;
-			source.w=pictures[i]->w;
-			destination.h=pictures[i]->h;
-			destination.w=pictures[i]->w;
-			destination.x=leftSpace+i*(pictures[i]->w+spaceBetween);
-			destination.y=y;
-			SDL_BlitSurface(pictures[i],&source,screen,&destination);
-	}
-	return 0;
+
+	int bottomTab=20;
+	int middleX=RESX/2;
+
+	source.h=pictures[currentCellType]->h;
+	source.w=pictures[currentCellType]->w;
+	destination.x=middleX-(pictures[currentCellType]->w+textPictures[currentCellType]->w)/2-8;
+	destination.y=RESY-bottomTab-pictures[currentCellType]->h;
+	destination.h=source.h;
+	destination.w=source.w;
+	SDL_BlitSurface(pictures[currentCellType],&source,screen,&destination);
+
+	source.h=textPictures[currentCellType]->h;
+	source.w=textPictures[currentCellType]->w;
+	destination.x=middleX-(textPictures[currentCellType]->w)/2+8;
+	destination.y=RESY-bottomTab-textPictures[currentCellType]->h+5;
+	destination.h=source.h;
+	destination.w=source.w;
+	SDL_BlitSurface(textPictures[currentCellType],&source,screen,&destination);
 }
-void drawText(int x, int y, char* inputText, int size, int R, int G, int B)
+void drawCellsMenu()
 {
-	TTF_Font* font=0;
-	font=TTF_OpenFont("SnakeLevelEditor/Fonts/komika.ttf",size);
-	if(font==NULL)
+	int middleX=RESX/2;
+	int menuY=80;
+
+	SDL_Rect source, destination;
+	source.x=0;
+	source.y=0;
+	source.h=menuPicture->h;
+	source.w=menuPicture->w;
+	destination.x=middleX-menuPicture->w/2;
+	destination.y=menuY;
+	destination.h=source.h;
+	destination.w=source.w;
+	SDL_BlitSurface(menuPicture,&source,screen,&destination);
+	
+	int leftTab=20; //Length between left edge menu picture and picture of cells
+	int topTab=20; //Length between top edge menu picture and picture of first cell
+	int betweenTab=20;
+	source.h=pictures[0]->h;
+	source.w=pictures[0]->w;
+	destination.h=source.h;
+	destination.w=source.w;
+	destination.x=middleX-menuPicture->w/2+leftTab;
+	for(int i=0;i<numberOfPictures;i++)
 	{
-		printf("Error: Font not loaded!\n");
+		destination.y=menuY+topTab+i*(pictures[0]->h+betweenTab);
+		SDL_BlitSurface(pictures[i],&source,screen,&destination);
 	}
-	SDL_Color text_color = {R,G,B};
-    char* text = inputText; 
-    SDL_Surface* blended_m = TTF_RenderUTF8_Blended(font, text, text_color);
+
+	source.h=textPictures[0]->h;
+	destination.h=source.h;
+	destination.x=middleX-menuPicture->w/2+leftTab+20;
+	for(int i=0;i<numberOfPictures;i++)
+	{
+		source.w=textPictures[i]->w;
+		destination.w=source.w;
+		destination.y=menuY+topTab+i*(pictures[0]->h+betweenTab)+pictures[0]->h-textPictures[0]->h+5;
+		SDL_BlitSurface(textPictures[i],&source,screen,&destination);
+	}
+
+}
+void drawText(int x, int y, char* inputText, int R, int G, int B)
+{
+	SDL_Color textColor = {R,G,B};
+	if(mainFont==NULL)
+	{
+		printf("%s \n",TTF_GetError());
+	}
+    SDL_Surface* blended_m = TTF_RenderUTF8_Blended(mainFont, inputText, textColor);
 	SDL_Rect dst;
     dst.x = x;
 	dst.y = y;
@@ -210,10 +275,8 @@ void drawText(int x, int y, char* inputText, int size, int R, int G, int B)
 	src.h=dst.h;
 	SDL_BlitSurface(blended_m,&src,screen,&dst);
 	SDL_FreeSurface(blended_m);
-	TTF_CloseFont(font);
 }
-
-int writeToFile()
+void writeToFile()
 {
 	ofstream out("level.txt",ios::binary|ios::out);
 
@@ -238,12 +301,11 @@ int writeToFile()
 		for(int j=0;j<M;j++)
 		{
 			 out.write((char*)&map[i][j],sizeof(map[i][j]));
-			 cout << map[i][j];
+			 //cout << map[i][j];
 		}
 	}
 	int zero=0;
 	out.write((char*)&zero,sizeof(zero));
-	cin >> zero;
+	//cin >> zero;
 	out.close(); 
-	return 0;
 }	

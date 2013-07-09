@@ -343,7 +343,7 @@ void GameWithLevels::DrawTop()
 void GameWithLevels::LoadMap()
 {
 	int snakeDirection;
-	ifstream in("Levels\\level.txt",ios::binary|ios::in);
+	ifstream in("Levels\\1.txt",ios::binary|ios::in);
 	in.read((char*)&snakeDirection,sizeof(snakeDirection));
 	int snakeCellX[3];
 	int snakeCellY[3];
