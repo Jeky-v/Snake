@@ -8,7 +8,8 @@ SDL_Surface* screen;
 const int RESX=910,RESY=540;
 const short N=65,M=35;
 int map[N][M];
-int currentCellType=5;
+int currentCellType=4;
+//0-Snake1//1-Snake2//2-CellEmpty//3-CellWallDestructible//4CellWallUnDestructible//5-CellReverse//6-CellTeleport//7-CellEatGenerator
 const short numberOfPictures=9;
 
 SDL_Surface* pictures[numberOfPictures];

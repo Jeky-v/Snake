@@ -1,5 +1,5 @@
-﻿Построение начато 7/9/2013 4:07:32 PM.
-     1>Проект "C:\Users\JEKY\Desktop\Snake\SnakeV0.8\SnakeV0.3\SnakeV0.3.vcxproj" в узле 2 (целевые объекты build).
+﻿Построение начато 09.07.2013 18:38:05.
+     1>Проект "D:\git\Snake\SnakeV0.8\SnakeV0.3\SnakeV0.3.vcxproj" в узле 2 (целевые объекты build).
      1>InitializeBuildStatus:
          Создание "x64\Debug\SnakeV0.8.unsuccessfulbuild", так как было задано "AlwaysCreate".
        ClCompile:
@@ -8,14 +8,14 @@
          Для всех выходных данных обновления не требуется.
        Link:
          Для всех выходных данных обновления не требуется.
-         SnakeV0.3.vcxproj -> C:\Users\JEKY\Desktop\Snake\SnakeV0.8\x64\Debug\SnakeV0.8.exe
+         SnakeV0.3.vcxproj -> D:\git\Snake\SnakeV0.8\x64\Debug\SnakeV0.8.exe
        Manifest:
          Для всех выходных данных обновления не требуется.
        FinalizeBuildStatus:
          Файл "x64\Debug\SnakeV0.8.unsuccessfulbuild" удаляется.
          Обращение к "x64\Debug\SnakeV0.8.lastbuildstate".
-     1>Построение проекта "C:\Users\JEKY\Desktop\Snake\SnakeV0.8\SnakeV0.3\SnakeV0.3.vcxproj" завершено (целевые объекты build).
+     1>Построение проекта "D:\git\Snake\SnakeV0.8\SnakeV0.3\SnakeV0.3.vcxproj" завершено (целевые объекты build).
 
 Построение успешно завершено.
 
-Затраченное время: 00:00:00.18
+Затраченное время: 00:00:00.13

@@ -343,7 +343,7 @@ void GameWithLevels::DrawTop()
 void GameWithLevels::LoadMap()
 {
 	int snakeDirection;
-	ifstream in("Levels\\1.txt",ios::binary|ios::in);
+	ifstream in("Levels\\level.txt",ios::binary|ios::in);
 	in.read((char*)&snakeDirection,sizeof(snakeDirection));
 	int snakeCellX[3];
 	int snakeCellY[3];
@@ -364,9 +364,16 @@ void GameWithLevels::LoadMap()
 			cout<< typeOfCell;
 			switch (typeOfCell)
 			{
-				case 0:{global_map[i][j]=new CellEmpty; cout<< typeOfCell; break;}
-				case 2:{global_map[i][j]=new CellReverse; cout<< typeOfCell; break;}
-				case 5:{global_map[i][j]=new CellWallUndestructable; cout<< typeOfCell; break;} 
+				
+				//0-Snake1//1-Snake2//2-CellEmpty//3-CellWallDestructible//4CellWallUnDestructible//5-CellReverse//6-CellTeleport//7-CellEatGenerator
+				case 0:
+				case 1:{global_map[i][j]=new CellSnake; cout<< typeOfCell; break;}
+				case 2:{global_map[i][j]=new CellEmpty; cout<< typeOfCell; break;}
+				case 3:{global_map[i][j]=new CellWallDestructable; cout<< typeOfCell; break;}
+				case 4:{global_map[i][j]=new CellWallUndestructable; cout<< typeOfCell; break;}
+				case 5:{global_map[i][j]=new CellReverse; cout<< typeOfCell; break;}
+				case 6:{global_map[i][j]=new CellTeleport; cout<< typeOfCell; break;}
+				case 7:{global_map[i][j]=new CellEatGenerator; cout<< typeOfCell; break;}
 				default: {cout << "Weird type of cell, program has been stoped."; exit(4);}
 			}
 		}
