@@ -9,13 +9,14 @@ const int RESX=910,RESY=540;
 const short N=65,M=35;
 int map[N][M];
 int currentCellType=4;
-//0-Snake1//1-Snake2//2-CellEmpty//3-CellWallDestructible//4CellWallUnDestructible//5-CellReverse//6-CellTeleport//7-CellEatGenerator
+//0-Snake1//1-Snake2//2-CellEmpty//3-CellWallDestructable//4-CellWallUnDestructable//5-CellReverse//6-CellTeleport//7-CellEatGenerator//8-CellEat
 const short numberOfPictures=9;
 
 SDL_Surface* pictures[numberOfPictures];
 SDL_Surface* textPictures[numberOfPictures];
 SDL_Surface* bottomPicture;
 SDL_Surface* menuPicture;
+SDL_Surface* framePicture;
 TTF_Font* mainFont;
 
 void loadResources();
@@ -131,14 +132,16 @@ void loadResources()
 	pictures[0]=IMG_Load("Pictures/CellPic/cellsnake.1.14.png");
 	pictures[1]=IMG_Load("Pictures/CellPic/cellsnake.2.14.png");
 	pictures[2]=IMG_Load("Pictures/CellPic/cellempty.14.png");
-	pictures[3]=IMG_Load("Pictures/CellPic/celleat.14.png");
-	pictures[4]=IMG_Load("Pictures/CellPic/cellwalldestructable.14.png");
-	pictures[5]=IMG_Load("Pictures/CellPic/cellwallundestructable.14.png");
-	pictures[6]=IMG_Load("Pictures/CellPic/cellreverse.14.png");	
-	pictures[7]=IMG_Load("Pictures/CellPic/cellteleport.14.png");
-	pictures[8]=IMG_Load("Pictures/CellPic/celleatgenerator.14.png");
+	pictures[3]=IMG_Load("Pictures/CellPic/cellwalldestructable.14.png");
+	pictures[4]=IMG_Load("Pictures/CellPic/cellwallundestructable.14.png");
+	pictures[5]=IMG_Load("Pictures/CellPic/cellreverse.14.png");	
+	pictures[6]=IMG_Load("Pictures/CellPic/cellteleport.14.png");
+	pictures[7]=IMG_Load("Pictures/CellPic/celleatgenerator.14.png");
+	pictures[8]=IMG_Load("Pictures/CellPic/celleat.14.png");
+
 	bottomPicture=IMG_Load("Pictures/Interface/bottompicture.png");
 	menuPicture=IMG_Load("Pictures/Interface/menuPicture.png");
+	framePicture=IMG_Load("Pictures/Interface/framePicture.png");
 
 	mainFont=TTF_OpenFont("Fonts/arial.ttf",20);
 	SDL_Color textColor={255,255,255};
@@ -161,6 +164,7 @@ void freeResources()
 	}
 	SDL_FreeSurface(bottomPicture);
 	SDL_FreeSurface(menuPicture);
+	SDL_FreeSurface(framePicture);
 	TTF_CloseFont(mainFont);
 }
 void drawMap()
@@ -230,8 +234,8 @@ void drawCellsMenu()
 	destination.w=source.w;
 	SDL_BlitSurface(menuPicture,&source,screen,&destination);
 	
-	int leftTab=20; //Length between left edge menu picture and picture of cells
-	int topTab=20; //Length between top edge menu picture and picture of first cell
+	int leftTab=50; //Length between left edge menu picture and picture of cells
+	int topTab=40; //Length between top edge menu picture and picture of first cell
 	int betweenTab=20;
 	source.h=pictures[0]->h;
 	source.w=pictures[0]->w;
@@ -254,7 +258,14 @@ void drawCellsMenu()
 		destination.y=menuY+topTab+i*(pictures[0]->h+betweenTab)+pictures[0]->h-textPictures[0]->h+5;
 		SDL_BlitSurface(textPictures[i],&source,screen,&destination);
 	}
-
+	
+	source.h=framePicture->h;
+	source.w=framePicture->w;
+	destination.h=source.h;
+	destination.w=source.w;
+	destination.x=middleX-menuPicture->w/2+20;
+	destination.y=menuY+topTab+currentCellType*(pictures[0]->h+betweenTab)-10;
+	SDL_BlitSurface(framePicture,&source,screen,&destination);
 }
 void drawText(int x, int y, char* inputText, int R, int G, int B)
 {

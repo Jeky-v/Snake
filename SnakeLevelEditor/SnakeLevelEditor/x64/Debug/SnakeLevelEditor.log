@@ -1,21 +1,29 @@
-﻿Построение начато 09.07.2013 18:38:57.
-     1>Проект "D:\git\Snake\SnakeLevelEditor\SnakeLevelEditor\SnakeLevelEditor.vcxproj" в узле 2 (целевые объекты build).
+﻿Построение начато 7/12/2013 5:08:16 PM.
+     1>Проект "C:\Users\JEKY\Desktop\Snake\SnakeLevelEditor\SnakeLevelEditor\SnakeLevelEditor.vcxproj" в узле 2 (целевые объекты build).
      1>InitializeBuildStatus:
          Создание "x64\Debug\SnakeLevelEditor.unsuccessfulbuild", так как было задано "AlwaysCreate".
        ClCompile:
-         Для всех выходных данных обновления не требуется.
-       ManifestResourceCompile:
-         Для всех выходных данных обновления не требуется.
-       Link:
-         Для всех выходных данных обновления не требуется.
-         SnakeLevelEditor.vcxproj -> D:\git\Snake\SnakeLevelEditor\x64\Debug\SnakeLevelEditor.exe
-       Manifest:
-         Для всех выходных данных обновления не требуется.
-       FinalizeBuildStatus:
-         Файл "x64\Debug\SnakeLevelEditor.unsuccessfulbuild" удаляется.
-         Обращение к "x64\Debug\SnakeLevelEditor.lastbuildstate".
-     1>Построение проекта "D:\git\Snake\SnakeLevelEditor\SnakeLevelEditor\SnakeLevelEditor.vcxproj" завершено (целевые объекты build).
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt main.cpp MenuButton.cpp
+         MenuButton.cpp
+     1>c:\users\jeky\desktop\snake\snakeleveleditor\snakeleveleditor\MenuButton.h(15): error C2236: непредвиденные "class" "MenuButton". Возможно, отсутствует ";"
+     1>c:\users\jeky\desktop\snake\snakeleveleditor\snakeleveleditor\MenuButton.h(15): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+     1>c:\users\jeky\desktop\snake\snakeleveleditor\snakeleveleditor\MenuButton.h(15): error C2447: {: отсутствует заголовок функции (возможно, используется формальный список старого типа)
+     1>MenuButton.cpp(3): error C2653: MenuButton: не является именем класса или пространства имен
+     1>MenuButton.cpp(4): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+     1>MenuButton.cpp(6): warning C4508: MenuButton: функция должна возвращать значение; предполагается возвращаемый тип "void"
+     1>MenuButton.cpp(7): error C2653: MenuButton: не является именем класса или пространства имен
+     1>MenuButton.cpp(8): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+     1>MenuButton.cpp(10): warning C4508: MenuButton: функция должна возвращать значение; предполагается возвращаемый тип "void"
+     1>MenuButton.cpp(11): error C2653: MenuButton: не является именем класса или пространства имен
+     1>MenuButton.cpp(12): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+     1>MenuButton.cpp(14): warning C4508: isCursorHere: функция должна возвращать значение; предполагается возвращаемый тип "void"
+     1>MenuButton.cpp(15): error C2653: MenuButton: не является именем класса или пространства имен
+     1>MenuButton.cpp(16): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+     1>MenuButton.cpp(18): warning C4508: setPicture: функция должна возвращать значение; предполагается возвращаемый тип "void"
+         main.cpp
+         Generating Code...
+     1>Построение проекта "C:\Users\JEKY\Desktop\Snake\SnakeLevelEditor\SnakeLevelEditor\SnakeLevelEditor.vcxproj" завершено (целевые объекты build) с ошибкой.
 
-Построение успешно завершено.
+СБОЙ построения.
 
-Затраченное время: 00:00:00.20
+Затраченное время: 00:00:01.20
