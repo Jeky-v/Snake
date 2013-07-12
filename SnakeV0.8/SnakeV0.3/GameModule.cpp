@@ -1,8 +1,38 @@
 #include "GameModule.h"
 #include "GlobalVariables.h"
-
-void GameModule::Pause()
+#include "ModuleName.h"
+void GameModule::doPause()
 {
+	SDL_Event event;
+	bool runPause=true;
+	while(runPause)
+	{
+		if(SDL_WaitEvent(&event))
+		{
+		 
+			switch(event.type)
+			{
+				case SDL_QUIT:
+				{
+					exit(0);
+					break;
+				}
+				case SDL_KEYDOWN:
+				{
+					if ( event.key.keysym.sym == SDLK_ESCAPE ) 
+					{
+						m_mgr->SetActiveModule(MAINMENU);
+						runPause=false;
+					}	 
+					if ( event.key.keysym.sym == SDLK_p || event.key.keysym.sym == SDLK_SPACE) 
+					{
+						runPause=false;
+					} 
+					break;
+				}
+			}
+		}
+	}
 }
 void GameModule::DrawField()
 {

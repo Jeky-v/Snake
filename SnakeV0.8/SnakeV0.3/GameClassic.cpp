@@ -79,6 +79,10 @@ bool GameClassic::doRun()
 					m_mgr->SetActiveModule(MAINMENU);
 					return true;
 				} 
+				if ( event.key.keysym.sym == SDLK_p || event.key.keysym.sym == SDLK_SPACE) 
+				{
+					doPause();
+				} 
 				if ( event.key.keysym.sym == SDLK_UP && snake->GetDirection()!=Down) 
 				{
 					snake->SetDirection(Up);

@@ -72,6 +72,10 @@ bool GameTwoPlayers::doRun()
 					m_mgr->SetActiveModule(MAINMENU);
 					return true;
 				} 
+				if ( event.key.keysym.sym == SDLK_p || event.key.keysym.sym == SDLK_SPACE) 
+				{
+					doPause();
+				} 
 				if ( event.key.keysym.sym == SDLK_UP && snake1->GetDirection()!=Down) 
 				{
 					snake1->SetDirection(Up);

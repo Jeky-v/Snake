@@ -221,8 +221,6 @@ void GameWithLevels::doInit()
 	CellConnectionTeleport* teleportConnection=new CellConnectionTeleport;
 	global_map[40][60]->setConnection(teleportConnection,40,60);
 	global_map[17][4]->setConnection(teleportConnection,17,4);
-	
-
 	// end initialize
 
 }
@@ -230,8 +228,10 @@ void GameWithLevels::doInit()
 bool GameWithLevels::doRun()
 {
 	SDL_Event event;
+	
 	if(SDL_PollEvent(&event))
 	{
+	 
 		switch(event.type)
 		{
 			case SDL_QUIT:
@@ -245,6 +245,10 @@ bool GameWithLevels::doRun()
 				{
 					m_mgr->SetActiveModule(MAINMENU);
 					return true;
+				} 
+				if ( event.key.keysym.sym == SDLK_p || event.key.keysym.sym == SDLK_SPACE) 
+				{
+					doPause();
 				} 
 				if ( event.key.keysym.sym == SDLK_UP && snake->GetDirection()!=Down) 
 				{
@@ -267,21 +271,20 @@ bool GameWithLevels::doRun()
 		}
 
 	}
+	
 	if(snake->Move())
-	{
+	{	
 		Converter.Convert();
-		DrawField();
-		DrawTop();
 		SDL_Delay(50);
 	}
 	else
 	{
 		Converter.Convert();
-		DrawField();
-		DrawTop();
 		GameOver();
 	}
 	
+		DrawField();
+		DrawTop();
 	return true;
 }
 
