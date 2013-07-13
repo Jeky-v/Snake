@@ -23,10 +23,10 @@ void loadResources();
 void freeResources();
 void drawMap();
 void drawBottom();
-void drawCellsMenu();
+void drawCellsMenu(int,int,int,int);
 void writeToFile();
 void drawText(int x, int y, char* inputText, int R, int G, int B);
-
+void processMenuControls();
 int main(int argc, char** argv)
 {
 	SDL_Init(SDL_INIT_VIDEO);
@@ -58,6 +58,12 @@ int main(int argc, char** argv)
 				}
 				case SDL_MOUSEBUTTONDOWN:
 				{
+					int b=event.motion.x;
+					int c=event.motion.y;
+					int middleX=RESX / 2;
+					int leftEdge=middleX-(pictures[currentCellType]->w+textPictures[currentCellType]->w)/2-8;
+					int rightEdge=middleX+(pictures[currentCellType]->w+textPictures[currentCellType]->w)/2-8;
+					if (event.motion.y>(RESY-50) && event.motion.y<RESY && event.motion.x>leftEdge && event.motion.x<rightEdge)  processMenuControls();
 					int i=event.motion.x/pictures[0]->w;
 					int j=event.motion.y/pictures[0]->h;
 					if (j>=M) break;				
@@ -114,10 +120,12 @@ int main(int argc, char** argv)
 			}
 			drawMap();
 			drawBottom();
-			if(drawMenu)
-			{
-				drawCellsMenu();
-			}
+			/*if(drawMenu)
+			 *{
+			 *	//drawCellsMenu();
+			 *	processMenuControls();
+			 * }
+			 */
 			SDL_Flip(screen);
 		}
 	}
@@ -218,10 +226,10 @@ void drawBottom()
 	destination.w=source.w;
 	SDL_BlitSurface(textPictures[currentCellType],&source,screen,&destination);
 }
-void drawCellsMenu()
+void drawCellsMenu(int menuY,int leftTab,int topTab,int betweenTab)
 {
 	int middleX=RESX/2;
-	int menuY=80;
+	
 
 	SDL_Rect source, destination;
 	source.x=0;
@@ -234,9 +242,11 @@ void drawCellsMenu()
 	destination.w=source.w;
 	SDL_BlitSurface(menuPicture,&source,screen,&destination);
 	
-	int leftTab=50; //Length between left edge menu picture and picture of cells
-	int topTab=40; //Length between top edge menu picture and picture of first cell
-	int betweenTab=20;
+	/*
+	 * leftTab=50; //Length between left edge menu picture and picture of cells
+	 * topTab=40; //Length between top edge menu picture and picture of first cell
+	 * betweenTab=20;
+	 */
 	source.h=pictures[0]->h;
 	source.w=pictures[0]->w;
 	destination.h=source.h;
@@ -251,7 +261,7 @@ void drawCellsMenu()
 	source.h=textPictures[0]->h;
 	destination.h=source.h;
 	destination.x=middleX-menuPicture->w/2+leftTab+20;
-	for(int i=0;i<numberOfPictures;i++)
+	for (int i=0;i<numberOfPictures;i++)
 	{
 		source.w=textPictures[i]->w;
 		destination.w=source.w;
@@ -321,3 +331,53 @@ void writeToFile()
 	//cin >> zero;
 	out.close(); 
 }	
+void processMenuControls()
+{
+	int leftTab, topTab, betweenTab;
+	leftTab=50; //Length between left edge menu picture and picture of cells
+	topTab=40; //Length between top edge menu picture and picture of first cell
+	betweenTab=20;
+	int menuY=80;
+
+	drawCellsMenu(menuY, leftTab, topTab, betweenTab);
+	SDL_Flip(screen);
+
+	SDL_Event event;
+	bool run = true;
+	while(run)
+	{
+		if (SDL_WaitEvent(&event))
+		{
+			switch(event.type)
+			{
+				case SDL_QUIT:
+				{
+					exit(0);
+					break;
+				}
+				case SDL_KEYDOWN:
+				{
+					if ( event.key.keysym.sym == SDLK_ESCAPE ) 
+					{
+						run = false;
+						break;
+					}
+				}
+				case SDL_MOUSEBUTTONDOWN:
+				{
+					int mx=event.motion.x;
+					int my=event.motion.y;
+					bool a=event.motion.x < (RESX / 2 - menuPicture->w / 2);
+					bool b=event.motion.x > (RESX / 2 + menuPicture->w / 2);
+					bool d=event.motion.y < menuY;
+					bool c=event.motion.y > (menuY + menuPicture->h);
+					if ( event.motion.x < (RESX / 2 - menuPicture->w / 2) ||  event.motion.x > (RESX / 2 + menuPicture->w / 2) || 
+						event.motion.y < menuY || event.motion.y > (menuY + menuPicture->h)) run=false;
+					break;
+				}
+				
+			}
+		}
+		
+	}
+}
