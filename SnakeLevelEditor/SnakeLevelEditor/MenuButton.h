@@ -10,7 +10,7 @@ struct Point
 		x=newX;
 		y=newY;
 	}
-}
+};
 class MenuButton
 {
 private:
