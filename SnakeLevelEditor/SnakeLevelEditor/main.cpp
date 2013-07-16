@@ -3,14 +3,19 @@
 #include <SDL_image.h>
 #include <iostream>
 #include <fstream>
+
+#include "MenuButton.h"
+
 using namespace std;
 SDL_Surface* screen;
 const int RESX=910,RESY=540;
 const short N=65,M=35;
+const short numberOfPictures=9;
+
 int map[N][M];
 int currentCellType=4;
 //0-Snake1//1-Snake2//2-CellEmpty//3-CellWallDestructable//4-CellWallUnDestructable//5-CellReverse//6-CellTeleport//7-CellEatGenerator//8-CellEat
-const short numberOfPictures=9;
+
 
 SDL_Surface* pictures[numberOfPictures];
 SDL_Surface* textPictures[numberOfPictures];
@@ -226,17 +231,14 @@ void drawBottom()
 	destination.w=source.w;
 	SDL_BlitSurface(textPictures[currentCellType],&source,screen,&destination);
 }
-void drawCellsMenu(int menuY,int leftTab,int topTab,int betweenTab)
+void drawCellsMenu(int menuX, int menuY,int leftTab,int topTab,int betweenTab, int betweenPicTextTab)
 {
-	int middleX=RESX/2;
-	
-
 	SDL_Rect source, destination;
 	source.x=0;
 	source.y=0;
 	source.h=menuPicture->h;
 	source.w=menuPicture->w;
-	destination.x=middleX-menuPicture->w/2;
+	destination.x=menuX;
 	destination.y=menuY;
 	destination.h=source.h;
 	destination.w=source.w;
@@ -251,7 +253,7 @@ void drawCellsMenu(int menuY,int leftTab,int topTab,int betweenTab)
 	source.w=pictures[0]->w;
 	destination.h=source.h;
 	destination.w=source.w;
-	destination.x=middleX-menuPicture->w/2+leftTab;
+	destination.x=menuX+leftTab;
 	for(int i=0;i<numberOfPictures;i++)
 	{
 		destination.y=menuY+topTab+i*(pictures[0]->h+betweenTab);
@@ -260,7 +262,7 @@ void drawCellsMenu(int menuY,int leftTab,int topTab,int betweenTab)
 
 	source.h=textPictures[0]->h;
 	destination.h=source.h;
-	destination.x=middleX-menuPicture->w/2+leftTab+20;
+	destination.x=menuX+leftTab+pictures[0]->w+betweenPicTextTab;
 	for (int i=0;i<numberOfPictures;i++)
 	{
 		source.w=textPictures[i]->w;
@@ -273,7 +275,7 @@ void drawCellsMenu(int menuY,int leftTab,int topTab,int betweenTab)
 	source.w=framePicture->w;
 	destination.h=source.h;
 	destination.w=source.w;
-	destination.x=middleX-menuPicture->w/2+20;
+	destination.x=menuX+20;
 	destination.y=menuY+topTab+currentCellType*(pictures[0]->h+betweenTab)-10;
 	SDL_BlitSurface(framePicture,&source,screen,&destination);
 }
@@ -333,13 +335,35 @@ void writeToFile()
 }	
 void processMenuControls()
 {
+	MenuButton* logicButtons[numberOfPictures];
 	int leftTab, topTab, betweenTab;
 	leftTab=50; //Length between left edge menu picture and picture of cells
 	topTab=40; //Length between top edge menu picture and picture of first cell
-	betweenTab=20;
+	betweenTab=20; //Length between lines
+	int betweenPicTextTab=10;
+	int menuX=RESX/2-menuPicture->w/2;
 	int menuY=80;
+	
+	SDL_Surface* underMenuBackground=SDL_CreateRGBSurface(SDL_SWSURFACE,menuPicture->w,menuPicture->h,32,0,0,0,0);
+	
+	SDL_Rect src,dst;
+	src.x=menuX;
+	src.y=menuY;
+	src.h=menuPicture->h;
+	src.w=menuPicture->w;
+	dst.x=0;
+	dst.y=0;
+	dst.h=src.h;
+	dst.w=src.w;
+	SDL_BlitSurface(screen,&src,underMenuBackground,&dst);
 
-	drawCellsMenu(menuY, leftTab, topTab, betweenTab);
+
+	for(int i=0;i<numberOfPictures;i++)
+	{
+		logicButtons[i]=new MenuButton(menuX+leftTab,menuY+topTab+i*(pictures[0]->h+betweenTab)+pictures[0]->h-textPictures[0]->h+5,menuX+leftTab+pictures[i]->w+betweenPicTextTab+textPictures[i]->w,menuY+topTab+i*(pictures[0]->h+betweenTab)+pictures[0]->h-textPictures[0]->h+5+textPictures[i]->h);
+	}
+
+	drawCellsMenu(menuX, menuY, leftTab, topTab, betweenTab,betweenPicTextTab);	
 	SDL_Flip(screen);
 
 	SDL_Event event;
@@ -365,19 +389,31 @@ void processMenuControls()
 				}
 				case SDL_MOUSEBUTTONDOWN:
 				{
-					int mx=event.motion.x;
-					int my=event.motion.y;
-					bool a=event.motion.x < (RESX / 2 - menuPicture->w / 2);
-					bool b=event.motion.x > (RESX / 2 + menuPicture->w / 2);
-					bool d=event.motion.y < menuY;
-					bool c=event.motion.y > (menuY + menuPicture->h);
 					if ( event.motion.x < (RESX / 2 - menuPicture->w / 2) ||  event.motion.x > (RESX / 2 + menuPicture->w / 2) || 
-						event.motion.y < menuY || event.motion.y > (menuY + menuPicture->h)) run=false;
+						event.motion.y < menuY || event.motion.y > (menuY + menuPicture->h))
+					{
+						run=false;
+					}
+					else
+					{
+						for(int i=0;i<numberOfPictures;i++)
+						{
+							if(logicButtons[i]->isCursorHere(event.motion.x,event.motion.y))
+							{
+								currentCellType=i;
+							}
+						}
+						SDL_BlitSurface(underMenuBackground,&dst,screen,&src);
+						drawCellsMenu(menuX, menuY, leftTab, topTab, betweenTab,betweenPicTextTab);
+						SDL_Flip(screen);
+					}
 					break;
-				}
-				
+				}				
 			}
-		}
-		
+		}		
+	}
+	for(int i=0;i<numberOfPictures;i++)
+	{
+		delete logicButtons[i];
 	}
 }
