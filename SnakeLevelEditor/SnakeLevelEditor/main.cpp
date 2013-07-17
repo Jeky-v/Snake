@@ -116,10 +116,77 @@ int main(int argc, char** argv)
 				}
 				case SDL_KEYDOWN:
 				{
-					if ( event.key.keysym.sym == SDLK_ESCAPE ) 
+					switch(event.key.keysym.sym)
 					{
-						exit=true;
-						break;
+					case SDLK_ESCAPE:
+						{
+							exit = true;
+							break;
+						}
+					case SDLK_1:
+						{
+							currentCellType=0;
+							break;
+						}
+					case SDLK_2:
+						{
+							currentCellType=1;
+							break;
+						}
+					case SDLK_3:
+						{
+							currentCellType=2;
+							break;
+						}
+					case SDLK_4:
+						{
+							currentCellType=3;
+							break;
+						}
+					case SDLK_5:
+						{
+							currentCellType=4;
+							break;
+						}
+					case SDLK_6:
+						{
+							currentCellType=5;
+							break;
+						}
+					case SDLK_7:
+						{
+							currentCellType=6;
+							break;
+						}
+					case SDLK_8:
+						{
+							currentCellType=7;
+							break;
+						}
+					case SDLK_9:
+						{
+							currentCellType=8;
+							break;
+						}
+					case SDLK_RIGHT:
+						{
+							currentCellType++;
+							if(currentCellType>numberOfPictures-1)
+							{
+								currentCellType=numberOfPictures-1;
+							}
+							break;
+						}
+
+					case SDLK_LEFT:
+						{
+							currentCellType--;
+							if(currentCellType<0)
+							{
+								currentCellType=0;
+							}
+							break;
+						}
 					}
 				}
 			}
@@ -381,11 +448,11 @@ void processMenuControls()
 				}
 				case SDL_KEYDOWN:
 				{
-					if ( event.key.keysym.sym == SDLK_ESCAPE ) 
+					if(event.key.keysym.sym == SDLK_ESCAPE)
 					{
 						run = false;
-						break;
 					}
+					break;
 				}
 				case SDL_MOUSEBUTTONDOWN:
 				{
@@ -410,7 +477,7 @@ void processMenuControls()
 					break;
 				}				
 			}
-		}		
+		}	
 	}
 	for(int i=0;i<numberOfPictures;i++)
 	{
