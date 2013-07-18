@@ -87,47 +87,7 @@ void GameWithLevels::doInit()
 	}
 	
 	//Initialize some cells
-	/*
-	Converter.CreateConvert<CellEat>(20,20);
-	Converter.CreateConvert<CellEat>(25,20);
-	Converter.CreateConvert<CellEat>(30,20);
-	Converter.CreateConvert<CellEat>(20,25);
-	Converter.CreateConvert<CellEat>(25,25);
-	Converter.CreateConvert<CellEat>(30,25);
-	Converter.CreateConvert<CellEat>(20,30);
-	Converter.CreateConvert<CellEat>(25,30);
-	Converter.CreateConvert<CellEat>(30,30);
 
-	Converter.CreateConvert<CellReverse>(20,10);
-	Converter.CreateConvert<CellReverse>(25,10);
-	Converter.CreateConvert<CellReverse>(30,10);
-
-	Converter.CreateConvert<CellWallDestructable>(20,15);
-	Converter.CreateConvert<CellWallDestructable>(21,15);
-	Converter.CreateConvert<CellWallDestructable>(22,15);
-	Converter.CreateConvert<CellWallDestructable>(23,15);
-	Converter.CreateConvert<CellWallDestructable>(24,15);
-	Converter.CreateConvert<CellWallDestructable>(25,15);
-	Converter.CreateConvert<CellWallDestructable>(26,15);
-	Converter.CreateConvert<CellWallDestructable>(27,15);
-	Converter.CreateConvert<CellWallDestructable>(28,15);
-	Converter.CreateConvert<CellWallDestructable>(29,15);
-	Converter.CreateConvert<CellWallDestructable>(30,15);
-
-	Converter.CreateConvert<CellTeleport>(31,15);
-	Converter.CreateConvert<CellTeleport>(3,4);
-
-	Converter.CreateConvert<CellEatGenerator>(1,1);
-	
-	Converter.Convert();
-	CellConnectionEatGenerator* generatorConnection=new CellConnectionEatGenerator;
-	global_map[1][1]->setConnection(generatorConnection,1,1);
-	global_map[2][2]->setConnection(generatorConnection,2,2);
-
-	CellConnection *cellConnection=new CellConnection;
-	global_map[31][15]->setConnection(cellConnection,31,15);
-	global_map[3][4]->setConnection(cellConnection,3,4);
-	*/
 	Converter.CreateConvert<CellWallUndestructable>(16,7);
 	Converter.CreateConvert<CellWallUndestructable>(17,7);
 	Converter.CreateConvert<CellWallUndestructable>(18,7);
@@ -271,20 +231,15 @@ bool GameWithLevels::doRun()
 		}
 
 	}
-	
-	if(snake->Move())
-	{	
-		Converter.Convert();
-		SDL_Delay(50);
-	}
-	else
+
+	Converter.Convert();
+	DrawField();
+	DrawTop();
+	SDL_Delay(50);
+	if(!snake->Move())
 	{
-		Converter.Convert();
 		GameOver();
 	}
-	
-		DrawField();
-		DrawTop();
 	return true;
 }
 
@@ -295,6 +250,7 @@ void GameWithLevels::doClose()
 		for(int j=0;j<35;j++)
 		{
 			delete global_map[i][j];
+			global_map[i][j]=NULL;
 		}
 	}
 	for(int i=0;i<9;i++)
@@ -318,7 +274,7 @@ void GameWithLevels::GameOver()
 		current_map_number++;
 		m_mgr->SetActiveModule(MAINMENU);
 	}
-	delete snake;
+	//delete snake;
 	//LoadMap();
 }
 
