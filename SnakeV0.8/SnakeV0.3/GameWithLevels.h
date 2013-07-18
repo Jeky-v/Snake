@@ -8,7 +8,7 @@ class CellConnection;
 class GameWithLevels :public GameModule
 {
 private:
-	int current_map_number;
+	char current_map_number;
 	Snake *snake;
 	std::list<CellConnection*> connections;
 public:

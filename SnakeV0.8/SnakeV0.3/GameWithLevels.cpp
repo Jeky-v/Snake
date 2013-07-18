@@ -18,7 +18,8 @@
 #include "CellConnectionTeleport.h"
 #include <iostream>
 #include <fstream>
-
+#include <malloc.h>
+#include <string>
 void GameWithLevels::doInit()
 {
 	if(full_screen_mode)
@@ -48,7 +49,7 @@ void GameWithLevels::doInit()
 		topPicture=IMG_Load("Pictures/Game/TopPictures/toppicture0.900.png");
 	}
 
-	ofstream out("Levels\\1.txt",ios::binary|ios::out); //Открываем файл в двоичном режиме для записи
+	/*ofstream out("Levels\\1.txt",ios::binary|ios::out); //Открываем файл в двоичном режиме для записи
 	int snakeDirection=2;
 	out.write((char*)&snakeDirection,sizeof(snakeDirection));
 	int snakeCellX=45, snakeCellY=15;
@@ -75,7 +76,7 @@ void GameWithLevels::doInit()
 		}
 	}
 	out.close(); //Закрываем файл
-	
+	*/
 	LoadMap();
 
 	for (int i=0;i<65;i++)
@@ -88,6 +89,7 @@ void GameWithLevels::doInit()
 	
 	//Initialize some cells
 
+	/*
 	Converter.CreateConvert<CellWallUndestructable>(16,7);
 	Converter.CreateConvert<CellWallUndestructable>(17,7);
 	Converter.CreateConvert<CellWallUndestructable>(18,7);
@@ -182,7 +184,8 @@ void GameWithLevels::doInit()
 	global_map[40][60]->setConnection(teleportConnection,40,60);
 	global_map[17][4]->setConnection(teleportConnection,17,4);
 	// end initialize
-
+	*/
+	current_map_number='1';
 }
 
 bool GameWithLevels::doRun()
@@ -236,7 +239,11 @@ bool GameWithLevels::doRun()
 	DrawField();
 	DrawTop();
 	SDL_Delay(50);
-	if(!snake->Move())
+	if(snake->Move())
+	{
+		
+	}
+	else
 	{
 		GameOver();
 	}
@@ -272,7 +279,7 @@ void GameWithLevels::GameOver()
 	{
 		//DrawText(RESX/2-230,RESY/2-60,"Win",60,255,0,0);
 		current_map_number++;
-		m_mgr->SetActiveModule(MAINMENU);
+		m_mgr->SetActiveModule(GAMEWITHLEVELS);
 	}
 	//delete snake;
 	//LoadMap();
@@ -302,7 +309,11 @@ void GameWithLevels::DrawTop()
 void GameWithLevels::LoadMap()
 {
 	int snakeDirection;
-	ifstream in("Levels\\level.txt",ios::binary|ios::in);
+	char* str=(char*)malloc(sizeof("*.txt")+1);
+	strcpy(str,"*.txt");
+	str[0]=current_map_number;
+	printf("%s",str);
+	ifstream in("Levels\\1.txt",ios::binary|ios::in);
 	in.read((char*)&snakeDirection,sizeof(snakeDirection));
 	int snakeCellX[3];
 	int snakeCellY[3];
@@ -323,16 +334,16 @@ void GameWithLevels::LoadMap()
 			cout<< typeOfCell;
 			switch (typeOfCell)
 			{
-				
 				//0-Snake1//1-Snake2//2-CellEmpty//3-CellWallDestructible//4CellWallUnDestructible//5-CellReverse//6-CellTeleport//7-CellEatGenerator
 				case 0:
 				case 1:{global_map[i][j]=new CellSnake; cout<< typeOfCell; break;}
 				case 2:{global_map[i][j]=new CellEmpty; cout<< typeOfCell; break;}
-				case 3:{global_map[i][j]=new CellWallDestructable; cout<< typeOfCell; break;}
-				case 4:{global_map[i][j]=new CellWallUndestructable; cout<< typeOfCell; break;}
-				case 5:{global_map[i][j]=new CellReverse; cout<< typeOfCell; break;}
-				case 6:{global_map[i][j]=new CellTeleport; cout<< typeOfCell; break;}
-				case 7:{global_map[i][j]=new CellEatGenerator; cout<< typeOfCell; break;}
+				case 3:{global_map[i][j]=new CellEat; cout<< typeOfCell; break;}
+				case 4:{global_map[i][j]=new CellWallDestructable; cout<< typeOfCell; break;}
+				case 5:{global_map[i][j]=new CellWallUndestructable; cout<< typeOfCell; break;}
+				case 6:{global_map[i][j]=new CellReverse; cout<< typeOfCell; break;}
+				case 7:{global_map[i][j]=new CellTeleport; cout<< typeOfCell; break;}
+				case 8:{global_map[i][j]=new CellEatGenerator; cout<< typeOfCell; break;}
 				default: {cout << "Weird type of cell, program has been stoped."; exit(4);}
 			}
 		}

@@ -192,12 +192,7 @@ int main(int argc, char** argv)
 			}
 			drawMap();
 			drawBottom();
-			/*if(drawMenu)
-			 *{
-			 *	//drawCellsMenu();
-			 *	processMenuControls();
-			 * }
-			 */
+			
 			SDL_Flip(screen);
 		}
 	}
@@ -369,7 +364,7 @@ void drawText(int x, int y, char* inputText, int R, int G, int B)
 }
 void writeToFile()
 {
-	ofstream out("level.txt",ios::binary|ios::out);
+	ofstream out("1.txt",ios::binary|ios::out);
 
 	int snakeDirection=2;
 	out.write((char*)&snakeDirection,sizeof(snakeDirection));
@@ -391,8 +386,9 @@ void writeToFile()
 	{
 		for(int j=0;j<M;j++)
 		{
-			 out.write((char*)&map[i][j],sizeof(map[i][j]));
-			 //cout << map[i][j];
+			 int cell=map[i][j];
+			 out.write((char*)&cell,sizeof(cell));
+			 cout << cell;
 		}
 	}
 	int zero=0;
