@@ -20,6 +20,7 @@
 #include <fstream>
 #include <malloc.h>
 #include <string>
+#include <sstream>
 void GameWithLevels::doInit()
 {
 	if(full_screen_mode)
@@ -77,6 +78,7 @@ void GameWithLevels::doInit()
 	}
 	out.close(); //Закрываем файл
 	*/
+	currentMapNumber=1;
 	LoadMap();
 
 	for (int i=0;i<65;i++)
@@ -185,7 +187,7 @@ void GameWithLevels::doInit()
 	global_map[17][4]->setConnection(teleportConnection,17,4);
 	// end initialize
 	*/
-	current_map_number='1';
+	
 }
 
 bool GameWithLevels::doRun()
@@ -266,10 +268,12 @@ void GameWithLevels::doClose()
 		cell_pic[i]=NULL;
 	}
 	SDL_FreeSurface(topPicture);
+	currentMapNumber=1;
 }
 
 void GameWithLevels::GameOver()
 {
+	
 	if(snake->GetDead())
 	{
 		m_mgr->SetActiveModule(MAINMENU);
@@ -277,12 +281,15 @@ void GameWithLevels::GameOver()
 	}
 	else
 	{
+		
 		//DrawText(RESX/2-230,RESY/2-60,"Win",60,255,0,0);
-		current_map_number++;
+		currentMapNumber++;
+		
 		m_mgr->SetActiveModule(GAMEWITHLEVELS);
+		
 	}
-	//delete snake;
-	//LoadMap();
+	delete snake;
+	LoadMap();
 }
 
 void GameWithLevels::DrawTop()
@@ -309,11 +316,15 @@ void GameWithLevels::DrawTop()
 void GameWithLevels::LoadMap()
 {
 	int snakeDirection;
-	char* str=(char*)malloc(sizeof("*.txt")+1);
-	strcpy(str,"*.txt");
-	str[0]=current_map_number;
-	printf("%s",str);
-	ifstream in("Levels\\1.txt",ios::binary|ios::in);
+	string number;
+	std::stringstream stringStream;
+	stringStream << currentMapNumber;
+	stringStream >> number;
+	string level("Levels\\");
+	level.append(number);
+	level.append(".txt");
+	
+	ifstream in(level,ios::binary|ios::in);
 	in.read((char*)&snakeDirection,sizeof(snakeDirection));
 	int snakeCellX[3];
 	int snakeCellY[3];
