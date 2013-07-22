@@ -81,13 +81,7 @@ void GameWithLevels::doInit()
 	currentMapNumber=1;
 	LoadMap();
 
-	for (int i=0;i<65;i++)
-	{
-		for(int j=0;j<35;j++)
-		{
-			global_map[i][j]->SetDestination(cell_pic[2]->w*i,33+cell_pic[2]->w*j,cell_pic[2]->w,cell_pic[2]->w);
-		}
-	}
+	
 	
 	//Initialize some cells
 
@@ -240,10 +234,10 @@ bool GameWithLevels::doRun()
 	Converter.Convert();
 	DrawField();
 	DrawTop();
-	SDL_Delay(50);
+	
 	if(snake->Move())
 	{
-		
+		SDL_Delay(50);
 	}
 	else
 	{
@@ -276,20 +270,20 @@ void GameWithLevels::GameOver()
 	
 	if(snake->GetDead())
 	{
+		delete snake;
 		m_mgr->SetActiveModule(MAINMENU);
 		//DrawText(RESX/2-230,RESY/2-60,"You are LOOOOOOOSER",40,255,0,0);
 	}
 	else
 	{
-		
+		delete snake;
 		//DrawText(RESX/2-230,RESY/2-60,"Win",60,255,0,0);
 		currentMapNumber++;
-		
-		m_mgr->SetActiveModule(GAMEWITHLEVELS);
+		LoadMap();
 		
 	}
-	delete snake;
-	LoadMap();
+	
+	//LoadMap();
 }
 
 void GameWithLevels::DrawTop()
@@ -315,8 +309,18 @@ void GameWithLevels::DrawTop()
 
 void GameWithLevels::LoadMap()
 {
+	for (int i=0;i<65;i++)
+	{
+		for(int j=0;j<35;j++)
+		{
+				delete global_map[i][j];
+				global_map[i][j]=NULL;
+			}
+	}
+
 	int snakeDirection;
-	string number;
+
+	string number; 
 	std::stringstream stringStream;
 	stringStream << currentMapNumber;
 	stringStream >> number;
@@ -359,6 +363,15 @@ void GameWithLevels::LoadMap()
 			}
 		}
 	}
+
+	for (int i=0;i<65;i++)
+	{
+		for(int j=0;j<35;j++)
+		{
+			global_map[i][j]->SetDestination(cell_pic[2]->w*i,33+cell_pic[2]->w*j,cell_pic[2]->w,cell_pic[2]->w);
+		}
+	}
+
 
 	int numberOfConnections;
 	int cellsInConnection;

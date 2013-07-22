@@ -1,14 +1,17 @@
-﻿Построение начато 21.07.2013 18:55:07.
+﻿Построение начато 22.07.2013 23:43:21.
      1>Проект "D:\git\Snake\SnakeV0.8\SnakeV0.3\SnakeV0.3.vcxproj" в узле 2 (целевые объекты build).
      1>InitializeBuildStatus:
          Создание "x64\Debug\SnakeV0.8.unsuccessfulbuild", так как было задано "AlwaysCreate".
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt GameWithLevels.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt CellEmpty.cpp GameWithLevels.cpp
          GameWithLevels.cpp
-     1>GameWithLevels.cpp(299): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>GameWithLevels.cpp(293): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371): см. объявление "sprintf"
-     1>GameWithLevels.cpp(300): warning C4305: =: усечение из "int" к "char"
-     1>GameWithLevels.cpp(300): warning C4309: =: усечение константного значения
+     1>GameWithLevels.cpp(294): warning C4305: =: усечение из "int" к "char"
+     1>GameWithLevels.cpp(294): warning C4309: =: усечение константного значения
+         CellEmpty.cpp
+         Generating Code...
+     1>d:\git\snake\snakev0.8\snakev0.3\cellempty.cpp(43): warning C4715: CellEmpty::Interaction: значение возвращается не при всех путях выполнения
        ManifestResourceCompile:
          Для всех выходных данных обновления не требуется.
        Link:
@@ -54,4 +57,4 @@
 
 Построение успешно завершено.
 
-Затраченное время: 00:00:03.92
+Затраченное время: 00:00:07.40
