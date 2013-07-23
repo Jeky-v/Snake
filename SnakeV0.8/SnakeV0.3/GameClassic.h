@@ -7,6 +7,7 @@ class GameClassic :public GameModule
 {
 private:
 	Snake* snake;
+	Mix_Music *backgroundMusic;
 public:
 	void doInit();
 	bool doRun();

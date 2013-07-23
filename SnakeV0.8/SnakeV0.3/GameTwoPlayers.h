@@ -7,6 +7,7 @@ class GameTwoPlayers :public GameModule
 private:
 	int player1Score;
 	int player2Score;
+	Mix_Music* backgroundMusic;
 
 	Snake* snake1;
 	Snake* snake2;

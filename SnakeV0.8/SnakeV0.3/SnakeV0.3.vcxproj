@@ -68,8 +68,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\SnakeV0.3\SDL_TTF\include;..\SnakeV0.3\SDL_IMAGE\include;..\SnakeV0.3\SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\SnakeV0.3\SDL_TTF\lib\x64;..\SnakeV0.3\SDL\lib\x64;..\SnakeV0.3\SDL_IMAGE\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\SnakeV0.3\SDL_TTF\include;..\SnakeV0.3\SDL_IMAGE\include;..\SnakeV0.3\SDL\include;..\SnakeV0.3\SDL_MIXER\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>..\SnakeV0.3\SDL_TTF\lib\x64;..\SnakeV0.3\SDL\lib\x64;..\SnakeV0.3\SDL_IMAGE\lib\x64;..\SnakeV0.3\SDL_MIXER\lib\x64\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -101,7 +101,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sdl.lib;sdlmain.lib;sdl_ttf.lib;sdl_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sdl.lib;sdlmain.lib;sdl_ttf.lib;sdl_image.lib;sdl_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

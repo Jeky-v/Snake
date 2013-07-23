@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 
 #include "ModuleMgr.h"
 #include "HelloScreen.h"
@@ -23,12 +24,13 @@ SDL_Surface *screen;
 bool full_screen_mode=false;
 int RESX=910;
 int RESY=523;
+int musicVolume=128;
+int soundVolume=128;
 SDL_Surface *cell_pic[9];//0-Snake1//1-Snake2//2-CellEmpty//3-CellWall//4-CellWallDestructible//5CellWallUnDestructible//6-CellReverse//7-CellTeleport//8-CellEatGenerator
 CellTypeConverter Converter;
 Cell *global_map[65][35];
 ModuleMgr mgr;
 //================
-
 
 void InitSettings()
 {
@@ -41,14 +43,16 @@ void InitSettings()
 		cout<<"Cannot open file"<<endl;
 	}
 	SettingsFile.read((char*)&full_screen_mode,sizeof(bool));
-
+	//SettingsFile.read((char*)&musicVolume,sizeof(int));
+	//SettingsFile.read((char*)&soundVolume,sizeof(int));
 	SettingsFile.close();
 }
 int main(int argc, char *argv[])
 {
 	InitSettings();
 
-	SDL_Init(SDL_INIT_VIDEO);
+	SDL_Init(SDL_INIT_VIDEO||SDL_INIT_AUDIO);
+	Mix_OpenAudio(22050,AUDIO_S16SYS,2,640);
 	TTF_Init();
 
 	if(full_screen_mode)

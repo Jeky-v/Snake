@@ -28,6 +28,9 @@ void GameClassic::doInit()
 		topPicture=IMG_Load("Pictures/Game/TopPictures/toppicture0.900.png");
 	}
 
+	backgroundMusic = Mix_LoadMUS("Music/Musics/Classic - tobycreed - phosphorescence.ogg");
+	Mix_PlayMusic(backgroundMusic,-1);
+
 	for (int i=0;i<65;i++)
 	{
 		for(int j=0;j<35;j++)
@@ -142,6 +145,7 @@ void GameClassic::doClose()
 	cell_pic[5]=NULL;
 
 	SDL_FreeSurface(topPicture);
+	Mix_FreeMusic(backgroundMusic);
 	delete snake;
 }
 

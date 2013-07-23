@@ -25,6 +25,9 @@ void GameThroneMode::doInit()
 		topPicture=IMG_Load("Pictures/Game/TopPictures/toppicture0.900.png");
 	}
 
+	backgroundMusic = Mix_LoadMUS("Music/Musics/ThroneMode - ParagonX9 - Close Combat.ogg");
+	Mix_PlayMusic(backgroundMusic,-1);
+
 	for (int i=0;i<65;i++)
 	{
 		for(int j=0;j<35;j++)
@@ -143,6 +146,8 @@ void GameThroneMode::doClose()
 		SDL_FreeSurface(cell_pic[i]);
 		cell_pic[i]=NULL;
 	}
+
+	Mix_FreeMusic(backgroundMusic);
 	SDL_FreeSurface(topPicture);
 }
 
