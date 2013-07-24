@@ -20,6 +20,7 @@
 #include <fstream>
 #include <malloc.h>
 #include <string>
+#include <sstream>
 void GameWithLevels::doInit()
 {
 	if(full_screen_mode)
@@ -77,15 +78,10 @@ void GameWithLevels::doInit()
 	}
 	out.close(); //Закрываем файл
 	*/
+	currentMapNumber=1;
 	LoadMap();
 
-	for (int i=0;i<65;i++)
-	{
-		for(int j=0;j<35;j++)
-		{
-			global_map[i][j]->SetDestination(cell_pic[2]->w*i,33+cell_pic[2]->w*j,cell_pic[2]->w,cell_pic[2]->w);
-		}
-	}
+	
 	
 	//Initialize some cells
 
@@ -185,7 +181,7 @@ void GameWithLevels::doInit()
 	global_map[17][4]->setConnection(teleportConnection,17,4);
 	// end initialize
 	*/
-	current_map_number='1';
+	
 }
 
 bool GameWithLevels::doRun()
@@ -238,10 +234,10 @@ bool GameWithLevels::doRun()
 	Converter.Convert();
 	DrawField();
 	DrawTop();
-	SDL_Delay(50);
+	
 	if(snake->Move())
 	{
-		
+		SDL_Delay(50);
 	}
 	else
 	{
@@ -266,22 +262,27 @@ void GameWithLevels::doClose()
 		cell_pic[i]=NULL;
 	}
 	SDL_FreeSurface(topPicture);
+	currentMapNumber=1;
 }
 
 void GameWithLevels::GameOver()
 {
+	
 	if(snake->GetDead())
 	{
+		delete snake;
 		m_mgr->SetActiveModule(MAINMENU);
 		//DrawText(RESX/2-230,RESY/2-60,"You are LOOOOOOOSER",40,255,0,0);
 	}
 	else
 	{
+		delete snake;
 		//DrawText(RESX/2-230,RESY/2-60,"Win",60,255,0,0);
-		current_map_number++;
-		m_mgr->SetActiveModule(GAMEWITHLEVELS);
+		currentMapNumber++;
+		LoadMap();
+		
 	}
-	//delete snake;
+	
 	//LoadMap();
 }
 
@@ -308,12 +309,26 @@ void GameWithLevels::DrawTop()
 
 void GameWithLevels::LoadMap()
 {
+	for (int i=0;i<65;i++)
+	{
+		for(int j=0;j<35;j++)
+		{
+				delete global_map[i][j];
+				global_map[i][j]=NULL;
+			}
+	}
+
 	int snakeDirection;
-	char* str=(char*)malloc(sizeof("*.txt")+1);
-	strcpy(str,"*.txt");
-	str[0]=current_map_number;
-	printf("%s",str);
-	ifstream in("Levels\\1.txt",ios::binary|ios::in);
+
+	string number; 
+	std::stringstream stringStream;
+	stringStream << currentMapNumber;
+	stringStream >> number;
+	string level("Levels\\");
+	level.append(number);
+	level.append(".txt");
+	
+	ifstream in(level,ios::binary|ios::in);
 	in.read((char*)&snakeDirection,sizeof(snakeDirection));
 	int snakeCellX[3];
 	int snakeCellY[3];
@@ -348,6 +363,15 @@ void GameWithLevels::LoadMap()
 			}
 		}
 	}
+
+	for (int i=0;i<65;i++)
+	{
+		for(int j=0;j<35;j++)
+		{
+			global_map[i][j]->SetDestination(cell_pic[2]->w*i,33+cell_pic[2]->w*j,cell_pic[2]->w,cell_pic[2]->w);
+		}
+	}
+
 
 	int numberOfConnections;
 	int cellsInConnection;

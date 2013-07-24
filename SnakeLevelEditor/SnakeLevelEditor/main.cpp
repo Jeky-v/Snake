@@ -207,12 +207,12 @@ void loadResources()
 	pictures[0]=IMG_Load("Pictures/CellPic/cellsnake.1.14.png");
 	pictures[1]=IMG_Load("Pictures/CellPic/cellsnake.2.14.png");
 	pictures[2]=IMG_Load("Pictures/CellPic/cellempty.14.png");
-	pictures[3]=IMG_Load("Pictures/CellPic/cellwalldestructable.14.png");
-	pictures[4]=IMG_Load("Pictures/CellPic/cellwallundestructable.14.png");
-	pictures[5]=IMG_Load("Pictures/CellPic/cellreverse.14.png");	
-	pictures[6]=IMG_Load("Pictures/CellPic/cellteleport.14.png");
-	pictures[7]=IMG_Load("Pictures/CellPic/celleatgenerator.14.png");
-	pictures[8]=IMG_Load("Pictures/CellPic/celleat.14.png");
+	pictures[3]=IMG_Load("Pictures/CellPic/celleat.14.png");
+	pictures[4]=IMG_Load("Pictures/CellPic/cellwalldestructable.14.png");
+	pictures[5]=IMG_Load("Pictures/CellPic/cellwallundestructable.14.png");	
+	pictures[6]=IMG_Load("Pictures/CellPic/cellreverse.14.png");
+	pictures[7]=IMG_Load("Pictures/CellPic/cellteleport.14.png");
+	pictures[8]=IMG_Load("Pictures/CellPic/celleatgenerator.14.png");
 
 	bottomPicture=IMG_Load("Pictures/Interface/bottompicture.png");
 	menuPicture=IMG_Load("Pictures/Interface/menuPicture.png");
@@ -306,11 +306,6 @@ void drawCellsMenu(int menuX, int menuY,int leftTab,int topTab,int betweenTab, i
 	destination.w=source.w;
 	SDL_BlitSurface(menuPicture,&source,screen,&destination);
 	
-	/*
-	 * leftTab=50; //Length between left edge menu picture and picture of cells
-	 * topTab=40; //Length between top edge menu picture and picture of first cell
-	 * betweenTab=20;
-	 */
 	source.h=pictures[0]->h;
 	source.w=pictures[0]->w;
 	destination.h=source.h;

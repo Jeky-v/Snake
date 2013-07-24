@@ -4,7 +4,7 @@
 
 #include "CellEmpty.h"
 #include "CellSnake.h"
-
+#include <iostream>
 CellEmpty::CellEmpty()
 {
 	SetActivity(true);
