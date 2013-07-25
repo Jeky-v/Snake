@@ -8,6 +8,7 @@
 #include "CellEmpty.h"
 #include "CellEat.h"
 #include "CellWallUndestructable.h"
+#include <sstream>
 
 void GameClassic::doInit()
 {
@@ -151,16 +152,19 @@ void GameClassic::doClose()
 
 void GameClassic::GameOver()
 {
+	const int fontSize = 65;
 	int middleX=(int) RESX/2;
 	int middleY=(int) RESY/2;
 	
-	char playerScore[5];
-	sprintf(playerScore,"%d",snake->GetScore());
-	playerScore[4]='/0';
+	string playerScore;
+	stringstream ss;
+	ss << snake->GetScore();
+	playerScore = ss.str();
+	
 
-	DrawText(middleX-150,middleY-40,"Game Over",40,250,152,5);
-	DrawText(middleX-250,middleY+20,"Your score :",40,250,152,5);
-	DrawText(middleX+150,middleY+20,playerScore,40,250,152,5);
+	DrawText(middleX-150,middleY-40,"Game Over",fontSize,250,152,5);
+	DrawText(middleX-250,middleY+20,"Your score :",fontSize,250,152,5);
+	DrawText(middleX+130,middleY+20,playerScore.c_str(),fontSize,250,152,5);
 	SDL_Flip(screen);
 	SDL_Delay(2000);
 
@@ -196,10 +200,12 @@ void GameClassic::GameOver()
 
 void GameClassic::DrawTop()
 {
+	const int fontSize = 45;
 	int score=snake->GetScore();
-	char text[10];
-	sprintf(text, "%d", score);
-	text[9]='/0';
+	string text;
+	stringstream ss;
+	ss << score;
+	text = ss.str();
 	
 	SDL_Rect src,des;
 	src.x=0;
@@ -210,7 +216,7 @@ void GameClassic::DrawTop()
 	
 	SDL_BlitSurface(topPicture,&src,screen,&des);
 	
-	DrawText(5,5,"Score:",20,250,152,5);
-	DrawText(130,5,text,20,250,152,5);
+	DrawText(5,0,"Score:",fontSize,250,152,5);
+	DrawText(140,0,text.c_str(),fontSize,250,152,5);
 	SDL_Flip(screen);
 }

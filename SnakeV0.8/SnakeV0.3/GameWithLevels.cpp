@@ -21,6 +21,7 @@
 #include <malloc.h>
 #include <string>
 #include <sstream>
+
 void GameWithLevels::doInit()
 {
 	if(full_screen_mode)
@@ -288,11 +289,16 @@ void GameWithLevels::GameOver()
 
 void GameWithLevels::DrawTop()
 {
+	const int fontSize = 45;
 	int score=snake->GetScore();
-	char text[10];
-	sprintf(text, "%d", score);
-	text[9]='/0';
-	
+	string text;
+	string level;
+	stringstream ss1,ss2;
+	ss1 << score;
+	text = ss1.str();
+	ss2 << string("Level  ") << currentMapNumber;
+	level = ss2.str();
+
 	SDL_Rect src,des;
 	src.x=0;
 	src.y=0;
@@ -302,8 +308,9 @@ void GameWithLevels::DrawTop()
 	
 	SDL_BlitSurface(topPicture,&src,screen,&des);
 	
-	DrawText(5,5,"Score:",20,250,152,5);
-	DrawText(130,5,text,20,250,152,5);
+	DrawText(5,0,"Score:",fontSize,250,152,5);
+	DrawText(130,0,text.c_str(),fontSize,250,152,5);
+	DrawText(RESX-200,0,level.c_str(),fontSize,250,152,5);
 	SDL_Flip(screen);
 }
 

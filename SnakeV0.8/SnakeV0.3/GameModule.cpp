@@ -48,14 +48,13 @@ void GameModule::DrawField()
 	}
 	SDL_Flip(screen);
 }
-void GameModule::DrawText(int x, int y, char *inputtext, int size, int R, int G, int B)
+void GameModule::DrawText(int x, int y,const char *inputtext, int size, int R, int G, int B)
 {
 	TTF_Font* font = 0;
-    font = TTF_OpenFont("Fonts/AbductionCyr.ttf",size);
+    font = TTF_OpenFont("Fonts/Neuropol Nova Bold.ttf",size);
 	SDL_Color text_color = {R,G,B};
-    char* text = inputtext; 
 
-    SDL_Surface* blended_m = TTF_RenderUTF8_Blended(font, text, text_color);
+    SDL_Surface* blended_m = TTF_RenderUTF8_Blended(font, inputtext, text_color);
 	SDL_Rect dst;
     dst.x = x;
 	dst.y = y;

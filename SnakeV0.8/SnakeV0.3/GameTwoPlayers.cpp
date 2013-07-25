@@ -8,6 +8,7 @@
 #include "CellSnake.h"
 #include "CellEmpty.h"
 #include "CellEat.h"
+#include <sstream>
 
 void GameTwoPlayers::doInit()
 {
@@ -155,17 +156,18 @@ void GameTwoPlayers::doClose()
 
 void GameTwoPlayers::GameOver()
 {	
+	const int fontSize = 65;
 	int middleX=(int) RESX/2;
 	int middleY=(int) RESY/2;
 	if(snake1->GetDead())
 	{
 		player2Score++;
-		DrawText(middleX-250,middleY-10,"Player  WASD  WIN",40,250,152,5);
+		DrawText(middleX-250,middleY-10,"Player  WASD  WIN",fontSize,250,152,5);
 	}
 	if(snake2->GetDead())
 	{
 		player1Score++;
-		DrawText(middleX-250,middleY-10,"Player  ULDR  WIN",40,250,152,5);
+		DrawText(middleX-250,middleY-10,"Player  ULDR  WIN",fontSize,250,152,5);
 	}
 	SDL_Flip(screen);
 	SDL_Delay(1500);
@@ -193,24 +195,21 @@ void GameTwoPlayers::GameOver()
 
 void GameTwoPlayers::DrawTop()
 {
-	char player1MainScore[5];
-	char player2MainScore[5];
-	char player1SnakeLength[5];
-	char player2SnakeLength[5];
+	const int fontSize = 45;
+	string player1Text;
+	string player2Text;
 
 	int player1SnakeScore=snake1->GetScore();
 	int player2SnakeScore=snake2->GetScore();
 
 	int middle=RESX/2;
-	sprintf(player1MainScore,"%d",player1Score);
-	sprintf(player2MainScore,"%d",player2Score);
-	sprintf(player1SnakeLength,"%d",(int) player1SnakeScore/10+3);
-	sprintf(player2SnakeLength,"%d",(int) player2SnakeScore/10+3);
-
-	player1MainScore[4]='/0';
-	player2MainScore[4]='/0';
-	player1SnakeLength[4]='/0';
-	player2SnakeLength[4]='/0';
+	
+	stringstream stringStream1;
+	stringstream stringStream2;
+	stringStream1 << player1Score << string("   ") << player1SnakeScore/10+3;
+	player1Text = stringStream1.str();
+	stringStream2 << player2SnakeScore/10+3 << string("   ") << player2Score;
+	player2Text = stringStream2.str();
 
 	SDL_Rect src,des;
 	src.x=0;
@@ -220,16 +219,14 @@ void GameTwoPlayers::DrawTop()
 	des=src;	
 	SDL_BlitSurface(topPicture,&src,screen,&des);
 	
-	DrawText(10,5,"Player WASD",20,255,66,116);	//Red
-	DrawText(235,5,player2SnakeLength,20,255,66,116);
-	DrawText(middle-60,5,player2MainScore,20,255,66,116);
+	DrawText(3,0,"Player WASD",fontSize,255,66,116);	//Red
+	DrawText(middle-35-player2Text.length()*15,0,player2Text.c_str(),fontSize,255,66,116);
 
-	DrawText(middle-5,5," - ",20,250,152,5);	//Orange
+	DrawText(middle-5,0," - ",fontSize,250,152,5);	//Orange
 	
-	DrawText(middle+50,5,player1MainScore,20,130,232,130);	//Green
-	DrawText(RESX-280,5,player1SnakeLength,20,130,232,130);
-	DrawText(RESX-220,5,"Player ULDR",20,130,232,130);
-	
+	DrawText(middle+35,0,player1Text.c_str(),fontSize,130,232,130);	//Green
+	DrawText(RESX-240,0,"Player ULDR",fontSize,130,232,130);
+
 	SDL_Flip(screen);
 }
 

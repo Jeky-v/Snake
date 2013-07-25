@@ -7,6 +7,7 @@
 #include "CellTypeConverter.h"
 #include "CellSnake.h"
 #include "CellEmpty.h"
+#include <sstream>
 
 void GameThroneMode::doInit()
 {
@@ -153,17 +154,18 @@ void GameThroneMode::doClose()
 
 void GameThroneMode::GameOver()
 {
+	const int fontSize = 60;
 	int middleX=(int) RESX/2;
 	int middleY=(int) RESY/2;
 	if(snake1->GetDead())
 	{
 		player2Score++;
-		DrawText(middleX-250,middleY-10,"Player  WASD  WIN",40,250,152,5);
+		DrawText(middleX-250,middleY-10,"Player  WASD  WIN",fontSize,250,152,5);
 	}
 	if(snake2->GetDead())
 	{
 		player1Score++;
-		DrawText(middleX-250,middleY-10,"Player  ULDR  WIN",40,250,152,5);
+		DrawText(middleX-250,middleY-10,"Player  ULDR  WIN",fontSize,250,152,5);
 	}
 	SDL_Flip(screen);
 	SDL_Delay(1500);
@@ -190,13 +192,17 @@ void GameThroneMode::GameOver()
 
 void GameThroneMode::DrawTop()
 {
-	char player1Text[5];
-	char player2Text[5];
+	const int fontSize = 40;
+	string player1Text;
+	string player2Text;
 	int middle=RESX/2;
-	sprintf(player1Text,"%d",player1Score);
-	sprintf(player2Text,"%d",player2Score);
-	player1Text[4]='/0';
-	player2Text[4]='/0';
+	stringstream ss1;
+	ss1 << player1Score;
+	stringstream ss2;
+	ss2 << player2Score;
+
+	player1Text = ss1.str();
+	player2Text = ss2.str();
 
 	SDL_Rect src,des;
 	src.x=0;
@@ -206,13 +212,13 @@ void GameThroneMode::DrawTop()
 	des=src;	
 	SDL_BlitSurface(topPicture,&src,screen,&des);
 	
-	DrawText(10,5,"Player WASD",20,255,66,116);	//Red
-	DrawText(middle-60,5,player2Text,20,255,66,116);
+	DrawText(10,0,"Player WASD",fontSize,255,66,116);	//Red
+	DrawText(middle-40-player2Text.length()*15,0,player2Text.c_str(),fontSize,255,66,116);
 	
-	DrawText(middle-5,5," - ",20,250,152,5);	//Orange
+	DrawText(middle-5,0," - ",fontSize,250,152,5);	//Orange
 	
-	DrawText(RESX-220,5,"Player ULDR",20,130,232,130);	//Green
-	DrawText(middle+50,5,player1Text,20,130,232,130);
-	
+	DrawText(RESX-220,0,"Player ULDR",fontSize,130,232,130);	//Green
+	DrawText(middle+50,0,player1Text.c_str(),fontSize,130,232,130);
+
 	SDL_Flip(screen);
 }
