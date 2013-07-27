@@ -13,6 +13,7 @@ public:
   void Close();
 
   void SetMgr(ModuleMgr *mgr){m_mgr = mgr;}
+  ModuleMgr* getModuleMgr(){return m_mgr;}
 
   bool IsExit() const {return !m_isexit;}
   void Exit(){m_isexit=true;}

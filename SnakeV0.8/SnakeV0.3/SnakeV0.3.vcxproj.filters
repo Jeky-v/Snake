@@ -120,6 +120,12 @@
     <ClInclude Include="CellEatGenerator.h">
       <Filter>Заголовочные файлы\Cells</Filter>
     </ClInclude>
+    <ClInclude Include="ButtonsManager.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="UIElement.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SnakeV03_main.cpp">
@@ -202,6 +208,12 @@
     </ClCompile>
     <ClCompile Include="CellConnectionEatGenerator.cpp">
       <Filter>Файлы исходного кода\Cells</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonsManager.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="UIElement.cpp">
+      <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

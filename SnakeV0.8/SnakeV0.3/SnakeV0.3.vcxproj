@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ButtonsManager.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellConnection.h" />
     <ClInclude Include="CellConnectionEatGenerator.h" />
@@ -168,8 +169,10 @@
     <ClInclude Include="Settings.h" />
     <ClInclude Include="Snake.h" />
     <ClInclude Include="StartMenu.h" />
+    <ClInclude Include="UIElement.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ButtonsManager.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellConnection.cpp" />
     <ClCompile Include="CellConnectionEatGenerator.cpp" />
@@ -197,6 +200,7 @@
     <ClCompile Include="Snake.cpp" />
     <ClCompile Include="SnakeV03_main.cpp" />
     <ClCompile Include="StartMenu.cpp" />
+    <ClCompile Include="UIElement.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
