@@ -30,6 +30,7 @@ void GameClassic::doInit()
 	}
 
 	backgroundMusic = Mix_LoadMUS("Music/Musics/Classic - tobycreed - phosphorescence.ogg");
+	printf("%s",Mix_GetError());
 	Mix_PlayMusic(backgroundMusic,-1);
 
 	for (int i=0;i<65;i++)
