@@ -1,56 +1,68 @@
-﻿Построение начато 20.06.2013 15:37:51.
-     1>Проект "D:\git\Snake\SnakeV0.3\SnakeV0.3\SnakeV0.3.vcxproj" в узле 2 (целевые объекты build).
+﻿Построение начато 28.07.2013 3:03:06.
+     1>Проект "D:\git\Snake\SnakeV0.8\SnakeV0.3\SnakeV0.3.vcxproj" в узле 2 (целевые объекты build).
      1>InitializeBuildStatus:
-         Обращение к "x64\Release\SnakeV0.3.unsuccessfulbuild".
+         Создание "x64\Release\SnakeV0.8.unsuccessfulbuild", так как было задано "AlwaysCreate".
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt Cell.cpp CellConnection.cpp CellConnectionEatGenerator.cpp CellConnectionTeleport.cpp CellEat.cpp CellEmpty.cpp CellReverse.cpp CellSnake.cpp CellTeleport.cpp CellTypeConverter.cpp CellWallDestructable.cpp CellWallUndestructable.cpp GameClassic.cpp GameWithLevels.cpp GameModule.cpp HelloScreen.cpp MenuButton.cpp SelectGameMode.cpp Settings.cpp Snake.cpp SnakeV03_main.cpp StartMenu.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt ButtonsManager.cpp Cell.cpp CellConnection.cpp CellConnectionEatGenerator.cpp CellConnectionTeleport.cpp CellEat.cpp CellEatGenerator.cpp CellEmpty.cpp CellReverse.cpp CellSnake.cpp CellTeleport.cpp CellTypeConverter.cpp CellWallDestructable.cpp CellWallUndestructable.cpp GameClassic.cpp GameThroneMode.cpp GameTwoPlayers.cpp GameWithLevels.cpp GameModule.cpp HelloScreen.cpp IModule.cpp MenuButton.cpp ModuleMgr.cpp SelectGameMode.cpp Settings.cpp Snake.cpp SnakeV03_main.cpp StartMenu.cpp UIElement.cpp
+         ButtonsManager.cpp
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          Cell.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          CellConnection.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          CellConnectionEatGenerator.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          CellConnectionTeleport.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          CellEat.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+         CellEatGenerator.cpp
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          CellEmpty.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          CellReverse.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          CellSnake.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          CellTeleport.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          CellTypeConverter.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          CellWallDestructable.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          CellWallUndestructable.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          GameClassic.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+         GameThroneMode.cpp
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+         GameTwoPlayers.cpp
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          GameWithLevels.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          GameModule.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          HelloScreen.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
-         MenuButton.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
-         SelectGameMode.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
-         Settings.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
-         Snake.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          Compiling...
+         IModule.cpp
+         MenuButton.cpp
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+         ModuleMgr.cpp
+         SelectGameMode.cpp
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+         Settings.cpp
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+         Snake.cpp
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          SnakeV03_main.cpp
      1>SnakeV03_main.cpp(3): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
          StartMenu.cpp
-     1>d:\git\snake\snakev0.3\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
-     1>Построение проекта "D:\git\Snake\SnakeV0.3\SnakeV0.3\SnakeV0.3.vcxproj" завершено (целевые объекты build) с ошибкой.
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+         UIElement.cpp
+     1>d:\git\snake\snakev0.8\snakev0.3\GlobalVariables.h(4): fatal error C1083: Не удается открыть файл включение: SDL_ttf.h: No such file or directory
+     1>Построение проекта "D:\git\Snake\SnakeV0.8\SnakeV0.3\SnakeV0.3.vcxproj" завершено (целевые объекты build) с ошибкой.
 
 СБОЙ построения.
 
-Затраченное время: 00:00:04.51
+Затраченное время: 00:00:08.58
