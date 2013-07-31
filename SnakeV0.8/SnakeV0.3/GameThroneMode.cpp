@@ -26,6 +26,8 @@ void GameThroneMode::doInit()
 		topPicture=IMG_Load("Pictures/Game/TopPictures/toppicture0.900.png");
 	}
 
+	sounds[4]=Mix_LoadWAV("Music/Sounds/Evil1.wav");
+
 	backgroundMusic = Mix_LoadMUS("Music/Musics/ThroneMode - ParagonX9 - Close Combat.ogg");
 	Mix_PlayMusic(backgroundMusic,-1);
 
@@ -149,6 +151,7 @@ void GameThroneMode::doClose()
 	}
 
 	Mix_FreeMusic(backgroundMusic);
+	Mix_FreeChunk(sounds[4]);
 	SDL_FreeSurface(topPicture);
 }
 
@@ -168,7 +171,11 @@ void GameThroneMode::GameOver()
 		DrawText(middleX-250,middleY-10,"Player  ULDR  WIN",fontSize,250,152,5);
 	}
 	SDL_Flip(screen);
-	SDL_Delay(1500);
+	
+	Mix_PauseMusic();
+	Mix_PlayChannel(-1,sounds[4],0);
+	SDL_Delay(4500);
+	Mix_ResumeMusic();
 
 	for(int i=0;i<65;i++)
 	{

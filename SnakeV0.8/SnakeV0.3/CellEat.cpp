@@ -16,7 +16,8 @@ CellEat::CellEat()
 }
 bool CellEat::Interaction(Snake &snake, int x, int y)
 {
-	
+	Mix_PlayChannel(-1,sounds[0],0);
+
 	snake.SetScore(snake.GetScore()+10);
 	
 	snake.snake_list.push_front(CellStruct(x,y));

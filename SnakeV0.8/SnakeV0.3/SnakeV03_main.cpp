@@ -30,6 +30,7 @@ SDL_Surface *cell_pic[9];//0-Snake1//1-Snake2//2-CellEmpty//3-CellWall//4-CellWa
 CellTypeConverter Converter;
 Cell *global_map[65][35];
 ModuleMgr mgr;
+Mix_Chunk *sounds[5];
 //================
 
 void InitSettings()

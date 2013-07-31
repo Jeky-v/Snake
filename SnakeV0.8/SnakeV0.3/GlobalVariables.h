@@ -22,3 +22,4 @@ extern SDL_Surface* cell_pic[9];
 extern CellTypeConverter Converter;
 extern Cell *global_map[65][35];
 extern ModuleMgr mgr;
+extern Mix_Chunk* sounds[5];

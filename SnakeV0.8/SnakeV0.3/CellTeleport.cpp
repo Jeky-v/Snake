@@ -13,6 +13,8 @@ CellTeleport::CellTeleport(void)
 
 bool CellTeleport::Interaction(Snake &snake, int x, int y)
 {
+	Mix_PlayChannel(-1,sounds[3],0);
+
 	std::pair<int,int> nextCell=static_cast<CellConnectionTeleport*>(connection)->returnCellToTeleport(this);
 	
 	Converter.CreateConvert <CellEmpty> (snake.snake_list.back().CellX,snake.snake_list.back().CellY);

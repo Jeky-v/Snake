@@ -10,6 +10,8 @@ CellWallDestructable::CellWallDestructable(void)
 
 bool CellWallDestructable::Interaction(Snake &snake, int x, int y)
 {
+	Mix_PlayChannel(-1,sounds[1],0);
+
 	if(snake.snake_list.size()<4)
 	{
 		snake.SetDead(true);

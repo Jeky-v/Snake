@@ -10,7 +10,7 @@ CellReverse::CellReverse(void)
 
 bool CellReverse::Interaction(Snake &snake, int x, int y)
 {
-	
+	Mix_PlayChannel(-1,sounds[2],0);
 	
 	snake.snake_list.reverse();
 

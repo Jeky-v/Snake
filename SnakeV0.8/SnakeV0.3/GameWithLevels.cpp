@@ -51,6 +51,13 @@ void GameWithLevels::doInit()
 		topPicture=IMG_Load("Pictures/Game/TopPictures/toppicture0.900.png");
 	}
 
+	sounds[0]=Mix_LoadWAV("Music/Sounds/Eat2.wav");
+	sounds[1]=Mix_LoadWAV("Music/Sounds/Wall5.wav");
+	sounds[2]=Mix_LoadWAV("Music/Sounds/Reverse1.wav");
+	sounds[3]=Mix_LoadWAV("Music/Sounds/Teleport9.wav");
+	sounds[4]=Mix_LoadWAV("Music/Sounds/Evil1.wav");
+	printf("%s\n",Mix_GetError());
+	
 	/*ofstream out("Levels\\1.txt",ios::binary|ios::out); //Открываем файл в двоичном режиме для записи
 	int snakeDirection=2;
 	out.write((char*)&snakeDirection,sizeof(snakeDirection));
@@ -261,6 +268,10 @@ void GameWithLevels::doClose()
 	{
 		SDL_FreeSurface(cell_pic[i]);
 		cell_pic[i]=NULL;
+	}
+	for(int i=0;i<5;i++)
+	{
+		Mix_FreeChunk(sounds[i]);
 	}
 	SDL_FreeSurface(topPicture);
 	currentMapNumber=1;

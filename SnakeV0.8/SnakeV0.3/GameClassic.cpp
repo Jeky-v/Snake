@@ -29,6 +29,8 @@ void GameClassic::doInit()
 		topPicture=IMG_Load("Pictures/Game/TopPictures/toppicture0.900.png");
 	}
 
+	sounds[0]=Mix_LoadWAV("Music/Sounds/Eat2.wav");
+
 	backgroundMusic = Mix_LoadMUS("Music/Musics/Classic - tobycreed - phosphorescence.ogg");
 	printf("%s",Mix_GetError());
 	Mix_PlayMusic(backgroundMusic,-1);
@@ -148,6 +150,7 @@ void GameClassic::doClose()
 
 	SDL_FreeSurface(topPicture);
 	Mix_FreeMusic(backgroundMusic);
+	Mix_FreeChunk(sounds[0]);
 	delete snake;
 }
 
@@ -167,7 +170,7 @@ void GameClassic::GameOver()
 	DrawText(middleX-250,middleY+20,"Your score :",fontSize,250,152,5);
 	DrawText(middleX+130,middleY+20,playerScore.c_str(),fontSize,250,152,5);
 	SDL_Flip(screen);
-	SDL_Delay(2000);
+	SDL_Delay(3500);
 
 	delete snake;
 
