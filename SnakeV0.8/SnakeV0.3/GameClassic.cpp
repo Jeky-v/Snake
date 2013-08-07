@@ -136,6 +136,7 @@ void GameClassic::doClose()
 		for(int j=0;j<35;j++)
 		{
 			delete global_map[i][j];
+			global_map[i][j]=NULL;
 		}
 	}
 	
