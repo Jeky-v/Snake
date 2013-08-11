@@ -56,7 +56,6 @@ void GameWithLevels::doInit()
 	sounds[2]=Mix_LoadWAV("Music/Sounds/Reverse1.wav");
 	sounds[3]=Mix_LoadWAV("Music/Sounds/Teleport9.wav");
 	sounds[4]=Mix_LoadWAV("Music/Sounds/Evil1.wav");
-	printf("%s\n",Mix_GetError());
 	
 	/*ofstream out("Levels\\1.txt",ios::binary|ios::out); //Открываем файл в двоичном режиме для записи
 	int snakeDirection=2;
@@ -272,6 +271,7 @@ void GameWithLevels::doClose()
 	for(int i=0;i<5;i++)
 	{
 		Mix_FreeChunk(sounds[i]);
+		sounds[i]=NULL;
 	}
 	SDL_FreeSurface(topPicture);
 	currentMapNumber=1;
@@ -331,9 +331,9 @@ void GameWithLevels::LoadMap()
 	{
 		for(int j=0;j<35;j++)
 		{
-				delete global_map[i][j];
-				global_map[i][j]=NULL;
-			}
+			delete global_map[i][j];
+			global_map[i][j]=NULL;
+		}
 	}
 
 	int snakeDirection;

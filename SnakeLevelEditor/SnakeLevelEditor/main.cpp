@@ -11,6 +11,7 @@ SDL_Surface* screen;
 const int RESX=910,RESY=540;
 const short N=65,M=35;
 const short numberOfPictures=9;
+const short numberOfButtons=3;
 
 int map[N][M];
 int currentCellType=4;
@@ -19,6 +20,7 @@ int currentCellType=4;
 
 SDL_Surface* pictures[numberOfPictures];
 SDL_Surface* textPictures[numberOfPictures];
+SDL_Surface* buttonPictures[numberOfButtons];
 SDL_Surface* bottomPicture;
 SDL_Surface* menuPicture;
 SDL_Surface* framePicture;
@@ -32,6 +34,8 @@ void drawCellsMenu(int,int,int,int);
 void writeToFile();
 void drawText(int x, int y, char* inputText, int R, int G, int B);
 void processMenuControls();
+void saveLevel();
+
 int main(int argc, char** argv)
 {
 	SDL_Init(SDL_INIT_VIDEO);
@@ -45,6 +49,10 @@ int main(int argc, char** argv)
 	bool isRightMBPressed=false;
 	bool isLeftMBPressed=false;
 	bool drawMenu=true;
+
+	MenuButton* prev = new MenuButton(RESX/2 - 200, RESY - 45, buttonPictures[0]);
+	MenuButton* next = new MenuButton(RESX/2 + 120, RESY - 45, buttonPictures[1]);
+	MenuButton* save = new MenuButton(RESX - 100, RESY - 45, buttonPictures[2]);
 
 	for (int i=0;i<N;i++)
 		for (int j=0;j<M;j++)
@@ -63,14 +71,34 @@ int main(int argc, char** argv)
 				}
 				case SDL_MOUSEBUTTONDOWN:
 				{
-					int b=event.motion.x;
-					int c=event.motion.y;
+					int motionX=event.motion.x;
+					int motionY=event.motion.y;
 					int middleX=RESX / 2;
 					int leftEdge=middleX-(pictures[currentCellType]->w+textPictures[currentCellType]->w)/2-8;
 					int rightEdge=middleX+(pictures[currentCellType]->w+textPictures[currentCellType]->w)/2-8;
-					if (event.motion.y>(RESY-50) && event.motion.y<RESY && event.motion.x>leftEdge && event.motion.x<rightEdge)  processMenuControls();
-					int i=event.motion.x/pictures[0]->w;
-					int j=event.motion.y/pictures[0]->h;
+					if (motionY>(RESY-50) && motionY<RESY && motionX>leftEdge && motionX<rightEdge)  processMenuControls();
+					int i=motionX/pictures[0]->w;
+					int j=motionY/pictures[0]->h;
+					if(prev->isCursorHere(motionX, motionY))
+					{
+						currentCellType--;
+						if(currentCellType<0)
+						{
+							currentCellType=0;
+						}
+					}
+					if(next->isCursorHere(motionX, motionY))
+					{
+						currentCellType++;
+						if(currentCellType>numberOfPictures-1)
+						{
+							currentCellType=numberOfPictures-1;
+						}
+					}
+					if(save->isCursorHere(motionX, motionY))
+					{
+						saveLevel();
+					}
 					if (j>=M) break;				
 					if (event.button.button==SDL_BUTTON_LEFT)  
 					{
@@ -86,6 +114,9 @@ int main(int argc, char** argv)
 				}
 				case SDL_MOUSEMOTION:
 				{
+					prev->isCursorHere(event.motion.x,event.motion.y);
+					next->isCursorHere(event.motion.x,event.motion.y);
+					save->isCursorHere(event.motion.x,event.motion.y);
 					if (isRightMBPressed||isLeftMBPressed)
 					{
 						int i=event.motion.x/pictures[0]->w;
@@ -192,7 +223,9 @@ int main(int argc, char** argv)
 			}
 			drawMap();
 			drawBottom();
-			
+			prev->drawButton(screen);
+			next->drawButton(screen);
+			save->drawButton(screen);
 			SDL_Flip(screen);
 		}
 	}
@@ -229,6 +262,10 @@ void loadResources()
 	textPictures[6]=TTF_RenderUTF8_Blended(mainFont,"Reverse Cell",textColor);
 	textPictures[7]=TTF_RenderUTF8_Blended(mainFont,"Teleport",textColor);
 	textPictures[8]=TTF_RenderUTF8_Blended(mainFont,"Eat Generator",textColor);
+
+	buttonPictures[0]=IMG_Load("Pictures/Interface/prev.png");
+	buttonPictures[1]=IMG_Load("Pictures/Interface/next.png");
+	buttonPictures[2]=IMG_Load("Pictures/Interface/save.png");
 }
 void freeResources()
 {
@@ -240,6 +277,10 @@ void freeResources()
 	SDL_FreeSurface(bottomPicture);
 	SDL_FreeSurface(menuPicture);
 	SDL_FreeSurface(framePicture);
+	for(int i=0;i<numberOfButtons;i++)
+	{
+		SDL_FreeSurface(buttonPictures[i]);
+	}
 	TTF_CloseFont(mainFont);
 }
 void drawMap()
@@ -474,4 +515,8 @@ void processMenuControls()
 	{
 		delete logicButtons[i];
 	}
+}
+void saveLevel()
+{
+	
 }

@@ -1,5 +1,5 @@
-﻿Построение начато 21.07.2013 18:45:45.
-     1>Проект "D:\git\Snake\SnakeLevelEditor\SnakeLevelEditor\SnakeLevelEditor.vcxproj" в узле 2 (целевые объекты build).
+﻿Построение начато 8/11/2013 5:19:48 PM.
+     1>Проект "C:\Users\JEKY\Desktop\Snake\SnakeLevelEditor\SnakeLevelEditor\SnakeLevelEditor.vcxproj" в узле 2 (целевые объекты build).
      1>InitializeBuildStatus:
          Создание "x64\Debug\SnakeLevelEditor.unsuccessfulbuild", так как было задано "AlwaysCreate".
        ClCompile:
@@ -8,14 +8,14 @@
          Для всех выходных данных обновления не требуется.
        Link:
          Для всех выходных данных обновления не требуется.
-         SnakeLevelEditor.vcxproj -> D:\git\Snake\SnakeLevelEditor\x64\Debug\SnakeLevelEditor.exe
+         SnakeLevelEditor.vcxproj -> C:\Users\JEKY\Desktop\Snake\SnakeLevelEditor\x64\Debug\SnakeLevelEditor.exe
        Manifest:
          Для всех выходных данных обновления не требуется.
        FinalizeBuildStatus:
          Файл "x64\Debug\SnakeLevelEditor.unsuccessfulbuild" удаляется.
          Обращение к "x64\Debug\SnakeLevelEditor.lastbuildstate".
-     1>Построение проекта "D:\git\Snake\SnakeLevelEditor\SnakeLevelEditor\SnakeLevelEditor.vcxproj" завершено (целевые объекты build).
+     1>Построение проекта "C:\Users\JEKY\Desktop\Snake\SnakeLevelEditor\SnakeLevelEditor\SnakeLevelEditor.vcxproj" завершено (целевые объекты build).
 
 Построение успешно завершено.
 
-Затраченное время: 00:00:00.14
+Затраченное время: 00:00:00.08
